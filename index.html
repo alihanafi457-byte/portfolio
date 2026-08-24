@@ -373,33 +373,13 @@
       z-index: 2;
     }
 
-    /* Tata letak artistik asimetris untuk 6 foto */
-    .exp-photo-grid img:nth-child(1) {
-      grid-column: span 7;
-      grid-row: span 2;
-    }
-    .exp-photo-grid img:nth-child(2) {
-      grid-column: span 5;
-      grid-row: span 1;
-    }
-    .exp-photo-grid img:nth-child(3) {
-      grid-column: span 5;
-      grid-row: span 1;
-    }
-    .exp-photo-grid img:nth-child(4) {
-      grid-column: span 4;
-      grid-row: span 2;
-    }
-    .exp-photo-grid img:nth-child(5) {
-      grid-column: span 8;
-      grid-row: span 1;
-    }
-    .exp-photo-grid img:nth-child(6) {
-      grid-column: span 8;
-      grid-row: span 1;
-    }
+    .exp-photo-grid img:nth-child(1) { grid-column: span 7; grid-row: span 2; }
+    .exp-photo-grid img:nth-child(2) { grid-column: span 5; grid-row: span 1; }
+    .exp-photo-grid img:nth-child(3) { grid-column: span 5; grid-row: span 1; }
+    .exp-photo-grid img:nth-child(4) { grid-column: span 4; grid-row: span 2; }
+    .exp-photo-grid img:nth-child(5) { grid-column: span 8; grid-row: span 1; }
+    .exp-photo-grid img:nth-child(6) { grid-column: span 8; grid-row: span 1; }
 
-    /* Sub-section headings inside Experience */
     .exp-category-title {
       font-size: 1.25rem;
       font-weight: 800;
@@ -414,7 +394,27 @@
       margin-top: 0;
     }
 
-    /* Skills */
+    /* --- Skills Section Styles (Updated) --- */
+    .skills-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .skills-main-col {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .skill-group-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      color: var(--text-main);
+    }
+
     .skills-grid {
       display: flex;
       flex-wrap: wrap;
@@ -436,6 +436,30 @@
       background: #111;
       color: #fff;
       border-color: #111;
+    }
+
+    .interest-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+    }
+
+    .interest-box h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+    }
+
+    .interest-box ul {
+      padding-left: 1.2rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
     }
 
     /* Contact */
@@ -500,6 +524,9 @@
       }
       .nav-menu {
         display: none;
+      }
+      .skills-container {
+        grid-template-columns: 1fr;
       }
       .exp-photo-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -808,18 +835,48 @@
     </div>
   </section>
 
-  <!-- Skills -->
+  <!-- Skills Section (Updated based on image) -->
   <section id="skills" class="fade-section">
     <h2 class="section-heading">Skills & Competencies</h2>
-    <div class="skills-grid">
-      <div class="skill-chip">Legal Research</div>
-      <div class="skill-chip">Litigation Assistance</div>
-      <div class="skill-chip">Regulatory Analysis</div>
-      <div class="skill-chip">Legal Documentation</div>
-      <div class="skill-chip">Critical Thinking</div>
-      <div class="skill-chip">Problem Solving</div>
-      <div class="skill-chip">Contract Review</div>
-      <div class="skill-chip">Public Speaking</div>
+    <div class="skills-container">
+      <div class="skills-main-col">
+        <div>
+          <h4 class="skill-group-title">Hard Skills</h4>
+          <div class="skills-grid">
+            <div class="skill-chip">Microsoft Office</div>
+            <div class="skill-chip">G-Suite</div>
+            <div class="skill-chip">Legal Research</div>
+            <div class="skill-chip">Legal Drafting</div>
+            <div class="skill-chip">Policy & Documentation</div>
+            <div class="skill-chip">Management & HR</div>
+            <div class="skill-chip">Litigation Support</div>
+            <div class="skill-chip">Regulation Analyst</div>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="skill-group-title">Soft Skills</h4>
+          <div class="skills-grid">
+            <div class="skill-chip">Analytical Thinking</div>
+            <div class="skill-chip">Structured Argumentation</div>
+            <div class="skill-chip">Public Speaking</div>
+            <div class="skill-chip">Leadership</div>
+            <div class="skill-chip">Stakeholder Coordination</div>
+            <div class="skill-chip">Team Collaboration</div>
+            <div class="skill-chip">Adaptability</div>
+            <div class="skill-chip">Time Management</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="interest-box">
+        <h3>Interest & Expertise</h3>
+        <ul>
+          <li>Legal Intern</li>
+          <li>Legal Researcher</li>
+          <li>Campaign & Awareness Content</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -844,12 +901,11 @@
       document.body.classList.add('loaded');
     });
 
-    // Observer untuk efek fade-in section saat di-scroll
     document.addEventListener("DOMContentLoaded", function() {
       const observerOptions = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.15 // Section akan muncul saat 15% masuk ke layar
+        threshold: 0.15
       };
 
       const observer = new IntersectionObserver((entries, observer) => {
@@ -860,7 +916,6 @@
         });
       }, observerOptions);
 
-      // Daftarkan semua section dengan class .fade-section
       document.querySelectorAll('.fade-section').forEach(section => {
         observer.observe(section);
       });
