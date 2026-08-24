@@ -20,7 +20,7 @@
 
     a, button, .card-item { transition: all 0.4s var(--ease-smooth); }
 
-    /* Floating Pill Navigation (Persis Contoh) */
+    /* Floating Pill Navigation */
     nav {
       position: fixed; top: 1.2rem; left: 50%; transform: translateX(-50%);
       width: 90%; max-width: 720px; display: flex; justify-content: space-between;
@@ -49,33 +49,32 @@
     .section-title { font-size: 2rem; font-weight: 800; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.8rem; letter-spacing: -1px; }
     .section-title::before { content: ''; display: inline-block; width: 6px; height: 24px; background: #111; border-radius: 2px; }
 
-    /* Hero Section (Mirip 100% dengan Referensi) */
+    /* Hero Section (Foto Diperbesar & Tanpa Masking karena Background Sudah Transparan) */
     .hero {
       position: relative; height: 100vh; display: flex; align-items: flex-end;
       justify-content: center; overflow: hidden; background: #ffffff; text-align: center;
     }
     
-    /* Container Foto di Tengah */
     .hero-image-container {
-      position: absolute; top: 12%; width: 100%; height: 75%; display: flex; justify-content: center; align-items: flex-end; z-index: 1;
+      position: absolute; top: 5%; width: 100%; height: 88%; display: flex; justify-content: center; align-items: flex-end; z-index: 1;
     }
     
     .hero-image-container img {
-      height: 100%; width: auto; object-fit: contain;
+      height: 100%; /* Ukuran foto dibuat maksimal memenuhi tinggi container */
+      width: auto; 
+      object-fit: contain;
       filter: contrast(105%) brightness(102%);
-      /* Efek Transparan / Fade Out di bagian bawah agar menyatu mulus */
-      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 92%);
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 92%);
+      /* Properti mask dihapus karena background foto asli sudah transparan */
     }
 
-    /* Teks "hi, i'm" dan Nama Besar di Depan Foto (Persis Contoh) */
+    /* Teks di Depan Foto */
     .hero-content {
       position: relative; z-index: 3; width: 100%; padding-bottom: 3.5rem;
       display: flex; flex-direction: column; align-items: center;
     }
     .hero-subtitle {
       font-size: 1.4rem; color: #333; font-weight: 400; margin-bottom: -0.2rem;
-      font-family: 'Brush Script MT', cursive, sans-serif; /* Menggunakan gaya font tulisan tangan/cursive */
+      font-family: 'Brush Script MT', cursive, sans-serif;
       letter-spacing: 0.5px;
     }
     .hero-title {
@@ -109,9 +108,6 @@
     .card-meta { font-size: 0.75rem; color: #fff; font-weight: 600; background: #111; padding: 0.2rem 0.6rem; border-radius: 4px; }
     .card-sub { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.4rem; }
 
-    /* Grid Layouts */
-    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-
     /* Skills Badges */
     .skills-container { display: flex; flex-wrap: wrap; gap: 0.6rem; }
     .skill-tag { background: var(--bg-card); border: 1px solid var(--border); padding: 0.6rem 1.2rem; border-radius: 30px; font-size: 0.85rem; font-weight: 500; color: #111; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
@@ -135,7 +131,7 @@
 </head>
 <body>
 
-  <!-- Floating Pill Navigation (Persis Referensi) -->
+  <!-- Floating Pill Navigation -->
   <nav>
     <a href="#home" class="brand-link">
       <div class="brand-title">Reysha Zahra Haptari</div>
@@ -150,11 +146,11 @@
     <a href="#contact" class="nav-cta">Inquiry/Collab ↗</a>
   </nav>
 
-  <!-- Hero Section (Mirip 100% dengan Referensi) -->
+  <!-- Hero Section -->
   <section class="hero" id="home">
     <div class="hero-image-container">
-      <!-- Foto dengan efek transparan di bagian bawah -->
-      <img src="mahkamah-agung.jpg" alt="Reysha Zahra Haptari">
+      <!-- Pastikan file gambar berformat PNG transparan -->
+      <img src="mahkamah-agung.png" alt="Reysha Zahra Haptari">
     </div>
 
     <div class="hero-content">
@@ -241,7 +237,7 @@
           <div class="card-meta">Regional Police of West Sumatra</div>
         </div>
         <div class="card-sub">Polda Sumbar</div>
-        <p style="color: label; color: var(--text-muted); font-size: 0.9rem;">Assisted in handling criminal case administration, litigious case support workflows, and investigative document reviews.</p>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Assisted in handling criminal case administration, litigious case support workflows, and investigative document reviews.</p>
       </div>
     </div>
   </section>
