@@ -119,11 +119,12 @@
       color: var(--text-main);
     }
 
-    /* --- Transisi Zoom & Fade (Dari Luar ke Dalam) --- */
+    /* --- Transisi Zoom-In Dramatis dari Luar ke Dalam --- */
     .fade-section {
       opacity: 0;
-      transform: scale(0.94) translateY(30px);
-      transition: opacity 0.9s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.9s cubic-bezier(0.165, 0.84, 0.44, 1);
+      transform: scale(0.82) translateY(50px);
+      transition: opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1), transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+      will-change: opacity, transform;
     }
 
     .fade-section.is-visible {
@@ -1008,7 +1009,7 @@
     <p>&copy; 2026 Reysha Zahra Haptari. All rights reserved.</p>
   </footer>
 
-  <!-- Script untuk Smooth Transition & Loader -->
+  <!-- Script untuk Smooth Transition & Loader dengan Threshold Lebih Luas -->
   <script>
     window.addEventListener('load', function() {
       const loader = document.getElementById('page-loader');
@@ -1019,14 +1020,17 @@
     document.addEventListener("DOMContentLoaded", function() {
       const observerOptions = {
         root: null,
-        rootMargin: '0px',
-        threshold: 0.15
+        rootMargin: '-50px 0px', // Memicu transisi ketika section masuk lebih dalam ke layar
+        threshold: 0.1
       };
 
       const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
+          } else {
+            // Opsional: Hapus class ini jika ingin animasinya berulang kembali setiap discroll ke atas/bawah
+            // entry.target.classList.remove('is-visible');
           }
         });
       }, observerOptions);
