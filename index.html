@@ -49,37 +49,39 @@
     .section-title { font-size: 2rem; font-weight: 800; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.8rem; letter-spacing: -1px; }
     .section-title::before { content: ''; display: inline-block; width: 6px; height: 24px; background: #111; border-radius: 2px; }
 
-    /* Hero Section (Foto Diperbesar & Tanpa Masking karena Background Sudah Transparan) */
+    /* Hero Section (Persis Referensi) */
     .hero {
       position: relative; height: 100vh; display: flex; align-items: flex-end;
       justify-content: center; overflow: hidden; background: #ffffff; text-align: center;
     }
     
     .hero-image-container {
-      position: absolute; top: 5%; width: 100%; height: 88%; display: flex; justify-content: center; align-items: flex-end; z-index: 1;
+      position: absolute; top: 10%; width: 100%; height: 80%; display: flex; justify-content: center; align-items: flex-end; z-index: 1;
     }
     
     .hero-image-container img {
-      height: 100%; /* Ukuran foto dibuat maksimal memenuhi tinggi container */
-      width: auto; 
-      object-fit: contain;
+      height: 100%; width: auto; object-fit: contain;
       filter: contrast(105%) brightness(102%);
-      /* Properti mask dihapus karena background foto asli sudah transparan */
+      /* Efek Fade Out transparan di bagian bawah dan pinggir foto */
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%);
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%);
     }
 
-    /* Teks di Depan Foto */
+    /* Teks di Depan Foto dengan Efek Tembus Pandang */
     .hero-content {
       position: relative; z-index: 3; width: 100%; padding-bottom: 3.5rem;
       display: flex; flex-direction: column; align-items: center;
     }
     .hero-subtitle {
-      font-size: 1.4rem; color: #333; font-weight: 400; margin-bottom: -0.2rem;
-      font-family: 'Brush Script MT', cursive, sans-serif;
+      font-size: 1.35rem; color: #222; font-weight: 400; margin-bottom: -0.4rem;
+      font-family: 'Segoe Script', 'Brush Script MT', cursive; 
       letter-spacing: 0.5px;
     }
     .hero-title {
-      font-size: clamp(3rem, 8vw, 7rem); font-weight: 900; letter-spacing: -3px;
+      font-size: clamp(3rem, 8vw, 7.5rem); font-weight: 900; letter-spacing: -3px;
       color: #111; line-height: 0.95;
+      /* Efek mix-blend agar teks menyatu dengan foto di belakangnya */
+      mix-blend-mode: multiply; 
     }
 
     /* About Section */
@@ -149,8 +151,7 @@
   <!-- Hero Section -->
   <section class="hero" id="home">
     <div class="hero-image-container">
-      <!-- Pastikan file gambar berformat PNG transparan -->
-      <img src="mahkamah-agung.png" alt="Reysha Zahra Haptari">
+      <img src="mahkamah-agung.jpg" alt="Reysha Zahra Haptari">
     </div>
 
     <div class="hero-content">
