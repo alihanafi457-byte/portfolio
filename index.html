@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reysha Zahra Haptari — Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Google Fonts untuk Inter dan font tulisan tangan (Caveat) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Caveat:wght@600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-color: #fcfcfc;
+      --bg-color: #faf9f6;
       --card-bg: #ffffff;
       --text-main: #111111;
       --text-muted: #555555;
@@ -41,7 +42,7 @@
       transform: translateX(-50%);
       width: 90%;
       max-width: 680px;
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid var(--border-color);
@@ -79,15 +80,15 @@
       color: var(--text-main);
     }
 
-    /* Hero Section - Diperbarui untuk Full Screen Foto */
+    /* Hero Section - Sesuai Referensi Foto Besar & Gradasi Transparan Bawah */
     .hero {
       position: relative;
       width: 100%;
       height: 100vh;
       display: flex;
-      align-items: flex-end; /* Foto menempel di bawah */
+      align-items: flex-end;
       justify-content: center;
-      background-color: #ffffff;
+      background-color: #faf9f6;
       overflow: hidden;
       padding: 0 !important;
       border: none;
@@ -98,46 +99,50 @@
       inset: 0;
       display: flex;
       justify-content: center;
-      align-items: flex-end; /* Foto menempel di bawah */
+      align-items: flex-end;
       z-index: 1;
+      /* Efek gradasi transparan/fade out di bagian bawah foto */
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
     }
 
     .hero-img-wrap img {
-      height: 100%; /* Foto diperbesar memenuhi layar */
+      height: 90vh; /* Foto diperbesar agar mendominasi layar */
       width: auto;
       max-width: 100%;
-      object-fit: cover; /* Agar foto menutupi area tanpa distorsi */
+      object-fit: contain;
       filter: contrast(105%) brightness(102%);
     }
 
     .hero-text-content {
       position: relative;
-      z-index: 2;
+      z-index: 3;
       text-align: center;
-      padding-bottom: 4rem;
+      padding-bottom: 3.5rem;
       width: 100%;
+      pointer-events: none;
     }
 
     .hero-greeting {
-      font-family: 'Brush Script MT', cursive, sans-serif;
-      font-size: 1.8rem;
+      font-family: 'Caveat', cursive; /* Gaya tulisan tangan */
+      font-size: 2.2rem;
       color: #333;
-      margin-bottom: -0.5rem;
+      margin-bottom: -0.8rem;
     }
 
     .hero-name {
-      font-size: clamp(3rem, 9vw, 7.5rem);
+      font-size: clamp(3.5rem, 8.5vw, 7.5rem);
       font-weight: 900;
       letter-spacing: -3px;
       color: #111;
       line-height: 1;
-      mix-blend-mode: multiply; /* Membuat teks menyatu artistik dengan foto di belakangnya */
     }
 
     /* General Sections */
     section {
       padding: 7rem 10%;
       border-bottom: 1px solid var(--border-color);
+      background-color: #ffffff;
     }
 
     .section-heading {
@@ -342,6 +347,7 @@
       padding: 3rem;
       color: var(--text-muted);
       font-size: 0.85rem;
+      background: #ffffff;
     }
 
     /* Responsive */
@@ -381,7 +387,7 @@
   <!-- Hero Section -->
   <section class="hero" id="home">
     <div class="hero-img-wrap">
-      <!-- PENTING: Pastikan nama file di bawah ini SAMA PERSIS dengan di GitHub (mahkamah-agung.png) -->
+      <!-- Pastikan file foto mahkamah-agung.png ada di repository GitHub Anda -->
       <img src="mahkamah-agung.png" alt="Reysha Zahra Haptari">
     </div>
     <div class="hero-text-content">
@@ -395,7 +401,6 @@
     <h2 class="section-heading">About Me</h2>
     <div class="about-grid">
       <div class="about-card">
-        <!-- Ganti dengan foto profil Anda -->
         <img src="profile.png" alt="Reysha Zahra Haptari">
       </div>
       <div class="about-details">
@@ -455,4 +460,41 @@
       <div class="timeline-item">
         <div class="timeline-header">
           <span class="timeline-title">Legal Intern</span>
-          <span class="timeline-badge">P
+          <span class="timeline-badge">Polda Sumatera Barat</span>
+        </div>
+        <div class="timeline-subtitle">Regional Police of West Sumatra</div>
+        <p class="timeline-desc">Assisted in criminal case administration workflows, litigious support activities, and meticulous investigative document reviews.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2 class="section-heading">Skills & Competencies</h2>
+    <div class="skills-grid">
+      <div class="skill-chip">Legal Research</div>
+      <div class="skill-chip">Litigation Assistance</div>
+      <div class="skill-chip">Regulatory Analysis</div>
+      <div class="skill-chip">Legal Documentation</div>
+      <div class="skill-chip">Critical Thinking</div>
+      <div class="skill-chip">Problem Solving</div>
+      <div class="skill-chip">Contract Review</div>
+      <div class="skill-chip">Public Speaking</div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" style="border-bottom: none;">
+    <div class="contact-box">
+      <h3>Let’s Work Together</h3>
+      <p>Open to professional career opportunities, legal research projects, and collaborative initiatives.</p>
+      <a href="mailto:reyshazaworkspace@gmail.com" class="btn">Send an Email</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Reysha Zahra Haptari. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
