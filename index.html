@@ -6,156 +6,162 @@
   <title>Reysha Zahra Haptari - Portfolio</title>
   <style>
     :root {
-      --bg-dark: #08080a;
-      --bg-card: #121216;
-      --accent-yellow: #f5c518;
-      --accent-red: #8b0000;
-      --text-main: #ffffff;
-      --text-muted: #a0a0aa;
-      --border: rgba(255, 255, 255, 0.1);
+      --bg-light: #fbfbfb;
+      --bg-card: #ffffff;
+      --text-main: #111111;
+      --text-muted: #666666;
+      --accent-dark: #111111;
+      --border: rgba(0, 0, 0, 0.08);
       --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, sans-serif; }
     html { scroll-behavior: smooth; }
-    body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+    body { background-color: var(--bg-light); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
     a, button, .card-item { transition: all 0.4s var(--ease-smooth); }
 
-    /* Navigation */
+    /* Floating Pill Navigation */
     nav {
-      position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between;
-      align-items: center; padding: 1.5rem 5%; z-index: 100;
-      background: linear-gradient(to bottom, rgba(8,8,10,0.95), rgba(8,8,10,0));
-      backdrop-filter: blur(8px);
+      position: fixed; top: 1.5rem; left: 50%; transform: translateX(-50%);
+      width: 90%; max-width: 750px; display: flex; justify-content: space-between;
+      align-items: center; padding: 0.75rem 1.5rem; z-index: 100;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     }
-    .brand-link { text-decoration: none; color: inherit; display: inline-block; }
-    .brand-link:hover .brand-title { color: var(--accent-yellow); }
-    .brand-title { font-weight: 800; font-size: 1.2rem; letter-spacing: 0.5px; }
-    .brand-sub { font-size: 0.85rem; color: var(--text-muted); font-weight: 400; text-transform: lowercase; }
-    .social-head { display: flex; gap: 1.2rem; list-style: none; flex-wrap: wrap; }
-    .social-head a { color: var(--text-main); text-decoration: none; font-size: 0.85rem; }
-    .social-head a:hover { color: var(--accent-yellow); }
+    .brand-link { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.5rem; }
+    .brand-title { font-weight: 800; font-size: 0.95rem; letter-spacing: -0.3px; color: #000; }
+    
+    .nav-links { display: flex; gap: 1.2rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; }
+    .nav-links a:hover { color: var(--text-main); }
+    
+    .nav-cta {
+      background: #111; color: #fff; padding: 0.5rem 1rem; border-radius: 30px;
+      font-size: 0.8rem; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 0.3rem;
+    }
+    .nav-cta:hover { background: #333; }
 
     /* Layout Sections */
     .section { padding: 6rem 8%; border-bottom: 1px solid var(--border); }
-    .section-title { font-size: 2rem; font-weight: 800; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.8rem; }
-    .section-title::before { content: ''; display: inline-block; width: 8px; height: 28px; background: var(--accent-yellow); border-radius: 2px; }
+    .section-title { font-size: 2rem; font-weight: 800; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.8rem; letter-spacing: -1px; }
+    .section-title::before { content: ''; display: inline-block; width: 6px; height: 24px; background: #111; border-radius: 2px; }
 
-    /* Hero Section */
+    /* Hero Section (Mirip Referensi) */
     .hero {
-      position: relative; min-height: 100vh; display: flex; align-items: center;
-      justify-content: flex-start; padding: 6rem 5% 0 8%; overflow: hidden;
+      position: relative; height: 100vh; display: flex; align-items: flex-end;
+      justify-content: center; overflow: hidden; background: #ffffff; text-align: center;
     }
-    .hero-video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4) contrast(1.1); z-index: 1; }
-    .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, transparent 20%, var(--bg-dark) 90%); z-index: 1; }
-    .hero-content { flex: 0 0 50%; max-width: 580px; z-index: 3; padding-bottom: 3rem; }
-    .hero-content h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; }
-    .hero-content p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2.5rem; }
-    .hero-image-wrapper { position: absolute; bottom: 0; left: 40%; width: 60%; height: 100vh; display: flex; align-items: flex-end; z-index: 2; }
-    .hero-image-wrapper img {
-      height: 110vh; width: auto; object-fit: contain; object-position: bottom left;
-      filter: contrast(108%) saturate(105%) brightness(102%) drop-shadow(-15px 10px 30px rgba(0, 0, 0, 0.8)) drop-shadow(0px 0px 40px rgba(245, 197, 24, 0.15));
+    
+    /* Foto background di tengah */
+    .hero-image-container {
+      position: absolute; top: 10%; width: 100%; height: 80%; display: flex; justify-content: center; align-items: center; z-index: 1;
     }
-    .hero-ctas { display: flex; gap: 1.5rem; align-items: center; }
-    .btn-main { background: var(--accent-yellow); color: #000; padding: 0.9rem 2rem; border-radius: 6px; font-weight: 700; text-decoration: none; border: none; cursor: pointer; display: inline-block; }
-    .btn-reel { background: transparent; color: var(--text-main); display: flex; align-items: center; gap: 0.6rem; font-weight: 600; text-decoration: none; }
-    .play-icon { width: 38px; height: 38px; background: var(--accent-yellow); color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; }
+    .hero-image-container img {
+      height: 100%; width: auto; object-fit: contain;
+      filter: contrast(105%) brightness(102%);
+    }
 
-    /* About Section Custom Layout with Photo */
-    .about-grid { display: grid; grid-template-columns: 320px 1fr; gap: 3rem; align-items: center; }
-    .about-photo-card { background: var(--bg-card); padding: 1rem; border-radius: 12px; border: 1px solid var(--border); text-align: center; }
-    .about-photo-card img { width: 100%; height: 420px; object-fit: cover; border-radius: 8px; filter: contrast(105%); }
+    /* Efek fade out putih di bawah agar menyatu */
+    .hero-fade-overlay {
+      position: absolute; bottom: 0; left: 0; width: 100%; height: 35%;
+      background: linear-gradient(to top, rgba(255,255,255,1) 10%, rgba(255,255,255,0));
+      z-index: 2;
+    }
+
+    /* Teks besar di atas foto */
+    .hero-content {
+      position: relative; z-index: 3; width: 100%; padding-bottom: 4rem;
+    }
+    .hero-subtitle {
+      font-size: 1.25rem; color: var(--text-muted); font-weight: 400; margin-bottom: 0.2rem;
+      font-style: italic; font-family: cursive;
+    }
+    .hero-title {
+      font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 900; letter-spacing: -2px;
+      color: #111; line-height: 1;
+    }
+
+    /* About Section */
+    .about-grid { display: grid; grid-template-columns: 280px 1fr; gap: 3rem; align-items: center; }
+    .about-photo-card { background: var(--bg-card); padding: 0.8rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+    .about-photo-card img { width: 100%; height: 360px; object-fit: cover; border-radius: 12px; }
     
     .about-content-wrapper { display: flex; flex-direction: column; gap: 1.5rem; }
-    .about-text-box { display: flex; flex-direction: column; gap: 1rem; color: var(--text-muted); font-size: 1rem; }
+    .about-text-box { background: var(--bg-card); padding: 2rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.03); display: flex; flex-direction: column; gap: 1rem; color: var(--text-muted); font-size: 0.95rem; }
     .about-text-box p strong { color: var(--text-main); }
     
-    .about-highlights { display: flex; flex-wrap: wrap; gap: 0.8rem; }
-    .highlight-badge { background: rgba(245, 197, 24, 0.1); border: 1px solid var(--accent-yellow); color: var(--accent-yellow); padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .about-highlights { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.5rem; }
+    .highlight-badge { background: #f2f2f2; color: #111; padding: 0.4rem 0.9rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
     
-    .about-contact-box { background: var(--bg-card); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; justify-content: space-between; margin-top: 1rem; }
-    .about-contact-box h3 { color: var(--text-main); font-size: 1.1rem; width: 100%; margin-bottom: -0.5rem; }
+    .about-contact-box { background: var(--bg-card); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; justify-content: space-between; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+    .about-contact-box h3 { color: var(--text-main); font-size: 1rem; width: 100%; margin-bottom: -0.5rem; font-weight: 700; }
     .contact-item { font-size: 0.9rem; color: var(--text-muted); text-decoration: none; }
-    .contact-item:hover { color: var(--accent-yellow); }
+    .contact-item:hover { color: var(--text-main); }
 
     /* Timeline & Card Components */
-    .timeline { display: flex; flex-direction: column; gap: 1.5rem; }
-    .card-item { background: var(--bg-card); padding: 1.8rem; border-radius: 10px; border: 1px solid var(--border); }
-    .card-item:hover { border-color: var(--accent-yellow); transform: translateY(-3px); }
-    .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; flex-wrap: wrap; }
-    .card-role { font-size: 1.1rem; font-weight: 700; }
-    .card-meta { font-size: 0.85rem; color: #fff; font-weight: 600; background: var(--accent-red); padding: 0.2rem 0.6rem; border-radius: 4px; }
-    .card-sub { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.4rem; }
+    .timeline { display: flex; flex-direction: column; gap: 1.2rem; }
+    .card-item { background: var(--bg-card); padding: 1.8rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 5px 20px rgba(0,0,0,0.02); }
+    .card-item:hover { border-color: #111; transform: translateY(-2px); }
+    .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.4rem; flex-wrap: wrap; }
+    .card-role { font-size: 1.05rem; font-weight: 700; color: #111; }
+    .card-meta { font-size: 0.75rem; color: #fff; font-weight: 600; background: #111; padding: 0.2rem 0.6rem; border-radius: 4px; }
+    .card-sub { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.4rem; }
 
     /* Grid Layouts */
-    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
     .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
 
     /* Skills Badges */
-    .skills-container { display: flex; flex-wrap: wrap; gap: 0.8rem; }
-    .skill-tag { background: var(--bg-card); border: 1px solid var(--border); padding: 0.6rem 1.2rem; border-radius: 30px; font-size: 0.9rem; font-weight: 500; }
-    .skill-tag:hover { border-color: var(--accent-yellow); color: var(--accent-yellow); }
+    .skills-container { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .skill-tag { background: var(--bg-card); border: 1px solid var(--border); padding: 0.6rem 1.2rem; border-radius: 30px; font-size: 0.85rem; font-weight: 500; color: #111; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+    .skill-tag:hover { border-color: #111; background: #111; color: #fff; }
+
+    /* Buttons */
+    .btn-main { background: #111; color: #fff; padding: 0.9rem 2rem; border-radius: 30px; font-weight: 600; text-decoration: none; display: inline-block; font-size: 0.9rem; }
+    .btn-main:hover { background: #333; }
 
     /* Responsive */
     @media (max-width: 900px) {
-      .about-grid { grid-title: center; grid-template-columns: 1fr; text-align: center; }
-      .about-photo-card { max-width: 300px; margin: 0 auto; }
+      .about-grid { grid-template-columns: 1fr; text-align: center; }
+      .about-photo-card { max-width: 280px; margin: 0 auto; }
       .about-highlights { justify-content: center; }
-    }
-    @media (max-width: 768px) {
-      .hero { flex-direction: column-reverse; text-align: center; padding-top: 7rem; }
-      .hero-content { max-width: 100%; }
-      .hero-image-wrapper { position: static; width: 100%; height: auto; justify-content: center; }
-      .hero-image-wrapper img { height: 50vh; }
-      .hero-ctas { justify-content: center; }
+      nav { width: 95%; padding: 0.6rem 1rem; }
+      .nav-links { display: none; } /* Sembunyikan menu teks di mobile agar pas di pill nav */
     }
 
-    footer { text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.85rem; }
+    footer { text-align: center; padding: 3rem; color: var(--text-muted); font-size: 0.85rem; background: #fff; }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Floating Pill Navigation -->
   <nav>
     <a href="#home" class="brand-link">
-      <div class="brand-title">REYSHA ZAHRA HAPTARI</div>
-      <div class="brand-sub">legal enthusiast & law graduate</div>
+      <div class="brand-title">Reysha Zahra Haptari</div>
     </a>
-    <ul class="social-head">
+    <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#organization">Organization</a></li>
-      <li><a href="#volunteer">Volunteer</a></li>
-      <li><a href="#publications">Publications</a></li>
-      <li><a href="#certificates">Certificates</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
     </ul>
+    <a href="#contact" class="nav-cta">Inquiry/Collab ↗</a>
   </nav>
 
-  <!-- Hero Section (Ditambahkan id="home") -->
+  <!-- Hero Section (Gaya Minimalist Modern Terang) -->
   <section class="hero" id="home">
-    <video class="hero-video-bg" autoplay loop muted playsinline>
-      <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-3d-render-of-cubes-41528-large.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
+    <div class="hero-image-container">
+      <img src="mahkamah-agung.jpg" alt="Reysha Zahra Haptari">
+    </div>
+    <div class="hero-fade-overlay"></div>
 
     <div class="hero-content">
-      <h1>Hi, I’m Reysha Zahra Haptari.</h1>
-      <p>A passionate legal mind ready to learn, contribute, and make an impact.</p>
-      
-      <div class="hero-ctas">
-        <a href="#about" class="btn-main">About Me</a>
-        <a href="https://vt.tiktok.com/ZSV9oMHdr/" target="_blank" class="btn-reel">
-          <span class="play-icon">▶</span> Watch Video
-        </a>
-      </div>
-    </div>
-
-    <div class="hero-image-wrapper">
-      <img src="mahkamah-agung.jpg" alt="Reysha Zahra Haptari di Mahkamah Agung">
+      <div class="hero-subtitle">hi, i'm</div>
+      <div class="hero-title">Reysha Zahra Haptari</div>
     </div>
   </section>
 
@@ -175,16 +181,12 @@
           <p>
             A fresh graduate of the <strong>Faculty of Law, Universitas Andalas</strong>, with a GPA of 3.80, specializing in Criminal Law. Possesses experience in legal research, litigation assistance, regulatory analysis, and legal documentation through internship programs at the <strong>Supreme Court of the Republic of Indonesia</strong> and the <strong>Regional Police of West Sumatra</strong>.
           </p>
-          <p>
-            I am a highly analytical and detail-oriented law graduate with a strong ability to break down complex issues into structured, logical insights, supported by critical thinking and a systematic approach to problem-solving.
-          </p>
           
           <div class="about-highlights">
             <span class="highlight-badge">Professional</span>
             <span class="highlight-badge">Good Analyze</span>
             <span class="highlight-badge">Focus on Detail</span>
             <span class="highlight-badge">Leadership</span>
-            <span class="highlight-badge">Problem Solver</span>
           </div>
         </div>
 
@@ -208,7 +210,7 @@
           <div class="card-role">Faculty of Law, Majoring in Criminal Law</div>
           <div class="card-meta">2022 - 2026</div>
         </div>
-        <div class="card-sub">at Andalas University</div>
+        <div class="card-sub">Andalas University</div>
         <p style="color: var(--text-muted); font-size: 0.9rem;">Bachelor of Law (Sarjana Hukum) | GPA: 3.80 / 4.00</p>
       </div>
 
@@ -217,15 +219,7 @@
           <div class="card-role">Integrated Senior High School</div>
           <div class="card-meta">2019 - 2022</div>
         </div>
-        <div class="card-sub">at SMAN 67 JAKARTA</div>
-      </div>
-
-      <div class="card-item">
-        <div class="card-header">
-          <div class="card-role">Integrated Junior High School</div>
-          <div class="card-meta">2016 - 2019</div>
-        </div>
-        <div class="card-sub">at SMPN 157 JAKARTA</div>
+        <div class="card-sub">SMAN 67 JAKARTA</div>
       </div>
     </div>
   </section>
@@ -237,80 +231,33 @@
       <div class="card-item">
         <div class="card-header">
           <div class="card-role">Legal Intern</div>
-          <div class="card-meta">Supreme Court of the Republic of Indonesia</div>
+          <div class="card-meta">Supreme Court of Indonesia</div>
         </div>
         <div class="card-sub">Internship Program</div>
-        <p style="color: var(--text-muted); font-size: 0.95rem;">
-          Engaged in legal research, case file examination, regulatory analysis, and legal documentation support within judicial administration.
-        </p>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Engaged in legal research, case file examination, regulatory analysis, and legal documentation support.</p>
       </div>
 
       <div class="card-item">
         <div class="card-header">
           <div class="card-role">Legal Intern</div>
-          <div class="card-meta">Regional Police of West Sumatra (Polda Sumbar)</div>
+          <div class="card-meta">Regional Police of West Sumatra</div>
         </div>
-        <div class="card-sub">Internship Program</div>
-        <p style="color: var(--text-muted); font-size: 0.95rem;">
-          Assisted in handling criminal case administration, litigious case support workflows, and investigative document reviews.
-        </p>
+        <div class="card-sub">Polda Sumbar</div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Assisted in handling criminal case administration, litigious case support workflows, and investigative document reviews.</p>
       </div>
     </div>
   </section>
 
   <!-- Organization -->
   <section class="section" id="organization">
-    <div class="section-title">Organization</div>
+    <div class="section-title">Organization & Activities</div>
     <div class="timeline">
       <div class="card-item">
         <div class="card-header">
           <div class="card-role">Active Organization Member</div>
-          <div class="card-meta">Campus Organizations</div>
+          <div class="card-meta">Universitas Andalas</div>
         </div>
-        <div class="card-sub">Universitas Andalas</div>
         <p style="color: var(--text-muted); font-size: 0.9rem;">Participated actively in student association programs, discussions, and academic community events.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Volunteer -->
-  <section class="section" id="volunteer">
-    <div class="section-title">Volunteer</div>
-    <div class="timeline">
-      <div class="card-item">
-        <div class="card-header">
-          <div class="card-role">Social & Legal Awareness Volunteer</div>
-          <div class="card-meta">Community Services</div>
-        </div>
-        <div class="card-sub">Community Outreach Programs</div>
-        <p style="color: var(--text-muted); font-size: 0.9rem;">Contributed to community development initiatives and legal socialization events.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Publications -->
-  <section class="section" id="publications">
-    <div class="section-title">Publications</div>
-    <div class="timeline">
-      <div class="card-item">
-        <div class="card-header">
-          <div class="card-role">Legal Essay & Research Papers</div>
-          <div class="card-meta">Academic Publications</div>
-        </div>
-        <div class="card-sub">Universitas Andalas</div>
-        <p style="color: var(--text-muted); font-size: 0.9rem;">Authored analytical papers focusing on criminal justice system improvements and legal updates.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Certificates -->
-  <section class="section" id="certificates">
-    <div class="section-title">Certificates</div>
-    <div class="grid-3">
-      <div class="card-item">
-        <div class="card-role" style="font-size: 1rem;">Legal Training & Certifications</div>
-        <div class="card-sub" style="margin-top: 0.4rem;">Various Institutions</div>
-        <div class="card-meta">2020 - 2024</div>
       </div>
     </div>
   </section>
@@ -332,10 +279,10 @@
 
   <!-- Contact Section -->
   <section class="section" id="contact" style="border: none;">
-    <div style="text-align: center; max-width: 600px; margin: 0 auto; background: var(--bg-card); padding: 3rem 2rem; border-radius: 12px; border: 1px solid var(--border);">
-      <h2 style="margin-bottom: 1rem;">Let’s Connect</h2>
-      <p style="color: var(--text-muted); margin-bottom: 2rem;">Open to professional opportunities, legal research collaborations, and impactful initiatives.</p>
-      <a href="mailto:reyshazaworkspace@gmail.com" class="btn-main" style="text-decoration:none;">Send an Inquiry</a>
+    <div style="text-align: center; max-width: 600px; margin: 0 auto; background: var(--bg-card); padding: 3rem 2rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.02);">
+      <h2 style="margin-bottom: 1rem; font-size: 1.8rem; letter-spacing: -1px;">Let’s Connect</h2>
+      <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem;">Open to professional opportunities, legal research collaborations, and impactful initiatives.</p>
+      <a href="mailto:reyshazaworkspace@gmail.com" class="btn-main">Send an Inquiry</a>
     </div>
   </section>
 
