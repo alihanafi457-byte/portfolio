@@ -77,36 +77,6 @@
     .contact-item { font-size: 0.9rem; color: var(--text-muted); text-decoration: none; }
     .contact-item:hover { color: var(--accent-yellow); }
 
-    /* Education Section with Extracted Photo Collage Grid */
-    .education-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2.5rem; align-items: start; }
-    .edu-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; background: var(--accent-red); padding: 1.5rem; border-radius: 12px; }
-    
-    /* Teknik Container untuk Crop Gambar Asli */
-    .crop-frame {
-      width: 100%;
-      overflow: hidden;
-      border-radius: 8px;
-      border: 2px solid rgba(255,255,255,0.2);
-    }
-    .crop-frame.large { grid-column: span 2; height: 210px; }
-    .crop-frame.small { height: 150px; }
-
-    /* Mengatur posisi zoom/geser gambar dari screenshot asli */
-    .crop-frame img {
-      width: 350%; /* Memperbesar gambar asli agar area foto tertentu bisa difokuskan */
-      height: auto;
-    }
-    /* Posisi crop untuk Foto 1 (Grup besar kiri atas) */
-    .crop-1 img { transform: translate(-3%, -5%); }
-    /* Posisi crop untuk Foto 2 (Wisuda kanan atas) */
-    .crop-2 img { transform: translate(-65%, -5%); }
-    /* Posisi crop untuk Foto 3 (Angkatan tengah kanan) */
-    .crop-3 img { transform: translate(-65%, -38%); }
-    /* Posisi crop untuk Foto 4 (Perspektif & Podium kiri bawah) */
-    .crop-4 img { transform: translate(-3%, -52%); }
-    /* Posisi crop untuk Foto 5 (Foto tangga kanan bawah) */
-    .crop-5 img { transform: translate(-36%, -52%); }
-
     /* Timeline & Card Components */
     .timeline { display: flex; flex-direction: column; gap: 1.5rem; }
     .card-item { background: var(--bg-card); padding: 1.8rem; border-radius: 10px; border: 1px solid var(--border); }
@@ -127,7 +97,7 @@
 
     /* Responsive */
     @media (max-width: 900px) {
-      .about-grid, .education-grid { grid-template-columns: 1fr; text-align: center; }
+      .about-grid { grid-template-columns: 1fr; text-align: center; }
       .about-photo-card { max-width: 300px; margin: 0 auto; }
       .about-highlights { justify-content: center; }
     }
@@ -227,55 +197,34 @@
     </div>
   </section>
 
-  <!-- Education & Photo Collage from Screenshot -->
+  <!-- Education Section -->
   <section class="section" id="education">
     <div class="section-title">Education</div>
-    <div class="education-grid">
-      
-      <!-- Kolom Kiri: Kolase Foto yang di-crop otomatis dari screenshot -->
-      <div class="edu-gallery">
-        <div class="crop-frame large crop-1">
-          <img src="screenshot-pendidikan.jpg" alt="Activity Group">
+    <div class="timeline">
+      <div class="card-item">
+        <div class="card-header">
+          <div class="card-role">Faculty of Law, Majoring in Criminal Law</div>
+          <div class="card-meta">2022 - 2026</div>
         </div>
-        <div class="crop-frame small crop-2">
-          <img src="screenshot-pendidikan.jpg" alt="Graduation">
-        </div>
-        <div class="crop-frame small crop-3">
-          <img src="screenshot-pendidikan.jpg" alt="Classmates">
-        </div>
-        <div class="crop-frame large crop-4">
-          <img src="screenshot-pendidikan.jpg" alt="Perspektif Event">
-        </div>
+        <div class="card-sub">at Andalas University</div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Bachelor of Law (Sarjana Hukum) | GPA: 3.80 / 4.00</p>
       </div>
 
-      <!-- Kolom Kanan: Daftar Riwayat Pendidikan -->
-      <div class="timeline">
-        <div class="card-item">
-          <div class="card-header">
-            <div class="card-role">Faculty of Law, Majoring in Criminal Law</div>
-            <div class="card-meta">2022 - 2026</div>
-          </div>
-          <div class="card-sub">at Andalas University</div>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">Bachelor of Law (Sarjana Hukum) | GPA: 3.80 / 4.00</p>
+      <div class="card-item">
+        <div class="card-header">
+          <div class="card-role">Integrated Senior High School</div>
+          <div class="card-meta">2019 - 2022</div>
         </div>
-
-        <div class="card-item">
-          <div class="card-header">
-            <div class="card-role">Integrated Senior High School</div>
-            <div class="card-meta">2019 - 2022</div>
-          </div>
-          <div class="card-sub">at SMAN 67 JAKARTA</div>
-        </div>
-
-        <div class="card-item">
-          <div class="card-header">
-            <div class="card-role">Integrated Junior High School</div>
-            <div class="card-meta">2016 - 2019</div>
-          </div>
-          <div class="card-sub">at SMPN 157 JAKARTA</div>
-        </div>
+        <div class="card-sub">at SMAN 67 JAKARTA</div>
       </div>
 
+      <div class="card-item">
+        <div class="card-header">
+          <div class="card-role">Integrated Junior High School</div>
+          <div class="card-meta">2016 - 2019</div>
+        </div>
+        <div class="card-sub">at SMPN 157 JAKARTA</div>
+      </div>
     </div>
   </section>
 
