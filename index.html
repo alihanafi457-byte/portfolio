@@ -80,7 +80,7 @@
       color: var(--text-main);
     }
 
-    /* Hero Section - Sesuai Referensi Foto Besar & Gradasi Transparan Bawah */
+    /* Hero Section */
     .hero {
       position: relative;
       width: 100%;
@@ -101,13 +101,12 @@
       justify-content: center;
       align-items: flex-end;
       z-index: 1;
-      /* Efek gradasi transparan/fade out di bagian bawah foto */
       -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
       mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
     }
 
     .hero-img-wrap img {
-      height: 90vh; /* Foto diperbesar agar mendominasi layar */
+      height: 90vh;
       width: auto;
       max-width: 100%;
       object-fit: contain;
@@ -124,7 +123,7 @@
     }
 
     .hero-greeting {
-      font-family: 'Caveat', cursive; /* Gaya tulisan tangan */
+      font-family: 'Caveat', cursive;
       font-size: 2.2rem;
       color: #333;
       margin-bottom: -0.8rem;
@@ -291,6 +290,21 @@
       color: var(--text-muted);
     }
 
+    /* Sub-section headings inside Experience */
+    .exp-category-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: #111;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .exp-category-title:first-of-type {
+      margin-top: 0;
+    }
+
     /* Skills */
     .skills-grid {
       display: flex;
@@ -435,11 +449,9 @@
   <section id="education">
     <h2 class="section-heading">Education</h2>
     <div class="timeline">
-      <!-- Universitas Andalas -->
       <div class="timeline-item">
         <div class="timeline-header">
           <div class="timeline-title-wrap">
-            <!-- Ganti dengan nama file logo unand kamu jika ada, misal: logo-unand.png -->
             <img src="logo-unand.png" alt="Logo Unand" class="timeline-logo">
             <span class="timeline-title">Faculty of Law, Majoring in Criminal Law</span>
           </div>
@@ -449,11 +461,9 @@
         <p class="timeline-desc">Bachelor of Law (Sarjana Hukum) — Graduated with a GPA of 3.80 / 4.00.</p>
       </div>
 
-      <!-- SMAN 67 Jakarta -->
       <div class="timeline-item">
         <div class="timeline-header">
           <div class="timeline-title-wrap">
-            <!-- Ganti dengan nama file logo SMAN 67 kamu jika ada, misal: logo-sman67.png -->
             <img src="logo-sman67.png" alt="Logo SMAN 67" class="timeline-logo">
             <span class="timeline-title">Integrated Senior High School</span>
           </div>
@@ -463,11 +473,9 @@
         <p class="timeline-desc">Completed secondary education with active participation in school organizations.</p>
       </div>
 
-      <!-- SMP 157 Jakarta -->
       <div class="timeline-item">
         <div class="timeline-header">
           <div class="timeline-title-wrap">
-            <!-- Ganti dengan nama file logo SMP 157 kamu jika ada, misal: logo-smp157.png -->
             <img src="logo-smp157.png" alt="Logo SMP 157" class="timeline-logo">
             <span class="timeline-title">Junior High School</span>
           </div>
@@ -481,12 +489,16 @@
 
   <!-- Experience -->
   <section id="experience">
-    <h2 class="section-heading">Experience & Internship</h2>
+    <h2 class="section-heading">Experience & Activities</h2>
+    
     <div class="timeline">
+      <!-- Professional Internships -->
+      <h3 class="exp-category-title">💼 Professional Internships</h3>
+      
       <div class="timeline-item">
         <div class="timeline-header">
           <span class="timeline-title">Legal Intern</span>
-          <span class="timeline-badge">Supreme Court of Indonesia</span>
+          <span class="timeline-badge">Supreme Court</span>
         </div>
         <div class="timeline-subtitle">Mahkamah Agung Republik Indonesia</div>
         <p class="timeline-desc">Conducted comprehensive legal research, examined complex case files, analyzed regulatory updates, and supported legal documentation processes.</p>
@@ -495,11 +507,98 @@
       <div class="timeline-item">
         <div class="timeline-header">
           <span class="timeline-title">Legal Intern</span>
-          <span class="timeline-badge">Polda Sumatera Barat</span>
+          <span class="timeline-badge">Polda Sumbar</span>
         </div>
-        <div class="timeline-subtitle">Regional Police of West Sumatra</div>
+        <div class="timeline-subtitle">Regional Police of West Sumatra (Polda Sumatera Barat)</div>
         <p class="timeline-desc">Assisted in criminal case administration workflows, litigious support activities, and meticulous investigative document reviews.</p>
       </div>
+
+      <!-- Organization Experience -->
+      <h3 class="exp-category-title">🏛️ Organization Experience</h3>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <span class="timeline-title">Head of Advocacy and Publications</span>
+        </div>
+        <div class="timeline-subtitle">Criminal Law Student Association</div>
+        <p class="timeline-desc">Led advocacy initiatives and publications to support student welfare and legal awareness.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <span class="timeline-title">Secretary of the Sports Development Division</span>
+        </div>
+        <div class="timeline-subtitle">Justicia Sports Club</div>
+        <p class="timeline-desc">Managed administrative workflows and division programs for sports development initiatives.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <span class="timeline-title">Ministry of Home Affairs Staff</span>
+        </div>
+        <div class="timeline-subtitle">Student Executive Board (BEM)</div>
+        <p class="timeline-desc">Handled internal and regional coordination tasks within the Ministry of Home Affairs.</p>
+      </div>
+
+      <!-- Adjudication Experience -->
+      <div class="exp-category-title">⚖️ Adjudication Experience</div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <span class="timeline-title">Highlandtion Debate Competition</span>
+        </div>
+        <div class="timeline-subtitle">SMA Negeri 1 Bukittinggi</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <span class="timeline-title">Sociology Fair Debate Competition</span>
+        </div>
+        <div class="timeline-subtitle">Department of Sociology, Universitas Andalas</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <span class="timeline-title">Pekan Andalas Debate Competition</span>
+        </div>
+        <div class="timeline-subtitle">Universitas Andalas</div>
+      </div>
+
+      <!-- Event and Committee Experience -->
+      <div class="exp-category-title">🎪 Event and Committee Experience</div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <span class="timeline-title">Coordinator of Sponsorship</span>
+          <span class="timeline-badge">2024</span>
+        </div>
+        <div class="timeline-subtitle">Law Fair (Pekan Raya Hukum) Padang</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <span class="timeline-title">Coordinator of Sponsorship</span>
+          <span class="timeline-badge">2025</span>
+        </div>
+        <div class="timeline-subtitle">Laws Competition III (Regional - Sumatera) Padang</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <span class="timeline-title">Delegated Service</span>
+          <span class="timeline-badge">2024</span>
+        </div>
+        <div class="timeline-subtitle">Andalas Law Festival (Alfest) Padang</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <span class="timeline-title">Event Organizer & Guest Relations Staff</span>
+          <span class="timeline-badge">2025</span>
+        </div>
+        <div class="timeline-subtitle">National Seminar & Call for Paper Padang</div>
+      </div>
+
     </div>
   </section>
 
