@@ -41,14 +41,14 @@
     .social-head a { color: var(--text-main); text-decoration: none; font-size: 0.9rem; }
     .social-head a:hover { color: var(--accent-yellow); }
 
-    /* 1. HERO SECTION (Layout Disesuaikan) */
+    /* 1. HERO SECTION (Ukuran Foto Diperbesar & Posisi Pas di Samping Teks) */
     .hero {
       position: relative;
       min-height: 100vh;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 6rem 8% 0 8%;
+      justify-content: flex-start;
+      padding: 6rem 5% 0 8%;
       overflow: hidden;
     }
 
@@ -64,32 +64,33 @@
     }
 
     .hero-content {
-      flex: 1;
-      max-width: 580px;
-      z-index: 2;
+      flex: 0 0 50%;
+      max-width: 550px;
+      z-index: 3;
       padding-bottom: 3rem;
     }
 
     .hero-content h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
     .hero-content p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2.5rem; }
 
-    /* Wrapper Foto - Dibuat Posisi Tengah & Ukuran Sesuai Acuan */
+    /* Wrapper Foto - Diperbesar Sangat Tinggi & Diposisikan Pas Samping Teks */
     .hero-image-wrapper {
-      flex: 1.2;
+      position: absolute;
+      bottom: 0;
+      left: 45%; /* Menempel di samping kanan teks headline */
+      width: 55%;
       height: 100vh;
-      position: relative;
+      display: flex;
+      align-items: flex-end;
       z-index: 2;
     }
 
     .hero-image-wrapper img {
-      position: absolute;
-      bottom: 0;
-      right: 12%; /* Menggeser posisi foto agak ke tengah */
-      height: 88vh; /* Ukuran besar tinggi memenuhi area bawah hingga atas */
+      height: 98vh; /* Sangat tinggi memenuhi layar vertikal dari bawah ke atas */
       width: auto;
       max-width: none;
       object-fit: contain;
-      object-position: bottom center;
+      object-position: bottom left; /* Rapat ke bagian kiri wrapper dan dasar layar */
       filter: drop-shadow(-10px 10px 20px rgba(0, 0, 0, 0.5));
       transition: transform 0.6s var(--ease-smooth);
     }
@@ -123,10 +124,9 @@
     }
 
     @media (max-width: 992px) {
-      .hero-image-wrapper img {
-        right: 0%;
-        height: 70vh;
-      }
+      .hero-content { flex: 0 0 60%; }
+      .hero-image-wrapper { left: 55%; }
+      .hero-image-wrapper img { height: 75vh; }
     }
 
     @media (max-width: 768px) {
@@ -136,11 +136,11 @@
         text-align: center;
         padding: 7rem 5% 0 5%;
       }
-      .hero-content { padding-bottom: 2rem; }
+      .hero-content { flex: none; max-width: 100%; padding-bottom: 2rem; }
       .hero-content h1 { font-size: 2.3rem; }
       .hero-ctas { justify-content: center; }
-      .hero-image-wrapper { height: auto; position: static; }
-      .hero-image-wrapper img { position: relative; right: auto; height: 50vh; }
+      .hero-image-wrapper { position: static; width: 100%; height: auto; justify-content: center; }
+      .hero-image-wrapper img { height: 50vh; }
     }
 
     /* Client Trust Bar */
