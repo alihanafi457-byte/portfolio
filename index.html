@@ -32,42 +32,81 @@
 
     /* 1. Hero Section */
     .hero {
-      position: relative; height: 100vh; display: flex; flex-direction: column;
-      justify-content: center; padding: 0 8%; overflow: hidden;
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6rem 8% 2rem 8%;
+      gap: 2rem;
+      overflow: hidden;
     }
+
     .hero-video-bg {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
       filter: brightness(0.4) contrast(1.1); z-index: 1;
     }
+
     .hero-overlay {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
       background: radial-gradient(circle at center, transparent 20%, var(--bg-dark) 90%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      flex: 1;
+      max-width: 600px;
       z-index: 2;
     }
-    .hero-content { position: relative; z-index: 3; max-width: 800px; margin-top: 4rem; }
-    .hero h1 { font-size: 4rem; font-weight: 800; line-height: 1.1; margin-bottom: 1rem; }
-    .hero p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2.5rem; max-width: 600px; }
-    
+
+    .hero-content h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 1rem; }
+    .hero-content p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2.5rem; }
+
+    .hero-image-wrapper {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      z-index: 2;
+    }
+
+    .hero-image-wrapper img {
+      max-width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+    }
+
     .hero-ctas { display: flex; gap: 1.5rem; align-items: center; }
+
     .btn-main {
       background: var(--accent-yellow); color: #000; padding: 0.9rem 2rem;
       border-radius: 6px; font-weight: 700; text-decoration: none; border: none;
       cursor: pointer; transition: 0.3s; font-size: 1rem;
     }
     .btn-main:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(245, 197, 24, 0.3); }
+
     .btn-reel {
       background: transparent; color: var(--text-main); display: flex; align-items: center;
       gap: 0.6rem; font-weight: 600; text-decoration: none; border: none; cursor: pointer;
     }
+
     .play-icon {
       width: 38px; height: 38px; background: var(--accent-yellow); color: #000;
       border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;
     }
 
-    .hero-location {
-      position: absolute; bottom: 3rem; right: 8%; z-index: 3; text-align: right; font-size: 0.9rem;
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column-reverse;
+        justify-content: center;
+        text-align: center;
+        padding-top: 7rem;
+      }
+      .hero-content h1 { font-size: 2.5rem; }
+      .hero-ctas { justify-content: center; }
+      .hero-image-wrapper img { max-height: 45vh; }
     }
-    .status-dot { display: inline-block; width: 8px; height: 8px; background: #2ed573; border-radius: 50%; margin-right: 6px; }
 
     /* Client Trust Bar */
     .trust-bar {
@@ -146,7 +185,6 @@
 
   <!-- 1. HERO SECTION -->
   <section class="hero">
-    <!-- Replace source with high-res loop or WebGL Canvas -->
     <video class="hero-video-bg" autoplay loop muted playsinline>
       <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-3d-render-of-cubes-41528-large.mp4" type="video/mp4">
     </video>
@@ -164,9 +202,9 @@
       </div>
     </div>
 
-    <div class="hero-location">
-      <p>Location: <strong>Vancouver, BC</strong></p>
-      <p><span class="status-dot"></span> Available for Commissions</p>
+    <!-- Tempat Foto Profil -->
+    <div class="hero-image-wrapper">
+      <img src="profile.png" alt="Profile Photo">
     </div>
   </section>
 
