@@ -255,21 +255,6 @@
       object-fit: cover;
     }
 
-    .video-placeholder-notice {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #666;
-      font-size: 0.85rem;
-      background: #f9f9f9;
-      gap: 0.5rem;
-      text-align: center;
-      padding: 1rem;
-    }
-
     .about-thieb-grid {
       display: grid;
       grid-template-columns: 320px 1fr;
@@ -384,6 +369,36 @@
       margin-bottom: 0.3rem;
     }
 
+    /* Galeri Bento / Experience Foto Grid */
+    .exp-photo-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 110px;
+      gap: 12px;
+      margin-top: 1.5rem;
+    }
+
+    .exp-photo-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid var(--card-border-color);
+      transition: transform 0.3s ease;
+      filter: contrast(105%);
+    }
+
+    .exp-photo-grid img:hover {
+      transform: scale(1.02);
+    }
+
+    .exp-photo-grid img:nth-child(1) { grid-column: span 7; grid-row: span 2; }
+    .exp-photo-grid img:nth-child(2) { grid-column: span 5; grid-row: span 1; }
+    .exp-photo-grid img:nth-child(3) { grid-column: span 5; grid-row: span 1; }
+    .exp-photo-grid img:nth-child(4) { grid-column: span 4; grid-row: span 2; }
+    .exp-photo-grid img:nth-child(5) { grid-column: span 8; grid-row: span 1; }
+    .exp-photo-grid img:nth-child(6) { grid-column: span 8; grid-row: span 1; }
+
     /* Footer / Contact */
     footer {
       padding: 5rem 8% 3rem;
@@ -425,6 +440,14 @@
       .about-img-box {
         height: 300px;
       }
+      .exp-photo-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 150px;
+      }
+      .exp-photo-grid img {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+      }
     }
   </style>
 </head>
@@ -464,7 +487,7 @@
     
     <div class="thieb-card">
       <div class="thieb-video-container">
-        <!-- Video about-video.mp4 sudah terpasang -->
+        <!-- Video about-video.mp4 sudah terpasang dengan benar -->
         <video autoplay muted loop playsinline>
           <source src="about-video.mp4" type="video/mp4">
           Your browser does not support the video tag.
@@ -535,6 +558,16 @@
         </div>
       </div>
     </div>
+
+    <!-- Galeri Foto Experience -->
+    <div class="exp-photo-grid">
+      <img src="WhatsApp Image 2026-08-24 at 18.08.27.jpeg" alt="Experience 1">
+      <img src="WhatsApp Image 2026-08-24 at 18.09.21.jpeg" alt="Experience 2">
+      <img src="WhatsApp Image 2026-08-24 at 18.09.22.jpeg" alt="Experience 3">
+      <img src="WhatsApp Image 2026-08-24 at 18.09.23.jpeg" alt="Experience 4">
+      <img src="WhatsApp Image 2026-08-24 at 16.18.46.jpeg" alt="Experience 5">
+      <img src="WhatsApp Image 2026-08-24 at 16.18.47.jpeg" alt="Experience 6">
+    </div>
   </section>
 
   <!-- Skills Section -->
@@ -576,7 +609,7 @@
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
+          entry.target.classList.is-visible || entry.target.classList.add('is-visible');
         }
       });
     }, observerOptions);
