@@ -12,7 +12,6 @@
       --text-main: #ffffff;
       --text-muted: #a0a0aa;
       --border: rgba(255, 255, 255, 0.1);
-      --glass-bg: rgba(0, 0, 0, 0.75);
       --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -41,7 +40,7 @@
     .social-head a { color: var(--text-main); text-decoration: none; font-size: 0.9rem; }
     .social-head a:hover { color: var(--accent-yellow); }
 
-    /* 1. HERO SECTION */
+    /* HERO SECTION */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -93,7 +92,6 @@
       object-fit: contain;
       object-position: bottom left;
 
-      /* Filter HD & Soft Rim Light */
       filter: 
         contrast(108%) 
         saturate(105%) 
@@ -203,29 +201,6 @@
     .about-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; }
     .spec-tag { display: inline-block; background: rgba(255,255,255,0.05); border: 1px solid var(--border); padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.85rem; margin: 0.2rem; }
 
-    /* Showreel Modal */
-    .modal {
-      display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: var(--glass-bg); backdrop-filter: blur(12px); z-index: 1000;
-      justify-content: center; align-items: center;
-      opacity: 0; visibility: hidden;
-      transition: opacity 0.4s var(--ease-smooth), visibility 0.4s ease;
-    }
-    .modal.active { opacity: 1; visibility: visible; }
-    
-    .modal-inner {
-      background: var(--bg-card); width: 85%; max-width: 900px; border-radius: 12px; padding: 2rem;
-      position: relative; border: 1px solid var(--border);
-      transform: scale(0.92);
-      transition: transform 0.4s var(--ease-smooth);
-    }
-    .modal.active .modal-inner { transform: scale(1); }
-    
-    .close-btn { position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; cursor: pointer; color: var(--text-muted); transition: color 0.3s ease; }
-    .close-btn:hover { color: var(--accent-yellow); }
-    .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; margin-top: 1rem; background: #000; border-radius: 8px; overflow: hidden; }
-    .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-
     /* Contact & Footer */
     .contact-card { text-align: center; max-width: 600px; margin: 0 auto; background: var(--bg-card); padding: 4rem 2rem; border-radius: 12px; border: 1px solid var(--border); }
     footer { text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border); }
@@ -246,7 +221,7 @@
     </ul>
   </nav>
 
-  <!-- 1. HERO SECTION -->
+  <!-- HERO SECTION -->
   <section class="hero">
     <video class="hero-video-bg" autoplay loop muted playsinline>
       <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-3d-render-of-cubes-41528-large.mp4" type="video/mp4">
@@ -259,9 +234,10 @@
       
       <div class="hero-ctas">
         <a href="#work" class="btn-main">Explore Work</a>
-        <button class="btn-reel" onclick="toggleModal(true)">
+        <!-- Tombol Watch Video terhubung langsung ke link TikTok Anda -->
+        <a href="https://vt.tiktok.com/ZSV9oMHdr/" target="_blank" class="btn-reel" style="text-decoration: none;">
           <span class="play-icon">▶</span> Watch Video
-        </button>
+        </a>
       </div>
     </div>
 
@@ -282,18 +258,7 @@
     </div>
   </div>
 
-  <!-- 2. SHOWREEL / INTRO MODAL -->
-  <div class="modal" id="reelModal">
-    <div class="modal-inner">
-      <span class="close-btn" onclick="toggleModal(false)">&times;</span>
-      <h3>Profile & Introduction Video</h3>
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      </div>
-    </div>
-  </div>
-
-  <!-- 3. WORK CATEGORIES & GRID -->
+  <!-- WORK CATEGORIES & GRID -->
   <section class="section" id="work">
     <h2 style="font-size: 2rem; margin-bottom: 2rem;">Selected Projects & Works</h2>
     
@@ -375,11 +340,5 @@
     <p>&copy; 2026 Reysha Zahra Haptari. All rights reserved.</p>
   </footer>
 
-  <script>
-    function toggleModal(show) {
-      const modal = document.getElementById('reelModal');
-      modal.classList.toggle('active', show);
-    }
-  </script>
 </body>
 </html>
