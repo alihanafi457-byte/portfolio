@@ -12,22 +12,35 @@
       --text-main: #ffffff;
       --text-muted: #a0a0aa;
       --border: rgba(255, 255, 255, 0.1);
-      --glass-bg: rgba(0, 0, 0, 0.6);
+      --glass-bg: rgba(0, 0, 0, 0.75);
+      --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, sans-serif; }
+    
+    /* Smooth Scroll Global */
+    html {
+      scroll-behavior: smooth;
+    }
+
     body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+
+    /* Transisi Halus Global untuk Elemen Interaktif */
+    a, button, .project-card, .cat-btn {
+      transition: all 0.4s var(--ease-smooth);
+    }
 
     /* Navigation */
     nav {
       position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between;
       align-items: center; padding: 1.5rem 5%; z-index: 100;
       background: linear-gradient(to bottom, rgba(8,8,10,0.9), rgba(8,8,10,0));
+      backdrop-filter: blur(8px);
     }
     .brand-title { font-weight: 800; font-size: 1.2rem; }
     .brand-sub { font-size: 0.85rem; color: var(--text-muted); font-weight: 400; }
     .social-head { display: flex; gap: 1.2rem; list-style: none; }
-    .social-head a { color: var(--text-main); text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+    .social-head a { color: var(--text-main); text-decoration: none; font-size: 0.9rem; }
     .social-head a:hover { color: var(--accent-yellow); }
 
     /* 1. Hero Section */
@@ -75,6 +88,11 @@
       max-height: 75vh;
       object-fit: contain;
       filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+      transition: transform 0.6s var(--ease-smooth);
+    }
+    
+    .hero-image-wrapper img:hover {
+      transform: scale(1.02);
     }
 
     .hero-ctas { display: flex; gap: 1.5rem; align-items: center; }
@@ -82,18 +100,23 @@
     .btn-main {
       background: var(--accent-yellow); color: #000; padding: 0.9rem 2rem;
       border-radius: 6px; font-weight: 700; text-decoration: none; border: none;
-      cursor: pointer; transition: 0.3s; font-size: 1rem;
+      cursor: pointer; font-size: 1rem;
     }
-    .btn-main:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(245, 197, 24, 0.3); }
+    .btn-main:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(245, 197, 24, 0.4); }
 
     .btn-reel {
       background: transparent; color: var(--text-main); display: flex; align-items: center;
       gap: 0.6rem; font-weight: 600; text-decoration: none; border: none; cursor: pointer;
     }
+    .btn-reel:hover .play-icon {
+      transform: scale(1.15);
+      background: #fff;
+    }
 
     .play-icon {
       width: 38px; height: 38px; background: var(--accent-yellow); color: #000;
       border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;
+      transition: transform 0.4s var(--ease-smooth), background-color 0.4s ease;
     }
 
     @media (max-width: 768px) {
@@ -121,20 +144,27 @@
     .category-bar { display: flex; gap: 1rem; overflow-x: auto; margin-bottom: 3rem; padding-bottom: 0.5rem; }
     .cat-btn {
       background: var(--bg-card); border: 1px solid var(--border); color: var(--text-muted);
-      padding: 0.6rem 1.4rem; border-radius: 30px; cursor: pointer; white-space: nowrap; transition: 0.3s;
+      padding: 0.6rem 1.4rem; border-radius: 30px; cursor: pointer; white-space: nowrap;
     }
     .cat-btn.active, .cat-btn:hover { background: var(--text-main); color: var(--bg-dark); font-weight: 600; }
 
-    /* 4. Project Grid */
+    /* 4. Project Grid & Smooth Hover */
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2.5rem; }
     .project-card {
       background: var(--bg-card); border-radius: 10px; overflow: hidden;
-      border: 1px solid var(--border); transition: 0.3s; cursor: pointer;
+      border: 1px solid var(--border); cursor: pointer;
     }
-    .project-card:hover { transform: translateY(-6px); border-color: var(--accent-yellow); }
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent-yellow);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+    }
     .thumb-box { height: 240px; background: #1a1a22; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-    .thumb-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.4s; }
-    .project-card:hover .thumb-box img { scale: 1.05; }
+    .thumb-box img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s var(--ease-smooth);
+    }
+    .project-card:hover .thumb-box img { transform: scale(1.08); }
     .card-details { padding: 1.5rem; }
     .card-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.3rem; }
     .card-cat { font-size: 0.85rem; color: var(--accent-yellow); text-transform: uppercase; letter-spacing: 1px; }
@@ -151,15 +181,26 @@
     .about-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; }
     .spec-tag { display: inline-block; background: rgba(255,255,255,0.05); border: 1px solid var(--border); padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.85rem; margin: 0.2rem; }
 
-    /* 2. Showreel Modal */
+    /* 2. Showreel Modal Smooth Transition */
     .modal {
-      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: var(--glass-bg); backdrop-filter: blur(10px); z-index: 1000;
+      display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--glass-bg); backdrop-filter: blur(12px); z-index: 1000;
       justify-content: center; align-items: center;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.4s var(--ease-smooth), visibility 0.4s ease;
     }
-    .modal.active { display: flex; }
-    .modal-inner { background: var(--bg-card); width: 85%; max-width: 900px; border-radius: 12px; padding: 2rem; position: relative; border: 1px solid var(--border); }
-    .close-btn { position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; cursor: pointer; color: var(--text-muted); }
+    .modal.active { opacity: 1; visibility: visible; }
+    
+    .modal-inner {
+      background: var(--bg-card); width: 85%; max-width: 900px; border-radius: 12px; padding: 2rem;
+      position: relative; border: 1px solid var(--border);
+      transform: scale(0.92);
+      transition: transform 0.4s var(--ease-smooth);
+    }
+    .modal.active .modal-inner { transform: scale(1); }
+    
+    .close-btn { position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; cursor: pointer; color: var(--text-muted); transition: color 0.3s ease; }
+    .close-btn:hover { color: var(--accent-yellow); }
     .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; margin-top: 1rem; background: #000; border-radius: 8px; overflow: hidden; }
     .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
