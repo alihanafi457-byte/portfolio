@@ -18,14 +18,12 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, sans-serif; }
     
-    /* Smooth Scroll Global */
     html {
       scroll-behavior: smooth;
     }
 
     body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
-    /* Transisi Halus Global untuk Elemen Interaktif */
     a, button, .project-card, .cat-btn {
       transition: all 0.4s var(--ease-smooth);
     }
@@ -43,15 +41,14 @@
     .social-head a { color: var(--text-main); text-decoration: none; font-size: 0.9rem; }
     .social-head a:hover { color: var(--accent-yellow); }
 
-    /* 1. Hero Section (Diperbarui sesuai acuan) */
+    /* 1. HERO SECTION (Layout Disesuaikan) */
     .hero {
       position: relative;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 6rem 0 0 8%; /* Padding kanan 0 agar foto rapat ke pinggir layar */
-      gap: 2rem;
+      padding: 6rem 8% 0 8%;
       overflow: hidden;
     }
 
@@ -68,7 +65,7 @@
 
     .hero-content {
       flex: 1;
-      max-width: 600px;
+      max-width: 580px;
       z-index: 2;
       padding-bottom: 3rem;
     }
@@ -76,23 +73,23 @@
     .hero-content h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
     .hero-content p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2.5rem; }
 
-    /* Wrapper Foto Rapat Kanan & Menempel Bawah */
+    /* Wrapper Foto - Dibuat Posisi Tengah & Ukuran Sesuai Acuan */
     .hero-image-wrapper {
       flex: 1.2;
-      display: flex;
-      justify-content: flex-end;
-      align-items: flex-end; /* Memaksa foto menempel di dasar layar */
       height: 100vh;
       position: relative;
       z-index: 2;
     }
 
     .hero-image-wrapper img {
-      height: 92vh; /* Sangat tinggi memenuhi area bawah */
+      position: absolute;
+      bottom: 0;
+      right: 12%; /* Menggeser posisi foto agak ke tengah */
+      height: 88vh; /* Ukuran besar tinggi memenuhi area bawah hingga atas */
       width: auto;
-      max-width: 100%;
+      max-width: none;
       object-fit: contain;
-      object-position: bottom right; /* Menempel di kanan bawah */
+      object-position: bottom center;
       filter: drop-shadow(-10px 10px 20px rgba(0, 0, 0, 0.5));
       transition: transform 0.6s var(--ease-smooth);
     }
@@ -125,6 +122,13 @@
       transition: transform 0.4s var(--ease-smooth), background-color 0.4s ease;
     }
 
+    @media (max-width: 992px) {
+      .hero-image-wrapper img {
+        right: 0%;
+        height: 70vh;
+      }
+    }
+
     @media (max-width: 768px) {
       .hero {
         flex-direction: column-reverse;
@@ -135,8 +139,8 @@
       .hero-content { padding-bottom: 2rem; }
       .hero-content h1 { font-size: 2.3rem; }
       .hero-ctas { justify-content: center; }
-      .hero-image-wrapper { height: auto; justify-content: center; }
-      .hero-image-wrapper img { height: 50vh; }
+      .hero-image-wrapper { height: auto; position: static; }
+      .hero-image-wrapper img { position: relative; right: auto; height: 50vh; }
     }
 
     /* Client Trust Bar */
@@ -147,7 +151,7 @@
     .trust-title { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 1.5rem; }
     .trust-logos { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem; opacity: 0.5; filter: grayscale(1); }
 
-    /* 3. Work Categories & Grid */
+    /* Work Categories & Grid */
     .section { padding: 6rem 8%; }
     .category-bar { display: flex; gap: 1rem; overflow-x: auto; margin-bottom: 3rem; padding-bottom: 0.5rem; }
     .cat-btn {
@@ -156,7 +160,7 @@
     }
     .cat-btn.active, .cat-btn:hover { background: var(--text-main); color: var(--bg-dark); font-weight: 600; }
 
-    /* 4. Project Grid & Smooth Hover */
+    /* Project Grid */
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2.5rem; }
     .project-card {
       background: var(--bg-card); border-radius: 10px; overflow: hidden;
@@ -177,7 +181,7 @@
     .card-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.3rem; }
     .card-cat { font-size: 0.85rem; color: var(--accent-yellow); text-transform: uppercase; letter-spacing: 1px; }
 
-    /* 5. Project Page Template Section */
+    /* Project Page Template Section */
     .case-study-template { background: var(--bg-card); border-radius: 12px; padding: 3rem; margin-top: 4rem; border: 1px solid var(--border); }
     .cs-header { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 2rem; }
     .cs-specs { background: var(--bg-dark); padding: 1.5rem; border-radius: 8px; font-size: 0.9rem; }
@@ -185,11 +189,11 @@
     .wip-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
     .wip-box { height: 150px; background: #222; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.85rem; }
 
-    /* 6. About Page Section */
+    /* About Page Section */
     .about-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; }
     .spec-tag { display: inline-block; background: rgba(255,255,255,0.05); border: 1px solid var(--border); padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.85rem; margin: 0.2rem; }
 
-    /* 2. Showreel Modal Smooth Transition */
+    /* Showreel Modal */
     .modal {
       display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: var(--glass-bg); backdrop-filter: blur(12px); z-index: 1000;
@@ -212,7 +216,7 @@
     .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; margin-top: 1rem; background: #000; border-radius: 8px; overflow: hidden; }
     .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
-    /* 8. Contact & Footer */
+    /* Contact & Footer */
     .contact-card { text-align: center; max-width: 600px; margin: 0 auto; background: var(--bg-card); padding: 4rem 2rem; border-radius: 12px; border: 1px solid var(--border); }
     footer { text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border); }
   </style>
@@ -279,7 +283,7 @@
     </div>
   </div>
 
-  <!-- 3. WORK CATEGORIES & 4. GRID -->
+  <!-- 3. WORK CATEGORIES & GRID -->
   <section class="section" id="work">
     <h2 style="font-size: 2rem; margin-bottom: 2rem;">Selected Projects</h2>
     
@@ -318,7 +322,7 @@
       </div>
     </div>
 
-    <!-- 5. PROJECT PAGE TEMPLATE PREVIEW -->
+    <!-- Case Study Template Preview -->
     <div class="case-study-template">
       <h3>Case Study Breakdown Structure (Template)</h3>
       <div class="cs-header" style="margin-top: 1rem;">
@@ -341,7 +345,7 @@
     </div>
   </section>
 
-  <!-- 6. ABOUT PAGE SECTION -->
+  <!-- ABOUT PAGE SECTION -->
   <section class="section" id="about" style="background: rgba(255,255,255,0.01);">
     <div class="about-layout">
       <div style="background: #222; height: 300px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
@@ -375,7 +379,7 @@
     </div>
   </section>
 
-  <!-- 8. CONTACT SECTION -->
+  <!-- CONTACT SECTION -->
   <section class="section" id="contact">
     <div class="contact-card">
       <h2>Start a Project</h2>
