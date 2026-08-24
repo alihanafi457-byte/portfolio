@@ -73,27 +73,27 @@
     .hero-content h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
     .hero-content p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2.5rem; }
 
-    /* Wrapper Foto - Diperbesar Sangat Tinggi & Diposisikan Pas Samping Teks */
+    /* Wrapper Foto - Digeser lebih ke kiri (mendekat ke teks) */
     .hero-image-wrapper {
       position: absolute;
       bottom: 0;
-      left: 45%; /* Menempel tepat di samping teks headline */
-      width: 55%;
+      left: 40%; /* Digeser lebih ke kiri agar lebih dekat ke tulisan */
+      width: 60%;
       height: 100vh;
       display: flex;
       align-items: flex-end;
       z-index: 2;
     }
 
-    /* Foto Profil dengan Optimasi HD via CSS */
+    /* Foto Profil - Ukuran diperbesar sedikit lagi (110vh) */
     .hero-image-wrapper img {
-      height: 98vh; /* Memenuhi tinggi layar vertikal */
+      height: 110vh; /* Memperbesar ukuran gambar */
       width: auto;
       max-width: none;
       object-fit: contain;
-      object-position: bottom left; /* Rapat ke bagian kiri wrapper dan dasar layar */
+      object-position: bottom left; /* Menempel ke bawah dan kiri wrapper */
 
-      /* Optimization Filter untuk efek HD, tajam, & rim light */
+      /* Filter HD & Soft Rim Light */
       filter: 
         contrast(108%) 
         saturate(105%) 
@@ -101,7 +101,6 @@
         drop-shadow(-15px 10px 30px rgba(0, 0, 0, 0.8))
         drop-shadow(0px 0px 40px rgba(245, 197, 24, 0.15));
 
-      /* Rendering agar teks & tepian subjek presisi tajam */
       image-rendering: -webkit-optimize-contrast;
       image-rendering: crisp-edges;
       
@@ -144,8 +143,8 @@
 
     @media (max-width: 992px) {
       .hero-content { flex: 0 0 60%; }
-      .hero-image-wrapper { left: 55%; }
-      .hero-image-wrapper img { height: 75vh; }
+      .hero-image-wrapper { left: 50%; }
+      .hero-image-wrapper img { height: 85vh; }
     }
 
     @media (max-width: 768px) {
@@ -159,7 +158,7 @@
       .hero-content h1 { font-size: 2.3rem; }
       .hero-ctas { justify-content: center; }
       .hero-image-wrapper { position: static; width: 100%; height: auto; justify-content: center; }
-      .hero-image-wrapper img { height: 50vh; }
+      .hero-image-wrapper img { height: 60vh; }
     }
 
     /* Client Trust Bar */
