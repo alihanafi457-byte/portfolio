@@ -32,17 +32,15 @@
       color: var(--text-main);
       line-height: 1.6;
       overflow-x: hidden;
-      /* Efek awal sebelum halaman dimuat */
       opacity: 0;
       transition: opacity 0.8s ease-in-out;
     }
 
-    /* Ketika halaman siap, class 'loaded' akan ditambahkan via JS */
     body.loaded {
       opacity: 1;
     }
 
-    /* --- Loading Screen Overlay (Opsional & Estetik) --- */
+    /* Loading Screen Overlay */
     #page-loader {
       position: fixed;
       inset: 0;
@@ -337,25 +335,56 @@
       margin-bottom: 0.3rem;
     }
 
-    /* Photo Grid inside Timeline Item for Creative Display */
+    /* --- Creative Editorial Photo Grid (Bento Asimetris) --- */
     .exp-photo-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 0.8rem;
-      margin-top: 1.2rem;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 110px;
+      gap: 12px;
+      margin-top: 1.5rem;
     }
 
     .exp-photo-grid img {
       width: 100%;
-      height: 120px;
+      height: 100%;
       object-fit: cover;
-      border-radius: 12px;
+      border-radius: 16px;
       border: 1px solid var(--border-color);
-      transition: transform 0.2s ease;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      filter: grayscale(20%) contrast(102%);
     }
 
     .exp-photo-grid img:hover {
-      transform: scale(1.03);
+      transform: scale(1.02) translateY(-4px);
+      filter: grayscale(0%) contrast(105%);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+      z-index: 2;
+    }
+
+    /* Tata letak artistik asimetris untuk 6 foto */
+    .exp-photo-grid img:nth-child(1) {
+      grid-column: span 7;
+      grid-row: span 2;
+    }
+    .exp-photo-grid img:nth-child(2) {
+      grid-column: span 5;
+      grid-row: span 1;
+    }
+    .exp-photo-grid img:nth-child(3) {
+      grid-column: span 5;
+      grid-row: span 1;
+    }
+    .exp-photo-grid img:nth-child(4) {
+      grid-column: span 4;
+      grid-row: span 2;
+    }
+    .exp-photo-grid img:nth-child(5) {
+      grid-column: span 8;
+      grid-row: span 1;
+    }
+    .exp-photo-grid img:nth-child(6) {
+      grid-column: span 8;
+      grid-row: span 1;
     }
 
     /* Sub-section headings inside Experience */
@@ -459,6 +488,15 @@
       }
       .nav-menu {
         display: none;
+      }
+      /* Ubah grid foto jadi lebih rapi di HP */
+      .exp-photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 140px;
+      }
+      .exp-photo-grid img {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
       }
     }
   </style>
@@ -653,7 +691,7 @@
             <li>Secured IDR 15.174.000 in sponsorship for Law Fair 2024 and initiated cross-organization collaboration with other legal student associations, ensuring program sustainability and broader institutional networking.</li>
           </ul>
         </div>
-        <!-- Creative Photo Grid Integration with original WhatsApp Image names -->
+        <!-- Creative Editorial Bento Photo Grid -->
         <div class="exp-photo-grid">
           <img src="WhatsApp Image 2026-05-24 at 16.18.46.jpeg" alt="BEM Activity 1">
           <img src="WhatsApp Image 2026-05-24 at 16.18.47.jpeg" alt="BEM Activity 2">
@@ -729,7 +767,7 @@
           <span class="timeline-title">Coordinator of Sponsorship</span>
           <span class="timeline-badge">2024</span>
         </div>
-        <div class="timeline-subtitle">Law Fair (Pekan Raya Hukum) Padang</div>
+        <div class="timeline-subtitle">Law Fair (Pekan Raya Hukum) Padang</i></div>
       </div>
 
       <div class="timeline-item">
@@ -791,11 +829,7 @@
   <script>
     window.addEventListener('load', function() {
       const loader = document.getElementById('page-loader');
-      
-      // Sembunyikan loader dengan efek memudar (fade out)
       loader.classList.add('hidden');
-      
-      // Munculkan isi web secara halus
       document.body.classList.add('loaded');
     });
   </script>
