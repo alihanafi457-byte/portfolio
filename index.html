@@ -29,6 +29,8 @@
       background: linear-gradient(to bottom, rgba(8,8,10,0.95), rgba(8,8,10,0));
       backdrop-filter: blur(8px);
     }
+    .brand-link { text-decoration: none; color: inherit; display: inline-block; }
+    .brand-link:hover .brand-title { color: var(--accent-yellow); }
     .brand-title { font-weight: 800; font-size: 1.2rem; letter-spacing: 0.5px; }
     .brand-sub { font-size: 0.85rem; color: var(--text-muted); font-weight: 400; text-transform: lowercase; }
     .social-head { display: flex; gap: 1.2rem; list-style: none; flex-wrap: wrap; }
@@ -97,7 +99,7 @@
 
     /* Responsive */
     @media (max-width: 900px) {
-      .about-grid { grid-template-columns: 1fr; text-align: center; }
+      .about-grid { grid-title: center; grid-template-columns: 1fr; text-align: center; }
       .about-photo-card { max-width: 300px; margin: 0 auto; }
       .about-highlights { justify-content: center; }
     }
@@ -116,10 +118,10 @@
 
   <!-- Navigation -->
   <nav>
-    <div>
+    <a href="#home" class="brand-link">
       <div class="brand-title">REYSHA ZAHRA HAPTARI</div>
       <div class="brand-sub">legal enthusiast & law graduate</div>
-    </div>
+    </a>
     <ul class="social-head">
       <li><a href="#about">About</a></li>
       <li><a href="#education">Education</a></li>
@@ -133,8 +135,8 @@
     </ul>
   </nav>
 
-  <!-- Hero Section (Foto Mahkamah Agung di sini) -->
-  <section class="hero">
+  <!-- Hero Section (Ditambahkan id="home") -->
+  <section class="hero" id="home">
     <video class="hero-video-bg" autoplay loop muted playsinline>
       <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-3d-render-of-cubes-41528-large.mp4" type="video/mp4">
     </video>
@@ -157,7 +159,7 @@
     </div>
   </section>
 
-  <!-- About Me (Foto profil biasa di sini) -->
+  <!-- About Me -->
   <section class="section" id="about">
     <div class="section-title">About Me</div>
     <div class="about-grid">
