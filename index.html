@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reysha Zahra Haptari — Portfolio</title>
-  <!-- Google Fonts untuk Inter dan font tulisan tangan (Caveat) -->
+  <!-- Google Fonts untuk Inter, Caveat, dan FontAwesome untuk ikon logo -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Caveat:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --bg-color: #ffffff;
@@ -118,7 +119,7 @@
     .nav-menu a:hover,
     .nav-menu a.active {
       color: var(--text-main);
-      font-weight: 700; /* Menjadi bold saat section-nya aktif */
+      font-weight: 700;
     }
 
     /* Transisi Umum Section */
@@ -494,9 +495,10 @@
       gap: 0.5rem;
     }
 
+    /* Style Kontak Baru (Persis Screenshot) */
     .contact-container {
       text-align: center;
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 2rem 1rem;
     }
@@ -506,7 +508,7 @@
       font-weight: 900;
       color: #e63946;
       line-height: 1.2;
-      letter-spacing: -1.5px;
+      letter-spacing: -1px;
       margin-bottom: 2.5rem;
     }
 
@@ -515,28 +517,44 @@
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 1.2rem;
     }
 
     .contact-badge-item {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
-      background: #f7f7f7;
-      border: 1px solid var(--border-color);
-      padding: 0.75rem 1.4rem;
+      gap: 0.75rem;
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.12);
+      padding: 0.85rem 1.5rem;
       border-radius: 50px;
       text-decoration: none;
       color: #111;
       font-weight: 600;
       font-size: 0.95rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-      transition: transform 0.2s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      transition: transform 0.2s ease, border-color 0.2s ease;
     }
 
     .contact-badge-item:hover {
       transform: translateY(-2px);
       border-color: rgba(0,0,0,0.3);
+    }
+
+    .contact-badge-item i {
+      font-size: 1.3rem;
+    }
+
+    .contact-badge-item i.fa-instagram {
+      color: #e1306c;
+    }
+
+    .contact-badge-item i.fa-whatsapp {
+      color: #25d366;
+    }
+
+    .contact-badge-item i.fa-envelope {
+      color: #ea4335;
     }
 
     footer {
@@ -829,14 +847,20 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Contact Section (Persis seperti gambar baru) -->
   <section id="contact" class="fade-section" style="border-bottom: none;">
     <div class="contact-container">
-      <h2 class="contact-title">Let’s connect and build something impactful together.</h2>
+      <h2 class="contact-title">Let’s connect and create value together!!</h2>
       <div class="contact-badges">
-        <a href="mailto:reyshazahra@email.com" class="contact-badge-item">✉️ Email Me</a>
-        <a href="https://linkedin.com/in/reysha-zahra" target="_blank" class="contact-badge-item">🔗 LinkedIn</a>
-        <a href="https://instagram.com/reyshazahra" target="_blank" class="contact-badge-item">📷 Instagram</a>
+        <a href="https://instagram.com/reyshaza" target="_blank" class="contact-badge-item">
+          <i class="fa-brands fa-instagram"></i> @reyshaza
+        </a>
+        <a href="https://wa.me/6285782333501" target="_blank" class="contact-badge-item">
+          <i class="fa-brands fa-whatsapp"></i> +6285782333501
+        </a>
+        <a href="mailto:reyshazaworkspace@gmail.com" class="contact-badge-item">
+          <i class="fa-solid fa-envelope"></i> reyshazaworkspace@gmail.com
+        </a>
       </div>
     </div>
   </section>
@@ -846,7 +870,7 @@
     <p>&copy; 2026 Reysha Zahra Haptari. All rights reserved.</p>
   </footer>
 
-  <!-- JavaScript untuk Animasi & Active Menu Highlighting -->
+  <!-- JavaScript untuk Animasi, Active Menu Highlighting, & Smooth Scroll -->
   <script>
     window.addEventListener('load', () => {
       const loader = document.getElementById('page-loader');
