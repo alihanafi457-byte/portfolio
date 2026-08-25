@@ -135,7 +135,7 @@
       transform: scale(1) translateY(0);
     }
 
-    /* Hero Section */
+    /* Hero Section dengan Efek Zoom-In Berulang saat dilihat */
     .hero {
       position: relative;
       width: 100%;
@@ -209,6 +209,7 @@
       margin-bottom: 1.2rem;
     }
 
+    /* Ikon Kontak di bawah nama Hero */
     .hero-social-icons {
       display: flex;
       justify-content: center;
@@ -238,9 +239,17 @@
       color: #fff;
     }
 
-    .hero-social-icon.fa-instagram:hover { background: #e1306c; }
-    .hero-social-icon.fa-whatsapp:hover { background: #25d366; }
-    .hero-social-icon.fa-envelope:hover { background: #ea4335; }
+    .hero-social-icon.fa-instagram:hover {
+      background: #e1306c;
+    }
+
+    .hero-social-icon.fa-whatsapp:hover {
+      background: #25d366;
+    }
+
+    .hero-social-icon.fa-envelope:hover {
+      background: #ea4335;
+    }
 
     /* General Sections & Cards */
     section {
@@ -298,6 +307,24 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      image-rendering: -webkit-optimize-contrast;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    .video-placeholder-notice {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      font-size: 0.85rem;
+      background: #f9f9f9;
+      gap: 0.5rem;
+      text-align: center;
+      padding: 1rem;
     }
 
     .about-thieb-grid {
@@ -414,7 +441,7 @@
       margin-bottom: 0.3rem;
     }
 
-    /* PERBAIKAN UTAMA: Menggunakan object-fit: contain agar foto tampil utuh tanpa terpotong */
+    /* Styling untuk Grid 4 Foto (.jpeg) */
     .internship-photo-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -424,22 +451,22 @@
 
     .internship-photo-item {
       position: relative;
-      height: 220px;
+      height: 200px;
       border-radius: 12px;
       overflow: hidden;
       border: 1px solid var(--card-border-color);
-      background: #111; /* Latar belakang gelap elegan untuk sisa ruang kosong */
+      background: #eaeaea;
     }
 
     .internship-photo-item img {
       width: 100%;
       height: 100%;
-      object-fit: contain; /* Foto tampil utuh */
+      object-fit: cover;
       transition: transform 0.5s ease;
     }
 
     .internship-photo-item:hover img {
-      transform: scale(1.04);
+      transform: scale(1.06);
     }
 
     .exp-category-title {
@@ -513,6 +540,7 @@
       gap: 0.5rem;
     }
 
+    /* Style Kontak Section */
     .contact-container {
       text-align: center;
       max-width: 900px;
@@ -558,10 +586,21 @@
       border-color: rgba(0,0,0,0.3);
     }
 
-    .contact-badge-item i { font-size: 1.3rem; }
-    .contact-badge-item i.fa-instagram { color: #e1306c; }
-    .contact-badge-item i.fa-whatsapp { color: #25d366; }
-    .contact-badge-item i.fa-envelope { color: #ea4335; }
+    .contact-badge-item i {
+      font-size: 1.3rem;
+    }
+
+    .contact-badge-item i.fa-instagram {
+      color: #e1306c;
+    }
+
+    .contact-badge-item i.fa-whatsapp {
+      color: #25d366;
+    }
+
+    .contact-badge-item i.fa-envelope {
+      color: #ea4335;
+    }
 
     footer {
       text-align: center;
@@ -577,7 +616,9 @@
         grid-template-columns: 1fr;
         gap: 1.5rem;
       }
-      .nav-menu { display: none; }
+      .nav-menu {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -625,6 +666,9 @@
         <video autoplay muted loop playsinline>
           <source src="video-about.mp4" type="video/mp4">
         </video>
+        <div class="video-placeholder-notice" style="display: none;">
+          <span>🎬 Tempat Clip Video Section About</span>
+        </div>
       </div>
       <div class="about-thieb-grid">
         <div class="about-img-box">
@@ -657,6 +701,9 @@
         <video autoplay muted loop playsinline>
           <source src="video-education.mp4" type="video/mp4">
         </video>
+        <div class="video-placeholder-notice" style="display: none;">
+          <span>🎬 Tempat Clip Video Section Education</span>
+        </div>
       </div>
       <div class="timeline-stack">
         <div class="timeline-row">
@@ -704,6 +751,9 @@
         <video autoplay muted loop playsinline>
           <source src="video-experience.mp4" type="video/mp4">
         </video>
+        <div class="video-placeholder-notice" style="display: none;">
+          <span>🎬 Tempat Clip Video Section Experience</span>
+        </div>
       </div>
       <div class="timeline-stack">
         <!-- Professional Internships -->
@@ -722,7 +772,7 @@
               <li>Prepared Structured Minutes of Meeting (MoM) and official documentation for internal coordination forums.</li>
             </ul>
           </div>
-          <!-- Galeri 4 Foto Mahkamah Agung (.jpeg) - Utuh Tanpa Terpotong -->
+          <!-- Galeri 4 Foto Mahkamah Agung (.jpeg) -->
           <div class="internship-photo-grid">
             <div class="internship-photo-item">
               <img src="ma-1.jpeg" alt="Mahkamah Agung Activity 1">
@@ -751,7 +801,7 @@
               <li>Supported drafting and review of legal documents for ongoing criminal cases.</li>
             </ul>
           </div>
-          <!-- Galeri 4 Foto Polda Sumbar (.jpeg) - Utuh Tanpa Terpotong -->
+          <!-- Galeri 4 Foto Polda Sumbar (.jpeg) -->
           <div class="internship-photo-grid">
             <div class="internship-photo-item">
               <img src="polda-1.jpeg" alt="Polda Sumbar Activity 1">
@@ -771,6 +821,7 @@
         <!-- Organization Experience -->
         <h3 class="exp-category-title">🏛️ Organization Experience</h3>
         
+        <!-- Justicia Sport Club (JSC) -->
         <div class="timeline-row">
           <div class="timeline-header-flex">
             <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Secretary of Sports Development Division (JSC)</span>
@@ -780,12 +831,14 @@
           <div class="timeline-desc">
             <ul>
               <li>Managed administrative documentation, structured reporting, and official correspondence within the division.</li>
+              <li>Coordinated internal administrative documentation, structured reporting, and official correspondence within the division.</li>
               <li>Assisted in planning and executing sports programs, training schedules, and inter-faculty tournaments.</li>
               <li>Compiled activity reports and conducted performance evaluations to support organizational accountability and program improvement.</li>
             </ul>
           </div>
         </div>
 
+        <!-- Criminal Law Student Association (HIMA PIDANA) -->
         <div class="timeline-row">
           <div class="timeline-header-flex">
             <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Head Of Advocacy & Publication Division</span>
@@ -795,17 +848,19 @@
           <div class="timeline-desc">
             <p style="font-weight: 700; margin-top: 0.5rem; color: #111;">Advocacy Division</p>
             <ul>
-              <li>Designed and implemented student advocacy programs addressing academic, institutional, and policy-related concerns.</li>
-              <li>Coordinated cross-organizational collaboration to gather student feedback and formally communicate policy recommendations.</li>
+              <li>Designed and implemented student advocacy programs addressing academic, institutional, and policy-related concerns within the Criminal Law concentration.</li>
+              <li>Coordinated cross-organizational collaboration to gather student feedback and formally communicate policy recommendations and academic concerns to the Faculty administration.</li>
+              <li>Led outreach and introductory programs to promote the Criminal Law specialization to prospective students, providing clear guidance on academic pathways and career opportunities.</li>
             </ul>
             <p style="font-weight: 700; margin-top: 1rem; color: #111;">Publication Division</p>
             <ul>
-              <li>Developed publication strategies and managed external communication channels to strengthen organizational visibility.</li>
-              <li>Initiated and managed an educational podcast discussing thesis preparation, curriculum guidance, and contemporary legal issues.</li>
+              <li>Developed publication strategies and managed external communication channels to strengthen organizational visibility and outreach.</li>
+              <li>Initiated and managed an educational podcast discussing thesis preparation, curriculum guidance, and contemporary legal issues to enhance student engagement and legal awareness.</li>
             </ul>
           </div>
         </div>
 
+        <!-- Student Executive Board (BEM) -->
         <div class="timeline-row">
           <div class="timeline-header-flex">
             <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Staff Ministry of Home Affairs</span>
@@ -814,11 +869,82 @@
           <div class="timeline-subtitle">Student Executive Board (BEM), Faculty of Law Andalas University</div>
           <div class="timeline-desc">
             <ul>
-              <li>Coordinated institutional consolidation between student organizations.</li>
-              <li>Contributed to student cadre development and faculty-wide initiatives.</li>
-              <li>Secured IDR. 15.174.000 in sponsorship for Law Fair 2024.</li>
+              <li>Coordinated institusional consolidation between student organizations.</li>
+              <li>Contribute to student cadre development and faculty-wide initiatives.</li>
+              <li>Secured IDR. 15.174.000 in sponsorship for Law Fair 2024 and initiated cross-organization collaboration with other legal student associations, ensuring program sustainability and broader institusional networking.</li>
             </ul>
           </div>
+        </div>
+
+        <!-- Adjudication Experience -->
+        <h3 class="exp-category-title">⚖️ Adjudication Experience</h3>
+        
+        <div class="timeline-row">
+          <div class="timeline-header-flex">
+            <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Highlandtion Debate Competition - Hosted by SMA Negeri 1 Bukittinggi</span>
+            <span class="timeline-badge">2024</span>
+          </div>
+          <div class="timeline-subtitle">Invited Judge</div>
+          <div class="timeline-desc">
+            <p>Invited judge for senior high school debate competition across West Sumatra and Riau provinces, provided structured feedback to participants to improve argumentation and public speaking skills.</p>
+          </div>
+        </div>
+
+        <div class="timeline-row">
+          <div class="timeline-header-flex">
+            <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Sociology Fair Debate Competition - Department of Sociology, Universitas Andalas</span>
+            <span class="timeline-badge">2024</span>
+          </div>
+          <div class="timeline-subtitle">Invited Judge</div>
+          <div class="timeline-desc">
+            <p>Served as invited judge for senior high school debate competition, assessing critical thinking, argumentation, and presentation skills.</p>
+          </div>
+        </div>
+
+        <div class="timeline-row">
+          <div class="timeline-header-flex">
+            <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Pekan Andalas Debate Competition, Universitas Andalas</span>
+            <span class="timeline-badge">2024</span>
+          </div>
+          <div class="timeline-subtitle">Invited Judge</div>
+          <div class="timeline-desc">
+            <p>Acted as invited judge for senior high school debate competition, evaluating logic, structure of arguments, and delivery.</p>
+          </div>
+        </div>
+
+        <!-- Committee & Event Experience -->
+        <h3 class="exp-category-title">🗓️ Committee & Event Experience</h3>
+        
+        <div class="timeline-row">
+          <div class="timeline-header-flex">
+            <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Coordinator of Sponsorship</span>
+            <span class="timeline-badge">Padang, 2024</span>
+          </div>
+          <div class="timeline-subtitle">Law Fair (Pekan Raya Hukum)</div>
+        </div>
+
+        <div class="timeline-row">
+          <div class="timeline-header-flex">
+            <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Coordinator of Sponsorship</span>
+            <span class="timeline-badge">Padang, 2025</span>
+          </div>
+          <div class="timeline-subtitle">Laws Competition III (Regional – Sumatera)</div>
+        </div>
+
+        <div class="timeline-row">
+          <div class="timeline-header-flex">
+            <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Delegated Service</span>
+            <span class="timeline-badge">Padang, 2024</span>
+          </div>
+          <div class="timeline-subtitle">Andalas Law Festival (ALFEST 2024)</div>
+        </div>
+
+        <div class="timeline-row">
+          <div class="timeline-header-flex">
+            <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Event Organizer & Guest Relations Staff</span>
+            <span class="timeline-badge">Padang, 2025</span>
+          </div>
+          <div class="timeline-subtitle">National Seminar & Call for Paper</div>
         </div>
 
       </div>
@@ -883,6 +1009,7 @@
   </footer>
 
   <script>
+    // Page Loader Handler
     window.addEventListener('load', function() {
       const loader = document.getElementById('page-loader');
       setTimeout(() => {
@@ -891,7 +1018,14 @@
       }, 400);
     });
 
-    const observer = new IntersectionObserver((entries) => {
+    // Fade-in Section Observer
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
@@ -900,9 +1034,11 @@
           }
         }
       });
-    }, { threshold: 0.15 });
+    }, observerOptions);
 
-    document.querySelectorAll('.fade-section').forEach(section => observer.observe(section));
+    document.querySelectorAll('.fade-section').forEach(section => {
+      observer.observe(section);
+    });
   </script>
 </body>
 </html>
