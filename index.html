@@ -119,7 +119,7 @@
       color: var(--text-main);
     }
 
-    /* --- Transisi Zoom-In Dramatis dari Luar ke Dalam --- */
+    /* Transisi Umum Section */
     .fade-section {
       opacity: 0;
       transform: scale(0.82) translateY(50px);
@@ -132,7 +132,7 @@
       transform: scale(1) translateY(0);
     }
 
-    /* Hero Section */
+    /* Hero Section dengan Efek Zoom-In Foto */
     .hero {
       position: relative;
       width: 100%;
@@ -163,6 +163,16 @@
       max-width: 100%;
       object-fit: contain;
       filter: contrast(105%) brightness(95%);
+      /* Pengaturan Awal Animasi Zoom-In saat pertama dibuka */
+      transform: scale(1.25);
+      opacity: 0;
+      transition: transform 1.6s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 1.2s ease;
+    }
+
+    /* Ketika halaman selesai dimuat, jalankan animasi zoom-in foto hero */
+    body.loaded .hero-img-wrap img {
+      transform: scale(1);
+      opacity: 1;
     }
 
     .hero-text-content {
@@ -172,6 +182,14 @@
       padding-bottom: 3.5rem;
       width: 100%;
       pointer-events: none;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease 0.4s, transform 1s ease 0.4s;
+    }
+
+    body.loaded .hero-text-content {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .hero-greeting {
@@ -260,46 +278,6 @@
       gap: 0.5rem;
       text-align: center;
       padding: 1rem;
-    }
-
-    .thieb-content-grid {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .thieb-meta-col {
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      font-size: 0.85rem;
-      color: var(--card-text-muted);
-      border-right: 1px solid var(--card-border-color);
-      padding-right: 2rem;
-    }
-
-    .thieb-meta-item strong {
-      color: var(--card-text-main);
-      display: block;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 0.2rem;
-    }
-
-    .thieb-desc-col {
-      color: #444444;
-      font-size: 1.05rem;
-      line-height: 1.7;
-    }
-
-    .thieb-desc-col h3 {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: #111;
-      margin-bottom: 1rem;
-      letter-spacing: -0.5px;
     }
 
     .about-thieb-grid {
@@ -571,15 +549,9 @@
     }
 
     @media (max-width: 900px) {
-      .thieb-content-grid, .about-thieb-grid, .skills-layout {
+      .about-thieb-grid, .skills-layout {
         grid-template-columns: 1fr;
         gap: 1.5rem;
-      }
-      .thieb-meta-col {
-        border-right: none;
-        border-bottom: 1px solid var(--card-border-color);
-        padding-right: 0;
-        padding-bottom: 1.5rem;
       }
       .nav-menu {
         display: none;
@@ -615,7 +587,7 @@
     <a href="#contact" class="nav-logo" style="font-size: 0.8rem; background: #111; color: #fff; padding: 0.35rem 0.8rem; border-radius: 20px;">Let's Talk</a>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section dengan Efek Zoom-In Foto -->
   <section class="hero fade-section" id="home">
     <div class="hero-img-wrap">
       <img src="mahkamah-agung.png" alt="Reysha Zahra Haptari">
@@ -629,7 +601,6 @@
   <!-- About Section -->
   <section id="about" class="fade-section">
     <h2 class="section-heading">About Me</h2>
-    
     <div class="thieb-card">
       <div class="thieb-video-container">
         <video autoplay muted loop playsinline>
@@ -637,10 +608,8 @@
         </video>
         <div class="video-placeholder-notice" style="display: none;">
           <span>🎬 Tempat Clip Video Section About</span>
-          <small>(Masukkan file video .mp4 ke dalam tag &lt;source&gt;)</small>
         </div>
       </div>
-
       <div class="about-thieb-grid">
         <div class="about-img-box">
           <img src="profile.png" alt="Reysha Zahra Haptari">
@@ -667,17 +636,11 @@
   <!-- Education Section -->
   <section id="education" class="fade-section">
     <h2 class="section-heading">Education</h2>
-    
     <div class="thieb-card">
       <div class="thieb-video-container">
-        <video autoplay muted loop playsinline>
-          <!-- <source src="video-education.mp4" type="video/mp4"> -->
-        </video>
-        <div class="video-placeholder-notice">
-          <span>🎬 Tempat Clip Video Section Education</span>
-        </div>
+        <video autoplay muted loop playsinline></video>
+        <div class="video-placeholder-notice"><span>🎬 Tempat Clip Video Section Education</span></div>
       </div>
-
       <div class="timeline-stack">
         <div class="timeline-row">
           <div class="timeline-header-flex">
@@ -690,7 +653,6 @@
           <div class="timeline-subtitle">Universitas Andalas</div>
           <p class="timeline-desc">Bachelor of Law (Sarjana Hukum) — Graduated with a GPA of 3.80 / 4.00.</p>
         </div>
-
         <div class="timeline-row">
           <div class="timeline-header-flex">
             <div class="timeline-title-wrap">
@@ -702,7 +664,6 @@
           <div class="timeline-subtitle">SMAN 67 Jakarta</div>
           <p class="timeline-desc">Completed secondary education with active participation in school organizations.</p>
         </div>
-
         <div class="timeline-row">
           <div class="timeline-header-flex">
             <div class="timeline-title-wrap">
@@ -721,22 +682,14 @@
   <!-- Experience Section -->
   <section id="experience" class="fade-section">
     <h2 class="section-heading">Experience & Activities</h2>
-    
     <div class="thieb-card">
       <div class="thieb-video-container">
-        <video autoplay muted loop playsinline>
-          <!-- <source src="video-experience.mp4" type="video/mp4"> -->
-        </video>
-        <div class="video-placeholder-notice">
-          <span>🎬 Tempat Clip Video Section Experience</span>
-        </div>
+        <video autoplay muted loop playsinline></video>
+        <div class="video-placeholder-notice"><span>🎬 Tempat Clip Video Section Experience</span></div>
       </div>
-
       <div class="timeline-stack">
-        
         <!-- Professional Internships -->
         <h3 class="exp-category-title">💼 Professional Internships</h3>
-        
         <div class="timeline-row">
           <div class="timeline-header-flex">
             <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Supreme Court of The Republic of Indonesia (Mahkamah Agung RI)</span>
@@ -748,11 +701,9 @@
               <li>Assisted in reviewing and harmonizing draft regulations in accordance with prevailing legal frameworks.</li>
               <li>Conducted normative legal research to support legislative analysis and regulatory alignment.</li>
               <li>Prepared Structured Minutes of Meeting (MoM) and official documentation for internal coordination forums.</li>
-              <li>Supported coordination between legislative and public relations units in documentation and information management processes.</li>
             </ul>
           </div>
         </div>
-
         <div class="timeline-row">
           <div class="timeline-header-flex">
             <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Regional Police of West Sumatra (Polda Sumatera Barat)</span>
@@ -763,65 +714,25 @@
             <ul>
               <li>Assisted legal officers in litigation processes at Padang District Court.</li>
               <li>Supported drafting and review of legal documents for ongoing criminal cases.</li>
-              <li>Participated in internal legal discussion and case analysis sessions.</li>
-              <li>Organized and reviewed case files to ensure procedural completeness and documentation accuracy.</li>
             </ul>
           </div>
         </div>
 
         <!-- Organization Experience -->
         <h3 class="exp-category-title">🏛️ Organization Experience</h3>
-
         <div class="timeline-row">
           <div class="timeline-header-flex">
             <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Head Of Advocacy & Publication Division</span>
             <span class="timeline-badge">Apr 2025 - Feb 2026</span>
           </div>
           <div class="timeline-subtitle">Criminal Law Student Association (HIMA PIDANA)</div>
-          <div class="timeline-desc">
-            <strong style="color:#111;">Advocacy Division:</strong>
-            <ul>
-              <li>Designed and implemented student advocacy programs addressing academic, institutional, and policy-related concerns within the Criminal Law concentration.</li>
-              <li>Coordinated cross-organizational collaboration to gather student feedback and formally communicate policy recommendations and academic concerns to the Faculty administration.</li>
-              <li>Led outreach and introductory programs to promote the Criminal Law specialization to prospective students, providing clear guidance on academic pathways and career opportunities.</li>
-            </ul>
-            <strong style="display:block; margin-top:0.8rem; color:#111;">Publication Division:</strong>
-            <ul>
-              <li>Developed publication strategies and managed external communication channels to strengthen organizational visibility and outreach.</li>
-              <li>Initiated and managed an educational podcast discussing thesis preparation, curriculum guidance, and contemporary legal issues to enhance student engagement and legal awareness.</li>
-            </ul>
-          </div>
         </div>
-
-        <div class="timeline-row">
-          <div class="timeline-header-flex">
-            <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Secretary of Sports Development Division</span>
-            <span class="timeline-badge">Aug 2024 - Aug 2025</span>
-          </div>
-          <div class="timeline-subtitle">Justicia Sport Club (JSC)</div>
-          <div class="timeline-desc">
-            <ul>
-              <li>Managed administrative documentation, structured reporting, and official correspondence within the division.</li>
-              <li>Assisted in planning and executing sports programs, training schedules, and inter-faculty tournaments.</li>
-              <li>Compiled activity reports and conducted performance evaluations to support organizational accountability and program improvement.</li>
-            </ul>
-          </div>
-        </div>
-
         <div class="timeline-row">
           <div class="timeline-header-flex">
             <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Staff Ministry of Home Affairs</span>
             <span class="timeline-badge">Jun 2023 - Jun 2024</span>
           </div>
           <div class="timeline-subtitle">Student Executive Board (BEM), Faculty of Law Andalas University</div>
-          <div class="timeline-desc">
-            <ul>
-              <li>Coordinated institutional consolidation between student organizations.</li>
-              <li>Contributed to student cadre development and faculty-wide initiatives.</li>
-              <li>Secured IDR 15.174.000 in sponsorship for Law Fair 2024 and initiated cross-organization collaboration with other legal student associations, ensuring program sustainability and broader institutional networking.</li>
-            </ul>
-          </div>
-          <!-- Creative Editorial Bento Photo Grid -->
           <div class="exp-photo-grid">
             <img src="WhatsApp Image 2026-05-24 at 16.18.46.jpeg" alt="BEM Activity 1">
             <img src="WhatsApp Image 2026-05-24 at 16.18.47.jpeg" alt="BEM Activity 2">
@@ -831,99 +742,6 @@
             <img src="WhatsApp Image 2026-08-24 at 18.09.23.jpg" alt="BEM Activity 6">
           </div>
         </div>
-
-        <!-- Volunteer Experience -->
-        <h3 class="exp-category-title">🤝 Volunteer Experience</h3>
-
-        <div class="timeline-row">
-          <div class="timeline-header-flex">
-            <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Community Service Program (Education Facilitator)</span>
-          </div>
-          <div class="timeline-subtitle">Situjuah Ladang Laweh, Kab. Lima Puluh Kota</div>
-          <div class="timeline-desc">
-            <ul>
-              <li>Taught Social Studies and Civic Education to 4th-6th grade elementary school students during the community service program.</li>
-              <li>Created interactive and engaging learning approaches to help students better understand the subjects.</li>
-              <li>Served as a speaker in legal awareness sessions for local communities regarding the importance of business legality.</li>
-              <li>Educated local business owners about trademark rights and legal protection for businesses.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="timeline-row">
-          <div class="timeline-header-flex">
-            <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Kombad Justicia</span>
-          </div>
-          <div class="timeline-subtitle">Nagari Persiapan Simpang Timbo Abu Kajai, Pasaman Barat</div>
-          <div class="timeline-desc">
-            <ul>
-              <li>Responsible for supporting sponsorship activities and assisting the coordination of social aid programs.</li>
-              <li>Collaborated with the team in distributing donations to underprivileged communities and orphaned children in rural areas.</li>
-              <li>Directly involved in the distribution of essential aid such as groceries, clothing, and daily necessities.</li>
-              <li>Helped ensure that social activities were well-organized and delivered effectively to the beneficiaries.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Adjudication Experience -->
-        <h3 class="exp-category-title">⚖️ Adjudication Experience</h3>
-
-        <div class="timeline-row">
-          <div class="timeline-header-flex">
-            <span class="timeline-title" style="font-size: 1.05rem; font-weight:700; color:#111;">Highlandtion Debate Competition</span>
-          </div>
-          <div class="timeline-subtitle" style="margin-bottom:0;">SMA Negeri 1 Bukittinggi</div>
-        </div>
-
-        <div class="timeline-row">
-          <div class="timeline-header-flex">
-            <span class="timeline-title" style="font-size: 1.05rem; font-weight:700; color:#111;">Sociology Fair Debate Competition</span>
-          </div>
-          <div class="timeline-subtitle" style="margin-bottom:0;">Department of Sociology, Universitas Andalas</div>
-        </div>
-
-        <div class="timeline-row">
-          <div class="timeline-header-flex">
-            <span class="timeline-title" style="font-size: 1.05rem; font-weight:700; color:#111;">Pekan Andalas Debate Competition</span>
-          </div>
-          <div class="timeline-subtitle" style="margin-bottom:0;">Universitas Andalas</div>
-        </div>
-
-        <!-- Event and Committee Experience -->
-        <h3 class="exp-category-title">🎪 Event and Committee Experience</h3>
-
-        <div class="timeline-row">
-          <div class="timeline-header-flex">
-            <span class="timeline-title" style="font-size: 1.05rem; font-weight:700; color:#111;">Coordinator of Sponsorship</span>
-            <span class="timeline-badge">2024</span>
-          </div>
-          <div class="timeline-subtitle" style="margin-bottom:0;">Law Fair (Pekan Raya Hukum) Padang</div>
-        </div>
-
-        <div class="timeline-row">
-          <div class="timeline-header-flex">
-            <span class="timeline-title" style="font-size: 1.05rem; font-weight:700; color:#111;">Coordinator of Sponsorship</span>
-            <span class="timeline-badge">2025</span>
-          </div>
-          <div class="timeline-subtitle" style="margin-bottom:0;">Laws Competition III (Regional - Sumatera) Padang</div>
-        </div>
-
-        <div class="timeline-row">
-          <div class="timeline-header-flex">
-            <span class="timeline-title" style="font-size: 1.05rem; font-weight:700; color:#111;">Delegated Service</span>
-            <span class="timeline-badge">2024</span>
-          </div>
-          <div class="timeline-subtitle" style="margin-bottom:0;">Andalas Law Festival (Alfest) Padang</div>
-        </div>
-
-        <div class="timeline-row">
-          <div class="timeline-header-flex">
-            <span class="timeline-title" style="font-size: 1.05rem; font-weight:700; color:#111;">Event Organizer & Guest Relations Staff</span>
-            <span class="timeline-badge">2025</span>
-          </div>
-          <div class="timeline-subtitle" style="margin-bottom:0;">National Seminar & Call for Paper Padang</div>
-        </div>
-
       </div>
     </div>
   </section>
@@ -931,50 +749,35 @@
   <!-- Skills Section -->
   <section id="skills" class="fade-section">
     <h2 class="section-heading">Skills & Competencies</h2>
-    
     <div class="thieb-card">
       <div class="thieb-video-container">
-        <video autoplay muted loop playsinline>
-          <!-- <source src="video-skills.mp4" type="video/mp4"> -->
-        </video>
-        <div class="video-placeholder-notice">
-          <span>🎬 Tempat Clip Video Section Skills</span>
-        </div>
+        <video autoplay muted loop playsinline></video>
+        <div class="video-placeholder-notice"><span>🎬 Tempat Clip Video Section Skills</span></div>
       </div>
-
       <div class="skills-layout">
         <div>
           <h4 class="skill-group-title">Hard Skills</h4>
           <div class="skills-flex">
             <div class="skill-chip">Microsoft Office</div>
-            <div class="skill-chip">G-Suite</div>
             <div class="skill-chip">Legal Research</div>
             <div class="skill-chip">Legal Drafting</div>
-            <div class="skill-chip">Policy & Documentation</div>
-            <div class="skill-chip">Management & HR</div>
             <div class="skill-chip">Litigation Support</div>
-            <div class="skill-chip">Regulation Analyst</div>
           </div>
-
           <h4 class="skill-group-title">Soft Skills</h4>
           <div class="skills-flex">
             <div class="skill-chip">Analytical Thinking</div>
-            <div class="skill-chip">Structured Argumentation</div>
             <div class="skill-chip">Public Speaking</div>
             <div class="skill-chip">Leadership</div>
-            <div class="skill-chip">Stakeholder Coordination</div>
             <div class="skill-chip">Team Collaboration</div>
-            <div class="skill-chip">Adaptability</div>
-            <div class="skill-chip">Crisis Management</div>
           </div>
         </div>
-
         <div>
           <div class="interest-box-inner">
-            <h3>Language Proficiency</h3>
+            <h3>Interests & Focus</h3>
             <ul>
-              <li><strong>Indonesian:</strong> Native / Bilingual</li>
-              <li><strong>English:</strong> Advanced / Professional Working Proficiency</li>
+              <li>Criminal Law & Justice System</li>
+              <li>Legal Compliance & Policy Analysis</li>
+              <li>Public Advocacy & Legal Literacy</li>
             </ul>
           </div>
         </div>
@@ -983,22 +786,13 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="fade-section">
+  <section id="contact" class="fade-section" style="border-bottom: none;">
     <div class="contact-container">
-      <h2 class="contact-title">Let's Connect & Collaborate!</h2>
-      <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 2.5rem;">
-        Open for professional opportunities, legal research projects, discussions, or networking. Feel free to reach out through any channel below.
-      </p>
+      <h2 class="contact-title">Let’s connect and build something impactful together.</h2>
       <div class="contact-badges">
-        <a href="mailto:reyshazaworkspace@gmail.com" class="contact-badge-item">
-          ✉️ reyshazaworkspace@gmail.com
-        </a>
-        <a href="https://linkedin.com/in/reyshazhaptari" target="_blank" class="contact-badge-item">
-          💼 LinkedIn Profile
-        </a>
-        <a href="https://wa.me/6285782333501" target="_blank" class="contact-badge-item">
-          📱 +62 857-8233-3501
-        </a>
+        <a href="mailto:reyshazahra@email.com" class="contact-badge-item">✉️ Email Me</a>
+        <a href="https://linkedin.com/in/reysha-zahra" target="_blank" class="contact-badge-item">🔗 LinkedIn</a>
+        <a href="https://instagram.com/reyshazahra" target="_blank" class="contact-badge-item">📷 Instagram</a>
       </div>
     </div>
   </section>
@@ -1008,18 +802,14 @@
     <p>&copy; 2026 Reysha Zahra Haptari. All rights reserved.</p>
   </footer>
 
-  <!-- JavaScript for Page Transition & Interactivity -->
+  <!-- JavaScript untuk Loader & Scroll Animation -->
   <script>
-    // Hide Loader on Window Load
     window.addEventListener('load', () => {
       const loader = document.getElementById('page-loader');
-      if (loader) {
-        loader.classList.add('hidden');
-      }
+      loader.classList.add('hidden');
       document.body.classList.add('loaded');
     });
 
-    // Scroll Observer for Dramatic Zoom-In Animation
     const observerOptions = {
       root: null,
       rootMargin: '0px',
