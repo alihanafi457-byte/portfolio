@@ -307,6 +307,9 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      image-rendering: -webkit-optimize-contrast;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
     }
 
     .video-placeholder-notice {
@@ -648,7 +651,7 @@
     <a href="#contact" class="nav-logo" style="font-size: 0.8rem; background: #111; color: #fff; padding: 0.35rem 0.8rem; border-radius: 20px;">Let's Talk</a>
   </header>
 
-  <!-- Hero Section dengan Ikon Kontak Logo Saja di Bawah Nama -->
+  <!-- Hero Section -->
   <section class="hero fade-section" id="home">
     <div class="hero-img-wrap">
       <img src="mahkamah-agung.png" alt="Reysha Zahra Haptari">
@@ -664,7 +667,7 @@
     </div>
   </section>
 
-  <!-- About Section -->
+  <!-- About Section (Dengan video-about.mp4) -->
   <section id="about" class="fade-section">
     <h2 class="section-heading">About Me</h2>
     <div class="thieb-card">
@@ -699,13 +702,17 @@
     </div>
   </section>
 
-  <!-- Education Section -->
+  <!-- Education Section (Dengan video-education.mp4) -->
   <section id="education" class="fade-section">
     <h2 class="section-heading">Education</h2>
     <div class="thieb-card">
       <div class="thieb-video-container">
-        <video autoplay muted loop playsinline></video>
-        <div class="video-placeholder-notice"><span>🎬 Tempat Clip Video Section Education</span></div>
+        <video autoplay muted loop playsinline>
+          <source src="video-education.mp4" type="video/mp4">
+        </video>
+        <div class="video-placeholder-notice" style="display: none;">
+          <span>🎬 Tempat Clip Video Section Education</span>
+        </div>
       </div>
       <div class="timeline-stack">
         <div class="timeline-row">
@@ -745,7 +752,7 @@
     </div>
   </section>
 
-  <!-- Experience Section (Dengan Video Terpasang: video-experience.mp4) -->
+  <!-- Experience Section (Dengan video-experience.mp4) -->
   <section id="experience" class="fade-section">
     <h2 class="section-heading">Experience & Activities</h2>
     <div class="thieb-card">
@@ -956,7 +963,6 @@
       observer.observe(section);
     });
 
-    // Fitur: Membuat teks menu navigasi jadi bold saat section-nya sedang aktif
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
 
