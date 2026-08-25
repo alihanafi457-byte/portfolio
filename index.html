@@ -135,7 +135,7 @@
       transform: scale(1) translateY(0);
     }
 
-    /* Hero Section */
+    /* Hero Section dengan Efek Zoom-In Berulang saat dilihat */
     .hero {
       position: relative;
       width: 100%;
@@ -182,7 +182,7 @@
       text-align: center;
       padding-bottom: 3.5rem;
       width: 100%;
-      pointer-events: auto;
+      pointer-events: auto; /* Mengaktifkan klik pada elemen di dalam hero-text */
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 1s ease 0.4s, transform 1s ease 0.4s;
@@ -239,9 +239,17 @@
       color: #fff;
     }
 
-    .hero-social-icon.fa-instagram:hover { background: #e1306c; }
-    .hero-social-icon.fa-whatsapp:hover { background: #25d366; }
-    .hero-social-icon.fa-envelope:hover { background: #ea4335; }
+    .hero-social-icon.fa-instagram:hover {
+      background: #e1306c;
+    }
+
+    .hero-social-icon.fa-whatsapp:hover {
+      background: #25d366;
+    }
+
+    .hero-social-icon.fa-envelope:hover {
+      background: #ea4335;
+    }
 
     /* General Sections & Cards */
     section {
@@ -316,42 +324,25 @@
       padding: 1rem;
     }
 
-    /* === STYLING ABOUT (TEMA PORTFOLIO SEMULA, ISI TEKS DISAMAKAN) === */
-    .about-grid {
+    .about-thieb-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 320px 1fr;
       gap: 3rem;
       align-items: center;
     }
 
-    .about-text-content p {
-      margin-bottom: 1.2rem;
-      color: var(--card-text-muted);
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
-
-    .about-text-content p:first-of-type::first-letter {
-      font-size: 2.5rem;
-      font-weight: 800;
-      float: left;
-      line-height: 1;
-      margin-right: 0.5rem;
-      color: #111;
-    }
-
-    .about-img-wrap {
+    .about-img-box {
       width: 100%;
-      border-radius: 18px;
+      height: 400px;
+      border-radius: 16px;
       overflow: hidden;
       border: 1px solid var(--card-border-color);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      background: #f4f4f4;
     }
 
-    .about-img-wrap img {
+    .about-img-box img {
       width: 100%;
-      height: auto;
-      display: block;
+      height: 100%;
       object-fit: cover;
     }
 
@@ -371,7 +362,6 @@
       border-radius: 6px;
       text-transform: uppercase;
     }
-    /* === AKHIR STYLING ABOUT === */
 
     .timeline-stack {
       display: flex;
@@ -594,10 +584,21 @@
       border-color: rgba(0,0,0,0.3);
     }
 
-    .contact-badge-item i { font-size: 1.3rem; }
-    .contact-badge-item i.fa-instagram { color: #e1306c; }
-    .contact-badge-item i.fa-whatsapp { color: #25d366; }
-    .contact-badge-item i.fa-envelope { color: #ea4335; }
+    .contact-badge-item i {
+      font-size: 1.3rem;
+    }
+
+    .contact-badge-item i.fa-instagram {
+      color: #e1306c;
+    }
+
+    .contact-badge-item i.fa-whatsapp {
+      color: #25d366;
+    }
+
+    .contact-badge-item i.fa-envelope {
+      color: #ea4335;
+    }
 
     footer {
       text-align: center;
@@ -609,10 +610,9 @@
     }
 
     @media (max-width: 900px) {
-      .about-grid,
-      .skills-layout {
+      .about-thieb-grid, .skills-layout {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
       }
       .nav-menu {
         display: none;
@@ -648,7 +648,7 @@
     <a href="#contact" class="nav-logo" style="font-size: 0.8rem; background: #111; color: #fff; padding: 0.35rem 0.8rem; border-radius: 20px;">Let's Talk</a>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section dengan Ikon Kontak Logo Saja di Bawah Nama -->
   <section class="hero fade-section" id="home">
     <div class="hero-img-wrap">
       <img src="mahkamah-agung.png" alt="Reysha Zahra Haptari">
@@ -664,31 +664,36 @@
     </div>
   </section>
 
-  <!-- About Section (Tema Semula, Isi Teks Sesuai Referensi) -->
+  <!-- About Section -->
   <section id="about" class="fade-section">
     <h2 class="section-heading">About Me</h2>
     <div class="thieb-card">
       <div class="thieb-video-container">
-        <video autoplay muted loop playsinline></video>
-        <div class="video-placeholder-notice"><span>🎬 Tempat Clip Video Section About</span></div>
+        <video autoplay muted loop playsinline>
+          <source src="video-about.mp4" type="video/mp4">
+        </video>
+        <div class="video-placeholder-notice" style="display: none;">
+          <span>🎬 Tempat Clip Video Section About</span>
+        </div>
       </div>
-      <div class="about-grid">
-        <div class="about-text-content">
-          <p>I'm Reysha, I was Born in Kiliran Jao on April 7, 2004, and commonly known as Rey. Currently residing in Pondok Gede, Cipayung, East Jakarta, DKI Jakarta.</p>
-          <p>A fresh graduate of the Faculty of Law, Universitas Andalas, with a GPA of 3.80, specializing in Criminal Law. Possesses experience in legal research, litigation assistance, regulatory analysis, and legal documentation through internship programs at the Supreme Court of the Republic of Indonesia and the Regional Police of West Sumatra.</p>
-          <p>I am a highly analytical and detail-oriented law graduate with a strong ability to break down complex issues into structured, logical insights. I excel in constructing clear and persuasive arguments, supported by critical thinking and a systematic approach to problem-solving.</p>
-          <p>With a natural inclination toward precision and organization, I am able to process information thoroughly and deliver well-grounded analysis, both in written and verbal form. My strong communication skills allow me to articulate ideas effectively, while my adaptability enables me to thrive in dynamic and demanding environments.</p>
-          
+      <div class="about-thieb-grid">
+        <div class="about-img-box">
+          <img src="profile.png" alt="Reysha Zahra Haptari">
+        </div>
+        <div>
+          <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 1rem; color: #111;">Profile Summary</h3>
+          <p style="color: #555; margin-bottom: 1rem; font-size: 1.05rem;">
+            <strong>Hi there!</strong> I'm Reysha, born in Kiliran Jao on April 7, 2004, and currently based in East Jakarta, DKI Jakarta.
+          </p>
+          <p style="color: #555; font-size: 1.05rem;">
+            A fresh graduate of the <strong>Faculty of Law, Universitas Andalas</strong>, with a GPA of 3.80, specializing in Criminal Law. Experienced in legal research, litigation support, regulatory compliance, and community advocacy through internships at the <strong>Supreme Court of Indonesia</strong> and the <strong>Regional Police of West Sumatra</strong>.
+          </p>
           <div class="tags-container">
             <span class="tag">Professional</span>
-            <span class="tag">Good Analyze</span>
-            <span class="tag">Focus on Detail</span>
+            <span class="tag">Analytical</span>
+            <span class="tag">Detail-Oriented</span>
             <span class="tag">Leadership</span>
-            <span class="tag">Problem Solver</span>
           </div>
-        </div>
-        <div class="about-img-wrap">
-          <img src="profile.png" alt="Reysha Zahra Haptari">
         </div>
       </div>
     </div>
@@ -782,6 +787,7 @@
         <!-- Organization Experience -->
         <h3 class="exp-category-title">🏛️ Organization Experience</h3>
         
+        <!-- Justicia Sport Club (JSC) -->
         <div class="timeline-row">
           <div class="timeline-header-flex">
             <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Secretary of Sports Development Division (JSC)</span>
@@ -791,12 +797,14 @@
           <div class="timeline-desc">
             <ul>
               <li>Managed administrative documentation, structured reporting, and official correspondence within the division.</li>
+              <li>Coordinated internal administrative documentation, structured reporting, and official correspondence within the division.</li>
               <li>Assisted in planning and executing sports programs, training schedules, and inter-faculty tournaments.</li>
               <li>Compiled activity reports and conducted performance evaluations to support organizational accountability and program improvement.</li>
             </ul>
           </div>
         </div>
 
+        <!-- Criminal Law Student Association (HIMA PIDANA) -->
         <div class="timeline-row">
           <div class="timeline-header-flex">
             <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Head Of Advocacy & Publication Division</span>
@@ -808,15 +816,17 @@
             <ul>
               <li>Designed and implemented student advocacy programs addressing academic, institutional, and policy-related concerns within the Criminal Law concentration.</li>
               <li>Coordinated cross-organizational collaboration to gather student feedback and formally communicate policy recommendations and academic concerns to the Faculty administration.</li>
+              <li>Led outreach and introductory programs to promote the Criminal Law specialization to prospective students, providing clear guidance on academic pathways and career opportunities.</li>
             </ul>
             <p style="font-weight: 700; margin-top: 1rem; color: #111;">Publication Division</p>
             <ul>
               <li>Developed publication strategies and managed external communication channels to strengthen organizational visibility and outreach.</li>
-              <li>Initiated and managed an educational podcast discussing thesis preparation, curriculum guidance, and contemporary legal issues.</li>
+              <li>Initiated and managed an educational podcast discussing thesis preparation, curriculum guidance, and contemporary legal issues to enhance student engagement and legal awareness.</li>
             </ul>
           </div>
         </div>
 
+        <!-- Student Executive Board (BEM) -->
         <div class="timeline-row">
           <div class="timeline-header-flex">
             <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Staff Ministry of Home Affairs</span>
@@ -825,14 +835,14 @@
           <div class="timeline-subtitle">Student Executive Board (BEM), Faculty of Law Andalas University</div>
           <div class="timeline-desc">
             <ul>
-              <li>Coordinated institutional consolidation between student organizations.</li>
+              <li>Coordinated institusional consolidation between student organizations.</li>
               <li>Contribute to student cadre development and faculty-wide initiatives.</li>
-              <li>Secured IDR. 15.174.000 in sponsorship for Law Fair 2024 and initiated cross-organization collaboration.</li>
+              <li>Secured IDR. 15.174.000 in sponsorship for Law Fair 2024 and initiated cross-organization collaboration with other legal student associations, ensuring program sustainability and broader institusional networking.</li>
             </ul>
           </div>
         </div>
 
-        <!-- Galeri Foto Experience -->
+        <!-- Galeri Foto Keseluruhan Experience -->
         <div class="exp-photo-grid">
           <img src="WhatsApp Image 2026-05-24 at 16.18.46.jpeg" alt="Experience Activity 1">
           <img src="WhatsApp Image 2026-05-24 at 16.18.47.jpeg" alt="Experience Activity 2">
@@ -942,6 +952,7 @@
       observer.observe(section);
     });
 
+    // Fitur: Membuat teks menu navigasi jadi bold saat section-nya sedang aktif
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
 
