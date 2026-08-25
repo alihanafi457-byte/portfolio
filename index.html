@@ -163,13 +163,11 @@
       max-width: 100%;
       object-fit: contain;
       filter: contrast(105%) brightness(95%);
-      /* Kondisi awal sebelum aktif: posisi agak kecil & transparan */
       transform: scale(1.25);
       opacity: 0;
       transition: transform 1.6s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 1.2s ease;
     }
 
-    /* Ketika section hero tersorot (aktif), foto melakukan zoom-in ke ukuran normal */
     .hero.hero-active .hero-img-wrap img {
       transform: scale(1);
       opacity: 1;
@@ -194,9 +192,9 @@
 
     .hero-greeting {
       font-family: 'Caveat', cursive;
-      font-size: 2.2rem;
-      color: #666;
-      margin-bottom: -0.8rem;
+      font-size: 2.8rem; /* Ukuran "hi, i'm" diperbesar sedikit dari sebelumnya */
+      color: #555;
+      margin-bottom: -0.6rem;
     }
 
     .hero-name {
@@ -821,13 +819,10 @@
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
           
-          // Jika section yang terlihat adalah hero, tambahkan class hero-active agar zoom-in terpicu
           if (entry.target.classList.contains('hero')) {
             entry.target.classList.add('hero-active');
           }
         } else {
-          // Jika pengunjung menscroll ke bawah (keluar dari hero), hapus class-nya
-          // supaya saat mereka scroll ke atas lagi, efek zoom-in nya terulang kembali!
           if (entry.target.classList.contains('hero')) {
             entry.target.classList.remove('hero-active');
           }
