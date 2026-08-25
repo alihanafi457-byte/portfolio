@@ -114,12 +114,24 @@
       font-size: 0.82rem;
       font-weight: 500;
       transition: color 0.2s, font-weight 0.2s;
+      position: relative;
     }
 
-    .nav-menu a:hover,
+    /* Efek Garis Bawah & Bold untuk Navigasi Aktif */
     .nav-menu a.active {
       color: var(--text-main);
       font-weight: 700;
+    }
+
+    .nav-menu a.active::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 100%;
+      height: 2px;
+      background-color: var(--text-main);
+      border-radius: 2px;
     }
 
     /* Transisi Umum Section */
@@ -195,7 +207,7 @@
 
     .hero-greeting {
       font-family: 'Caveat', cursive;
-      font-size: 2.8rem;
+      font-size: 3.5rem; /* Diperbesar dari 2.8rem */
       color: #555;
       margin-bottom: -0.6rem;
     }
@@ -551,7 +563,7 @@
     .contact-title {
       font-size: clamp(2rem, 4.5vw, 3.2rem);
       font-weight: 900;
-      color: #e63946;
+      color: #111;
       line-height: 1.2;
       letter-spacing: -1px;
       margin-bottom: 2.5rem;
@@ -987,38 +999,42 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="fade-section" style="border-bottom: none;">
+  <section id="contact" class="fade-section">
     <div class="contact-container">
-      <h2 class="contact-title">Let’s connect!</h2>
+      <h2 class="contact-title">Let's Connect & Collaborate!</h2>
       <div class="contact-badges">
         <a href="https://instagram.com/reyshaza" target="_blank" class="contact-badge-item">
-          <i class="fa-brands fa-instagram"></i> Instagram
+          <i class="fa-brands fa-instagram"></i> @reyshaza
         </a>
         <a href="https://wa.me/6285782333501" target="_blank" class="contact-badge-item">
-          <i class="fa-brands fa-whatsapp"></i> WhatsApp
+          <i class="fa-brands fa-whatsapp"></i> +62 857-8233-3501
         </a>
         <a href="mailto:reyshazaworkspace@gmail.com" class="contact-badge-item">
-          <i class="fa-solid fa-envelope"></i> Email
+          <i class="fa-solid fa-envelope"></i> reyshazaworkspace@gmail.com
         </a>
       </div>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2026 Reysha Zahra Haptari. All rights reserved.</p>
+    <p>&copy; 2026 Reysha Zahra Haptari. All Rights Reserved.</p>
   </footer>
 
+  <!-- JavaScript Animasi & Loader & Active Nav Scroll -->
   <script>
-    // Page Loader Handler
-    window.addEventListener('load', function() {
+    // Hide Loader saat halaman selesai dimuat
+    window.addEventListener('load', () => {
       const loader = document.getElementById('page-loader');
-      setTimeout(() => {
-        loader.classList.add('hidden');
-        document.body.classList.add('loaded');
-      }, 400);
+      loader.classList.add('hidden');
+      document.body.classList.add('loaded');
+      
+      // Trigger Hero Animation langsung
+      const hero = document.getElementById('home');
+      if(hero) hero.classList.add('hero-active');
     });
 
-    // Fade-in Section Observer
+    // Observer untuk efek fade-in/zoom-in section saat di-scroll
     const observerOptions = {
       root: null,
       rootMargin: '0px',
@@ -1027,7 +1043,7 @@
 
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
+        if(entry.isIntersecting) {
           entry.target.classList.add('is-visible');
           if(entry.target.classList.contains('hero')) {
             entry.target.classList.add('hero-active');
@@ -1038,6 +1054,28 @@
 
     document.querySelectorAll('.fade-section').forEach(section => {
       observer.observe(section);
+    });
+
+    // Mengatur Active Navigation Link berdasarkan posisi Scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-menu a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.pageYOffset >= (sectionTop - 200)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
     });
   </script>
 </body>
