@@ -135,7 +135,7 @@
       transform: scale(1) translateY(0);
     }
 
-    /* Hero Section dengan Efek Zoom-In Berulang saat dilihat */
+    /* Hero Section */
     .hero {
       position: relative;
       width: 100%;
@@ -182,7 +182,7 @@
       text-align: center;
       padding-bottom: 3.5rem;
       width: 100%;
-      pointer-events: auto; /* Mengaktifkan klik pada elemen di dalam hero-text */
+      pointer-events: auto;
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 1s ease 0.4s, transform 1s ease 0.4s;
@@ -239,17 +239,9 @@
       color: #fff;
     }
 
-    .hero-social-icon.fa-instagram:hover {
-      background: #e1306c;
-    }
-
-    .hero-social-icon.fa-whatsapp:hover {
-      background: #25d366;
-    }
-
-    .hero-social-icon.fa-envelope:hover {
-      background: #ea4335;
-    }
+    .hero-social-icon.fa-instagram:hover { background: #e1306c; }
+    .hero-social-icon.fa-whatsapp:hover { background: #25d366; }
+    .hero-social-icon.fa-envelope:hover { background: #ea4335; }
 
     /* General Sections & Cards */
     section {
@@ -324,27 +316,149 @@
       padding: 1rem;
     }
 
-    .about-thieb-grid {
+    /* === STYLING KHUSUS SECTION ABOUT (PERSIS SEPERTI GAMBAR REFERENSI) === */
+    .about-replica-section {
+      position: relative;
+      background: #797c9b url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%?" height="100%" filter="url(%23noiseFilter)" opacity="0.08"/></svg>');
+      background-color: #7b80a2;
+      color: #ffffff;
+      padding: 5rem 5%;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .about-replica-title-wrap {
+      text-align: center;
+      position: relative;
+      margin-bottom: 3.5rem;
+    }
+
+    .about-replica-title {
+      font-size: clamp(3rem, 7.5vw, 6.5rem);
+      font-weight: 900;
+      letter-spacing: 4px;
+      color: #ffffff;
+      text-transform: uppercase;
+      text-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      line-height: 1;
+    }
+
+    .about-replica-stars-left, .about-replica-stars-right {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      color: #ffffff;
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    .about-replica-stars-left { left: 5%; }
+    .about-replica-stars-right { right: 5%; }
+
+    .about-replica-grid {
       display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 3rem;
+      grid-template-columns: 1fr 340px 1fr;
+      gap: 2.5rem;
+      align-items: center;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .about-replica-col-left, .about-replica-col-right {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #f1f1f1;
+    }
+
+    .about-replica-col-left .hi-text {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+      border-bottom: 2px dashed rgba(255,255,255,0.4);
+      padding-bottom: 2px;
+    }
+
+    .about-replica-col-left p, .about-replica-col-right p {
+      margin-bottom: 1.2rem;
+    }
+
+    .about-replica-img-center {
+      width: 100%;
+      display: flex;
+      justify-content: center;
       align-items: center;
     }
 
-    .about-img-box {
+    .about-replica-img-center img {
       width: 100%;
-      height: 400px;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid var(--card-border-color);
-      background: #f4f4f4;
+      max-height: 480px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      border: 3px solid rgba(255,255,255,0.2);
     }
 
-    .about-img-box img {
+    .about-replica-divider {
+      border: none;
+      border-top: 2px dashed rgba(255, 255, 255, 0.35);
+      margin: 1.5rem 0;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
     }
+
+    .about-replica-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-top: 3.5rem;
+    }
+
+    .about-replica-badge {
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+
+    .about-replica-footer-right {
+      margin-top: 2rem;
+      text-align: right;
+    }
+
+    .about-replica-footer-right .get-in-touch-script {
+      font-family: 'Caveat', cursive;
+      font-size: 2.2rem;
+      color: #ff5252;
+      margin-bottom: 0.4rem;
+      transform: rotate(-3deg);
+      display: inline-block;
+    }
+
+    .about-replica-contacts {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.35rem;
+      font-size: 0.85rem;
+      color: #ffffff;
+    }
+
+    .about-replica-contacts a {
+      color: #ffffff;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .about-replica-contacts a:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+    /* === AKHIR STYLING ABOUT === */
 
     .tags-container {
       display: flex;
@@ -584,21 +698,10 @@
       border-color: rgba(0,0,0,0.3);
     }
 
-    .contact-badge-item i {
-      font-size: 1.3rem;
-    }
-
-    .contact-badge-item i.fa-instagram {
-      color: #e1306c;
-    }
-
-    .contact-badge-item i.fa-whatsapp {
-      color: #25d366;
-    }
-
-    .contact-badge-item i.fa-envelope {
-      color: #ea4335;
-    }
+    .contact-badge-item i { font-size: 1.3rem; }
+    .contact-badge-item i.fa-instagram { color: #e1306c; }
+    .contact-badge-item i.fa-whatsapp { color: #25d366; }
+    .contact-badge-item i.fa-envelope { color: #ea4335; }
 
     footer {
       text-align: center;
@@ -609,8 +712,21 @@
       border-top: 1px solid var(--border-color);
     }
 
+    @media (max-width: 1024px) {
+      .about-replica-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .about-replica-footer-right {
+        text-align: center;
+      }
+      .about-replica-contacts {
+        align-items: center;
+      }
+    }
+
     @media (max-width: 900px) {
-      .about-thieb-grid, .skills-layout {
+      .skills-layout {
         grid-template-columns: 1fr;
         gap: 1.5rem;
       }
@@ -648,7 +764,7 @@
     <a href="#contact" class="nav-logo" style="font-size: 0.8rem; background: #111; color: #fff; padding: 0.35rem 0.8rem; border-radius: 20px;">Let's Talk</a>
   </header>
 
-  <!-- Hero Section dengan Ikon Kontak Logo Saja di Bawah Nama -->
+  <!-- Hero Section -->
   <section class="hero fade-section" id="home">
     <div class="hero-img-wrap">
       <img src="mahkamah-agung.png" alt="Reysha Zahra Haptari">
@@ -664,38 +780,58 @@
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="fade-section">
-    <h2 class="section-heading">About Me</h2>
-    <div class="thieb-card">
-      <div class="thieb-video-container">
-        <video autoplay muted loop playsinline>
-          <source src="video-about.mp4" type="video/mp4">
-        </video>
-        <div class="video-placeholder-notice" style="display: none;">
-          <span>🎬 Tempat Clip Video Section About</span>
-        </div>
+  <!-- About Section (PERSIS SEPERTI GAMBAR REFERENSI) -->
+  <section id="about" class="about-replica-section fade-section">
+    <div class="about-replica-title-wrap">
+      <div class="about-replica-stars-left">
+        <span>✦</span><span>✦</span><span>✦</span><span>✦</span>
       </div>
-      <div class="about-thieb-grid">
-        <div class="about-img-box">
-          <img src="profile.png" alt="Reysha Zahra Haptari">
-        </div>
-        <div>
-          <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 1rem; color: #111;">Profile Summary</h3>
-          <p style="color: #555; margin-bottom: 1rem; font-size: 1.05rem;">
-            <strong>Hi there!</strong> I'm Reysha, born in Kiliran Jao on April 7, 2004, and currently based in East Jakarta, DKI Jakarta.
-          </p>
-          <p style="color: #555; font-size: 1.05rem;">
-            A fresh graduate of the <strong>Faculty of Law, Universitas Andalas</strong>, with a GPA of 3.80, specializing in Criminal Law. Experienced in legal research, litigation support, regulatory compliance, and community advocacy through internships at the <strong>Supreme Court of Indonesia</strong> and the <strong>Regional Police of West Sumatra</strong>.
-          </p>
-          <div class="tags-container">
-            <span class="tag">Professional</span>
-            <span class="tag">Analytical</span>
-            <span class="tag">Detail-Oriented</span>
-            <span class="tag">Leadership</span>
+      <h2 class="about-replica-title">About Me</h2>
+      <div class="about-replica-stars-right">
+        <span>✦</span><span>✦</span><span>✦</span><span>✦</span>
+      </div>
+    </div>
+
+    <div class="about-replica-grid">
+      <!-- Kolom Kiri -->
+      <div class="about-replica-col-left">
+        <div class="hi-text">Hi</div>
+        <hr class="about-replica-divider">
+        <p>I'm Reysha, I was Born in Kiliran Jao on April 7, 2004, and commonly known as Rey. Currently residing in Pondok Gede, Cipayung, East Jakarta, DKI Jakarta.</p>
+        <p>A fresh graduate of the Faculty of Law, Universitas Andalas, with a GPA of 3.80, specializing in Criminal Law. Possesses experience in legal research, litigation assistance, regulatory analysis, and legal documentation through internship programs at the Supreme Court of the Republic of Indonesia and the Regional Police of West Sumatra.</p>
+      </div>
+
+      <!-- Foto Tengah -->
+      <div class="about-replica-img-center">
+        <img src="profile.png" alt="Reysha Zahra Haptari">
+      </div>
+
+      <!-- Kolom Kanan -->
+      <div class="about-replica-col-right">
+        <hr class="about-replica-divider">
+        <p>I am a highly analytical and detail-oriented law graduate with a strong ability to break down complex issues into structured, logical insights. I excel in constructing clear and persuasive arguments, supported by critical thinking and a systematic approach to problem-solving.</p>
+        <p>With a natural inclination toward precision and organization, I am able to process information thoroughly and deliver well-grounded analysis, both in written and verbal form. My strong communication skills allow me to articulate ideas effectively, while my adaptability enables me to thrive in dynamic and demanding environments.</p>
+        
+        <!-- Get in Touch & Kontak di Bawah Kolom Kanan -->
+        <div class="about-replica-footer-right">
+          <div class="get-in-touch-script">Get in Touch !</div>
+          <div class="about-replica-contacts">
+            <a href="https://instagram.com/reyshaza" target="_blank"><i class="fa-brands fa-instagram"></i> | @reyshaza</a>
+            <a href="mailto:reyshazaworkspace@gmail.com"><i class="fa-solid fa-envelope"></i> | reyshazaworkspace@gmail.com</a>
+            <a href="https://linkedin.com/in/reyshazahra" target="_blank"><i class="fa-brands fa-linkedin"></i> | linkedin.com/in/reyshazahra</a>
+            <a href="https://wa.me/6285782333501" target="_blank"><i class="fa-brands fa-whatsapp"></i> | +6285782333501</a>
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Label Kompetensi di Bagian Bawah -->
+    <div class="about-replica-badges">
+      <span class="about-replica-badge">| PROFESSIONAL</span>
+      <span class="about-replica-badge">| GOOD ANALYZE</span>
+      <span class="about-replica-badge">| FOCUS ON DETAIL</span>
+      <span class="about-replica-badge">| LEADERSHIP</span>
+      <span class="about-replica-badge">| PROBLEM SOLVER</span>
     </div>
   </section>
 
@@ -787,7 +923,6 @@
         <!-- Organization Experience -->
         <h3 class="exp-category-title">🏛️ Organization Experience</h3>
         
-        <!-- Justicia Sport Club (JSC) -->
         <div class="timeline-row">
           <div class="timeline-header-flex">
             <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Secretary of Sports Development Division (JSC)</span>
@@ -797,14 +932,12 @@
           <div class="timeline-desc">
             <ul>
               <li>Managed administrative documentation, structured reporting, and official correspondence within the division.</li>
-              <li>Coordinated internal administrative documentation, structured reporting, and official correspondence within the division.</li>
               <li>Assisted in planning and executing sports programs, training schedules, and inter-faculty tournaments.</li>
               <li>Compiled activity reports and conducted performance evaluations to support organizational accountability and program improvement.</li>
             </ul>
           </div>
         </div>
 
-        <!-- Criminal Law Student Association (HIMA PIDANA) -->
         <div class="timeline-row">
           <div class="timeline-header-flex">
             <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Head Of Advocacy & Publication Division</span>
@@ -816,17 +949,15 @@
             <ul>
               <li>Designed and implemented student advocacy programs addressing academic, institutional, and policy-related concerns within the Criminal Law concentration.</li>
               <li>Coordinated cross-organizational collaboration to gather student feedback and formally communicate policy recommendations and academic concerns to the Faculty administration.</li>
-              <li>Led outreach and introductory programs to promote the Criminal Law specialization to prospective students, providing clear guidance on academic pathways and career opportunities.</li>
             </ul>
             <p style="font-weight: 700; margin-top: 1rem; color: #111;">Publication Division</p>
             <ul>
               <li>Developed publication strategies and managed external communication channels to strengthen organizational visibility and outreach.</li>
-              <li>Initiated and managed an educational podcast discussing thesis preparation, curriculum guidance, and contemporary legal issues to enhance student engagement and legal awareness.</li>
+              <li>Initiated and managed an educational podcast discussing thesis preparation, curriculum guidance, and contemporary legal issues.</li>
             </ul>
           </div>
         </div>
 
-        <!-- Student Executive Board (BEM) -->
         <div class="timeline-row">
           <div class="timeline-header-flex">
             <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Staff Ministry of Home Affairs</span>
@@ -835,14 +966,14 @@
           <div class="timeline-subtitle">Student Executive Board (BEM), Faculty of Law Andalas University</div>
           <div class="timeline-desc">
             <ul>
-              <li>Coordinated institusional consolidation between student organizations.</li>
+              <li>Coordinated institutional consolidation between student organizations.</li>
               <li>Contribute to student cadre development and faculty-wide initiatives.</li>
-              <li>Secured IDR. 15.174.000 in sponsorship for Law Fair 2024 and initiated cross-organization collaboration with other legal student associations, ensuring program sustainability and broader institusional networking.</li>
+              <li>Secured IDR. 15.174.000 in sponsorship for Law Fair 2024 and initiated cross-organization collaboration.</li>
             </ul>
           </div>
         </div>
 
-        <!-- Galeri Foto Keseluruhan Experience -->
+        <!-- Galeri Foto Experience -->
         <div class="exp-photo-grid">
           <img src="WhatsApp Image 2026-05-24 at 16.18.46.jpeg" alt="Experience Activity 1">
           <img src="WhatsApp Image 2026-05-24 at 16.18.47.jpeg" alt="Experience Activity 2">
@@ -952,7 +1083,6 @@
       observer.observe(section);
     });
 
-    // Fitur: Membuat teks menu navigasi jadi bold saat section-nya sedang aktif
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
 
