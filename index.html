@@ -441,6 +441,34 @@
       margin-bottom: 0.3rem;
     }
 
+    /* Styling untuk Duo Photo Grid (.jpeg) */
+    .internship-photo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .internship-photo-item {
+      position: relative;
+      height: 220px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--card-border-color);
+      background: #eaeaea;
+    }
+
+    .internship-photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .internship-photo-item:hover img {
+      transform: scale(1.06);
+    }
+
     .exp-category-title {
       font-size: 1.15rem;
       font-weight: 800;
@@ -584,7 +612,7 @@
     }
 
     @media (max-width: 900px) {
-      .about-thieb-grid, .skills-layout {
+      .about-thieb-grid, .skills-layout, .internship-photo-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
       }
@@ -730,6 +758,7 @@
       <div class="timeline-stack">
         <!-- Professional Internships -->
         <h3 class="exp-category-title">💼 Professional Internships</h3>
+        
         <div class="timeline-row">
           <div class="timeline-header-flex">
             <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Supreme Court of The Republic of Indonesia (Mahkamah Agung RI)</span>
@@ -743,7 +772,17 @@
               <li>Prepared Structured Minutes of Meeting (MoM) and official documentation for internal coordination forums.</li>
             </ul>
           </div>
+          <!-- Galeri Foto Internship Mahkamah Agung (.jpeg) -->
+          <div class="internship-photo-grid">
+            <div class="internship-photo-item">
+              <img src="ma-1.jpeg" alt="Mahkamah Agung Internship Activity 1">
+            </div>
+            <div class="internship-photo-item">
+              <img src="ma-2.jpeg" alt="Mahkamah Agung Internship Activity 2">
+            </div>
+          </div>
         </div>
+
         <div class="timeline-row">
           <div class="timeline-header-flex">
             <span class="timeline-title" style="font-size: 1.1rem; font-weight:700; color:#111;">Regional Police of West Sumatra (Polda Sumatera Barat)</span>
@@ -755,6 +794,15 @@
               <li>Assisted legal officers in litigation processes at Padang District Court.</li>
               <li>Supported drafting and review of legal documents for ongoing criminal cases.</li>
             </ul>
+          </div>
+          <!-- Galeri Foto Internship Polda Sumbar (.jpeg) -->
+          <div class="internship-photo-grid">
+            <div class="internship-photo-item">
+              <img src="polda-1.jpeg" alt="Polda Sumbar Internship Activity 1">
+            </div>
+            <div class="internship-photo-item">
+              <img src="polda-2.jpeg" alt="Polda Sumbar Internship Activity 2">
+            </div>
           </div>
         </div>
 
