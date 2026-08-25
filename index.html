@@ -132,7 +132,7 @@
       transform: scale(1) translateY(0);
     }
 
-    /* Hero Section dengan Efek Zoom-In Foto */
+    /* Hero Section dengan Efek Zoom-In Berulang saat dilihat */
     .hero {
       position: relative;
       width: 100%;
@@ -163,14 +163,14 @@
       max-width: 100%;
       object-fit: contain;
       filter: contrast(105%) brightness(95%);
-      /* Pengaturan Awal Animasi Zoom-In saat pertama dibuka */
+      /* Kondisi awal sebelum aktif: posisi agak kecil & transparan */
       transform: scale(1.25);
       opacity: 0;
       transition: transform 1.6s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 1.2s ease;
     }
 
-    /* Ketika halaman selesai dimuat, jalankan animasi zoom-in foto hero */
-    body.loaded .hero-img-wrap img {
+    /* Ketika section hero tersorot (aktif), foto melakukan zoom-in ke ukuran normal */
+    .hero.hero-active .hero-img-wrap img {
       transform: scale(1);
       opacity: 1;
     }
@@ -187,7 +187,7 @@
       transition: opacity 1s ease 0.4s, transform 1s ease 0.4s;
     }
 
-    body.loaded .hero-text-content {
+    .hero.hero-active .hero-text-content {
       opacity: 1;
       transform: translateY(0);
     }
@@ -587,7 +587,7 @@
     <a href="#contact" class="nav-logo" style="font-size: 0.8rem; background: #111; color: #fff; padding: 0.35rem 0.8rem; border-radius: 20px;">Let's Talk</a>
   </header>
 
-  <!-- Hero Section dengan Efek Zoom-In Foto -->
+  <!-- Hero Section dengan Efek Zoom-In Berulang saat dilihat -->
   <section class="hero fade-section" id="home">
     <div class="hero-img-wrap">
       <img src="mahkamah-agung.png" alt="Reysha Zahra Haptari">
@@ -802,7 +802,7 @@
     <p>&copy; 2026 Reysha Zahra Haptari. All rights reserved.</p>
   </footer>
 
-  <!-- JavaScript untuk Loader & Scroll Animation -->
+  <!-- JavaScript untuk Efek Zoom-In Berulang & Scroll Animation -->
   <script>
     window.addEventListener('load', () => {
       const loader = document.getElementById('page-loader');
@@ -820,6 +820,17 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
+          
+          // Jika section yang terlihat adalah hero, tambahkan class hero-active agar zoom-in terpicu
+          if (entry.target.classList.contains('hero')) {
+            entry.target.classList.add('hero-active');
+          }
+        } else {
+          // Jika pengunjung menscroll ke bawah (keluar dari hero), hapus class-nya
+          // supaya saat mereka scroll ke atas lagi, efek zoom-in nya terulang kembali!
+          if (entry.target.classList.contains('hero')) {
+            entry.target.classList.remove('hero-active');
+          }
         }
       });
     }, observerOptions);
