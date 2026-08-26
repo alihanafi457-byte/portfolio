@@ -146,7 +146,7 @@
       transform: scale(1) translateY(0);
     }
 
-    /* Hero Section dengan Foto Lebih Besar */
+    /* Hero Section dengan Foto Sangat Besar (Extra Zoom) */
     .hero {
       position: relative;
       width: 100%;
@@ -172,17 +172,17 @@
     }
 
     .hero-img-wrap img {
-      height: 98vh; /* Diperbesar agar lebih tinggi/penuh */
+      height: 115vh; /* Ditingkatkan jauh lebih tinggi */
       width: auto;
       max-width: none;
       object-fit: contain;
-      transform: scale(1.35); /* Diperbesar zoom-nya */
+      transform: scale(1.6); /* Di-zoom lebih besar */
       opacity: 0;
       transition: transform 1.6s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 1.2s ease;
     }
 
     .hero.hero-active .hero-img-wrap img {
-      transform: scale(1.15); /* Ukuran akhir saat aktif */
+      transform: scale(1.3); /* Ukuran akhir saat aktif (lebih besar dari sebelumnya) */
       opacity: 1;
     }
 
