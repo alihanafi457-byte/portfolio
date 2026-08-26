@@ -483,6 +483,11 @@
       transform: scale(1.06);
     }
 
+    /* Kelas untuk crop foto agar fokus ke bagian atas */
+    .crop-top img {
+      object-position: top center !important;
+    }
+
     .exp-category-title {
       font-size: 1.15rem;
       font-weight: 800;
@@ -901,7 +906,8 @@
             <div class="internship-photo-item">
               <img src="polda-3.jpeg" alt="Polda Sumbar Activity 3">
             </div>
-            <div class="internship-photo-item">
+            <!-- Foto ke-4 dengan class crop-top agar fokus ke atas -->
+            <div class="internship-photo-item crop-top">
               <img src="polda-4.jpeg" alt="Polda Sumbar Activity 4">
             </div>
           </div>
@@ -1073,10 +1079,10 @@
     </div>
   </section>
 
-  <!-- Contact Section (Redesigned with Black Background & Profile Photo) -->
+  <!-- Contact Section (Dark Background & Profile Photo) -->
   <section id="contact" class="fade-section">
     <div class="contact-container-new">
-      <!-- Sisi Kiri: Kartu Foto Profil Menarik -->
+      <!-- Sisi Kiri: Kartu Foto Profil -->
       <div class="contact-profile-card">
         <img src="profile.png" alt="Reysha Zahra Haptari">
         <div class="contact-profile-overlay">
