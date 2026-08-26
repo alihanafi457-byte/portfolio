@@ -146,7 +146,7 @@
       transform: scale(1) translateY(0);
     }
 
-    /* Hero Section dengan Efek Tumpuk Persis Contoh */
+    /* Hero Section dengan Foto Lebih Besar */
     .hero {
       position: relative;
       width: 100%;
@@ -167,28 +167,28 @@
       justify-content: center;
       align-items: flex-end;
       z-index: 1;
-      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 68%, rgba(0,0,0,0) 100%);
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 68%, rgba(0,0,0,0) 100%);
     }
 
     .hero-img-wrap img {
-      height: 88vh;
+      height: 98vh; /* Diperbesar agar lebih tinggi/penuh */
       width: auto;
       max-width: none;
       object-fit: contain;
-      transform: scale(1.15);
+      transform: scale(1.35); /* Diperbesar zoom-nya */
       opacity: 0;
       transition: transform 1.6s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 1.2s ease;
     }
 
     .hero.hero-active .hero-img-wrap img {
-      transform: scale(1);
+      transform: scale(1.15); /* Ukuran akhir saat aktif */
       opacity: 1;
     }
 
     .hero-text-content {
       position: absolute;
-      bottom: 4rem;
+      bottom: 3.5rem;
       left: 50%;
       transform: translateX(-50%) translateY(20px);
       z-index: 3;
