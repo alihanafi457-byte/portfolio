@@ -207,7 +207,7 @@
 
     .hero-greeting {
       font-family: 'Caveat', cursive;
-      font-size: 3.5rem; /* Diperbesar dari 2.8rem */
+      font-size: 3.5rem;
       color: #555;
       margin-bottom: -0.6rem;
     }
@@ -988,9 +988,10 @@
           <div class="interest-box-inner">
             <h3>Interests & Focus</h3>
             <ul>
-              <li>Criminal Law & Justice System</li>
-              <li>Legal Compliance & Policy Analysis</li>
-              <li>Public Advocacy & Legal Literacy</li>
+              <li>Criminal Law & Policy Analysis</li>
+              <li>Legal Advocacy & Public Speaking</li>
+              <li>Regulatory Compliance & Legislative Drafting</li>
+              <li>Youth Development & Organizational Leadership</li>
             </ul>
           </div>
         </div>
@@ -1001,16 +1002,16 @@
   <!-- Contact Section -->
   <section id="contact" class="fade-section">
     <div class="contact-container">
-      <h2 class="contact-title">Let's Connect & Collaborate!</h2>
+      <h2 class="contact-title">Let's Connect & Collaborate Together</h2>
       <div class="contact-badges">
         <a href="https://instagram.com/reyshaza" target="_blank" class="contact-badge-item">
-          <i class="fa-brands fa-instagram"></i> @reyshaza
+          <i class="fa-brands fa-instagram"></i> Instagram
         </a>
         <a href="https://wa.me/6285782333501" target="_blank" class="contact-badge-item">
-          <i class="fa-brands fa-whatsapp"></i> +62 857-8233-3501
+          <i class="fa-brands fa-whatsapp"></i> WhatsApp
         </a>
         <a href="mailto:reyshazaworkspace@gmail.com" class="contact-badge-item">
-          <i class="fa-solid fa-envelope"></i> reyshazaworkspace@gmail.com
+          <i class="fa-solid fa-envelope"></i> Email Me
         </a>
       </div>
     </div>
@@ -1018,35 +1019,39 @@
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2026 Reysha Zahra Haptari. All Rights Reserved.</p>
+    <p>&copy; 2026 Reysha Zahra Haptari. All rights reserved.</p>
   </footer>
 
-  <!-- JavaScript Animasi & Loader & Active Nav Scroll -->
+  <!-- JavaScript Animasi & Interaktif -->
   <script>
-    // Hide Loader saat halaman selesai dimuat
     window.addEventListener('load', () => {
-      const loader = document.getElementById('page-loader');
-      loader.classList.add('hidden');
       document.body.classList.add('loaded');
-      
-      // Trigger Hero Animation langsung
+      const loader = document.getElementById('page-loader');
+      setTimeout(() => {
+        loader.classList.add('hidden');
+      }, 400);
+
+      // Trigger hero animation on load
       const hero = document.getElementById('home');
       if(hero) hero.classList.add('hero-active');
     });
 
-    // Observer untuk efek fade-in/zoom-in section saat di-scroll
+    // Intersection Observer untuk Fade Section & Animasi Hero Berulang
     const observerOptions = {
       root: null,
-      rootMargin: '0px',
       threshold: 0.15
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
-        if(entry.isIntersecting) {
+        if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
-          if(entry.target.classList.contains('hero')) {
+          if (entry.target.classList.contains('hero')) {
             entry.target.classList.add('hero-active');
+          }
+        } else {
+          if (entry.target.classList.contains('hero')) {
+            entry.target.classList.remove('hero-active');
           }
         }
       });
@@ -1056,7 +1061,7 @@
       observer.observe(section);
     });
 
-    // Mengatur Active Navigation Link berdasarkan posisi Scroll
+    // Active Navigation Highlight
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-menu a');
 
@@ -1064,15 +1069,14 @@
       let current = '';
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (window.pageYOffset >= (sectionTop - 200)) {
+        if (pageYOffset >= sectionTop - 200) {
           current = section.getAttribute('id');
         }
       });
 
       navLinks.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
+        if (link.getAttribute('href').includes(current)) {
           link.classList.add('active');
         }
       });
