@@ -554,15 +554,20 @@
       gap: 0.5rem;
     }
 
-    /* --- STYLING CONTACT SECTION DENGAN FOTO --- */
+    /* --- STYLING CONTACT SECTION DENGAN LATAR BELAKANG HITAM (DARK THEME) --- */
+    section#contact {
+      background-color: #0d0d0d;
+      border-bottom: none;
+    }
+
     .contact-container-new {
       max-width: 1000px;
       margin: 0 auto;
-      background: linear-gradient(135deg, #fcfcfc 0%, #f4f4f6 100%);
-      border: 1px solid var(--card-border-color);
+      background: linear-gradient(135deg, #161616 0%, #111111 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 32px;
       padding: 4rem 3rem;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.04);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
       display: grid;
       grid-template-columns: 340px 1fr;
       gap: 3.5rem;
@@ -577,8 +582,8 @@
       height: 380px;
       border-radius: 22px;
       overflow: hidden;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-      border: 2px solid #ffffff;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+      border: 2px solid rgba(255, 255, 255, 0.15);
     }
 
     .contact-profile-card img {
@@ -595,7 +600,7 @@
     .contact-profile-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%);
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 60%);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -607,11 +612,13 @@
       font-size: 1.25rem;
       font-weight: 800;
       letter-spacing: -0.5px;
+      color: #fff;
     }
 
     .contact-profile-sub {
       font-family: 'Caveat', cursive;
       font-size: 1.2rem;
+      color: #e0e0e0;
       opacity: 0.9;
     }
 
@@ -624,14 +631,14 @@
     .contact-title-new {
       font-size: clamp(2rem, 3.5vw, 2.8rem);
       font-weight: 900;
-      color: #111;
+      color: #ffffff;
       line-height: 1.15;
       letter-spacing: -1px;
       margin-bottom: 1rem;
     }
 
     .contact-desc-new {
-      color: var(--text-muted);
+      color: #aaaaaa;
       font-size: 0.95rem;
       margin-bottom: 2rem;
     }
@@ -646,27 +653,27 @@
       display: flex;
       align-items: center;
       gap: 1rem;
-      background: #ffffff;
-      border: 1px solid rgba(0,0,0,0.08);
+      background: #1e1e1e;
+      border: 1px solid rgba(255, 255, 255, 0.08);
       padding: 0.9rem 1.4rem;
       border-radius: 16px;
       text-decoration: none;
-      color: #111;
+      color: #ffffff;
       font-weight: 600;
       font-size: 0.95rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
       transition: all 0.25s ease;
     }
 
     .contact-badge-item-new:hover {
       transform: translateX(6px);
-      border-color: #111;
-      background: #111;
-      color: #fff;
+      border-color: #ffffff;
+      background: #ffffff;
+      color: #111111;
     }
 
     .contact-badge-item-new:hover i {
-      color: #fff !important;
+      color: #111111 !important;
     }
 
     .contact-badge-item-new i {
@@ -683,10 +690,10 @@
     footer {
       text-align: center;
       padding: 3rem;
-      color: var(--text-muted);
+      color: #888888;
       font-size: 0.85rem;
-      background: var(--bg-color);
-      border-top: 1px solid var(--border-color);
+      background: #0d0d0d;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     @media (max-width: 900px) {
@@ -1066,7 +1073,7 @@
     </div>
   </section>
 
-  <!-- Contact Section (Redesigned with Profile Photo) -->
+  <!-- Contact Section (Redesigned with Black Background & Profile Photo) -->
   <section id="contact" class="fade-section">
     <div class="contact-container-new">
       <!-- Sisi Kiri: Kartu Foto Profil Menarik -->
