@@ -27,10 +27,7 @@
     content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
   >
 
-  <meta
-    name="googlebot"
-    content="index, follow"
-  >
+  <meta name="googlebot" content="index, follow">
 
   <link
     rel="canonical"
@@ -51,10 +48,7 @@
     content="Official portfolio of Reysha Zahra Haptari, a Law graduate specializing in Criminal Law, legal research, advocacy, litigation support, and regulatory analysis."
   >
 
-  <meta
-    property="og:type"
-    content="website"
-  >
+  <meta property="og:type" content="website">
 
   <meta
     property="og:url"
@@ -66,10 +60,7 @@
     content="Reysha Zahra Haptari Portfolio"
   >
 
-  <meta
-    property="og:locale"
-    content="en_US"
-  >
+  <meta property="og:locale" content="en_US">
 
   <meta
     property="og:image"
@@ -124,10 +115,7 @@
        GOOGLE FONTS
   ========================== -->
 
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
 
   <link
     rel="preconnect"
@@ -251,6 +239,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+
       transition:
         opacity 0.6s ease,
         visibility 0.6s ease;
@@ -265,10 +254,13 @@
       font-family: 'Caveat', cursive;
       font-size: 2rem;
       color: #111;
-      animation: pulseLoader 1.2s infinite alternate;
+
+      animation:
+        pulseLoader 1.2s infinite alternate;
     }
 
     @keyframes pulseLoader {
+
       0% {
         opacity: 0.4;
         transform: scale(0.98);
@@ -278,6 +270,7 @@
         opacity: 1;
         transform: scale(1);
       }
+
     }
 
     /* =========================
@@ -289,19 +282,29 @@
       top: 1.5rem;
       left: 50%;
       transform: translateX(-50%);
+
       width: 90%;
       max-width: 680px;
+
       background: rgba(255, 255, 255, 0.85);
+
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
+
       border: 1px solid var(--border-color);
+
       padding: 0.75rem 1.5rem;
+
       border-radius: 50px;
+
       display: flex;
       justify-content: space-between;
       align-items: center;
+
       z-index: 1000;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+
+      box-shadow:
+        0 10px 30px rgba(0,0,0,0.05);
     }
 
     .nav-logo {
@@ -322,9 +325,11 @@
       color: var(--text-muted);
       font-size: 0.82rem;
       font-weight: 500;
+
       transition:
         color 0.2s,
         font-weight 0.2s;
+
       position: relative;
     }
 
@@ -339,30 +344,34 @@
 
     .nav-menu a.active::after {
       content: '';
+
       position: absolute;
+
       left: 0;
       bottom: -3px;
+
       width: 100%;
       height: 2px;
+
       background-color: var(--text-main);
+
       border-radius: 2px;
     }
 
     /* =========================
-       SCROLL ANIMATION
-       AKAN MUNCUL ULANG SETIAP
-       KALI SECTION MASUK VIEWPORT
+       GENERAL SCROLL ANIMATION
     ========================== */
 
     .fade-section {
       opacity: 0;
+
       transform:
-        translateY(55px)
-        scale(0.96);
+        scale(0.82)
+        translateY(50px);
 
       transition:
-        opacity 0.9s cubic-bezier(0.165, 0.84, 0.44, 1),
-        transform 0.9s cubic-bezier(0.165, 0.84, 0.44, 1);
+        opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1),
+        transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 
       will-change:
         opacity,
@@ -371,9 +380,10 @@
 
     .fade-section.is-visible {
       opacity: 1;
+
       transform:
-        translateY(0)
-        scale(1);
+        scale(1)
+        translateY(0);
     }
 
     /* =========================
@@ -382,44 +392,72 @@
 
     .hero {
       position: relative;
+
       width: 100%;
       height: 100vh;
       min-height: 650px;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       background-color: var(--bg-color);
+
       overflow: hidden;
+
       padding: 0 !important;
+
       border: none;
+
+      /*
+        PENTING:
+        Hero tidak menggunakan animasi
+        fade-section untuk foto/text.
+        Animasi hero dikontrol khusus
+        lewat .hero.hero-active.
+      */
     }
 
     /*
-      HERO SENDIRI TIDAK MENGANDALKAN
-      .fade-section SAJA.
-
-      Setiap kali hero masuk viewport,
-      .hero-active akan ditambahkan lagi.
+      Hero wrapper sendiri diberi efek
+      fade supaya saat kembali ke hero
+      section ikut terasa masuk kembali.
     */
 
     .hero.fade-section {
+      opacity: 0;
+
       transform:
-        translateY(35px)
-        scale(0.98);
+        scale(0.98)
+        translateY(20px);
+
+      transition:
+        opacity 0.8s ease,
+        transform 0.9s cubic-bezier(
+          0.165,
+          0.84,
+          0.44,
+          1
+        );
     }
 
     .hero.fade-section.is-visible {
+      opacity: 1;
+
       transform:
-        translateY(0)
-        scale(1);
+        scale(1)
+        translateY(0);
     }
 
     .hero-img-wrap {
       position: absolute;
+
       inset: 0;
+
       display: flex;
       justify-content: center;
       align-items: flex-end;
+
       z-index: 1;
 
       -webkit-mask-image:
@@ -437,10 +475,19 @@
         );
     }
 
+    /*
+      HERO IMAGE
+      Setiap kali .hero-active diberikan,
+      foto akan memainkan fade + zoom.
+    */
+
     .hero-img-wrap img {
+
       height: 115vh;
       width: auto;
+
       max-width: none;
+
       object-fit: contain;
 
       transform:
@@ -450,15 +497,17 @@
       opacity: 0;
 
       transition:
-        transform 1.6s cubic-bezier(0.165, 0.84, 0.44, 1),
+        transform 1.6s cubic-bezier(
+          0.165,
+          0.84,
+          0.44,
+          1
+        ),
         opacity 1.2s ease;
     }
 
-    /*
-      FOTO HERO FADE-IN + ZOOM
-    */
-
     .hero.hero-active .hero-img-wrap img {
+
       transform:
         scale(1.3)
         translateY(0);
@@ -466,8 +515,14 @@
       opacity: 1;
     }
 
+    /*
+      HERO TEXT
+    */
+
     .hero-text-content {
+
       position: absolute;
+
       bottom: 3.5rem;
       left: 50%;
 
@@ -476,23 +531,29 @@
         translateY(35px);
 
       z-index: 3;
+
       text-align: center;
+
       width: 100%;
+
       pointer-events: none;
+
       opacity: 0;
 
       transition:
         opacity 1.1s ease 0.35s,
         transform 1.1s
-        cubic-bezier(0.165, 0.84, 0.44, 1)
+        cubic-bezier(
+          0.165,
+          0.84,
+          0.44,
+          1
+        )
         0.35s;
     }
 
-    /*
-      TEXT HERO FADE-IN
-    */
-
     .hero.hero-active .hero-text-content {
+
       opacity: 1;
 
       transform:
@@ -505,56 +566,89 @@
     }
 
     .hero-greeting {
+
       font-family: 'Caveat', cursive;
+
       font-size: 3rem;
+
       color: #333;
+
       margin-bottom: -1rem;
     }
 
     .hero-name {
-      font-size: clamp(3rem, 7.5vw, 6.5rem);
+
+      font-size:
+        clamp(
+          3rem,
+          7.5vw,
+          6.5rem
+        );
+
       font-weight: 900;
+
       letter-spacing: -2px;
+
       color: #111;
+
       line-height: 1;
+
       margin-bottom: 1.2rem;
 
       text-shadow:
-        0 10px 30px rgba(255,255,255,0.8);
+        0 10px 30px
+        rgba(255,255,255,0.8);
     }
 
     .hero-subtitle {
+
       font-size: 1rem;
+
       color: #555;
+
       margin-bottom: 1.2rem;
+
       font-weight: 500;
     }
 
     .hero-social-icons {
+
       display: flex;
+
       justify-content: center;
       align-items: center;
+
       gap: 1rem;
     }
 
     .hero-social-icon {
+
       display: inline-flex;
+
       justify-content: center;
       align-items: center;
 
       width: 44px;
       height: 44px;
 
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(0, 0, 0, 0.15);
+      background:
+        rgba(255,255,255,0.9);
+
+      border:
+        1px solid
+        rgba(0,0,0,0.15);
+
       border-radius: 50%;
 
       color: #111;
+
       font-size: 1.2rem;
+
       text-decoration: none;
 
       box-shadow:
-        0 4px 15px rgba(0,0,0,0.05);
+        0 4px 15px
+        rgba(0,0,0,0.05);
 
       transition:
         transform 0.2s ease,
@@ -563,8 +657,12 @@
     }
 
     .hero-social-icon:hover {
-      transform: translateY(-3px);
+
+      transform:
+        translateY(-3px);
+
       background: #111;
+
       color: #fff;
     }
 
@@ -585,29 +683,45 @@
     ========================== */
 
     section {
+
       padding: 6rem 8%;
-      border-bottom: 1px solid var(--border-color);
-      background-color: var(--bg-color);
+
+      border-bottom:
+        1px solid
+        var(--border-color);
+
+      background-color:
+        var(--bg-color);
     }
 
     .section-heading {
+
       font-size: 2rem;
+
       font-weight: 800;
+
       margin-bottom: 2.5rem;
+
       letter-spacing: -1px;
 
       display: flex;
+
       align-items: center;
+
       gap: 0.8rem;
 
       color: var(--text-main);
     }
 
     .section-heading::before {
+
       content: '';
+
       width: 6px;
       height: 24px;
+
       background: #111;
+
       border-radius: 3px;
     }
 
@@ -616,26 +730,38 @@
     ========================== */
 
     .thieb-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border-color);
-      border-radius: var(--radius);
+
+      background:
+        var(--card-bg);
+
+      border:
+        1px solid
+        var(--card-border-color);
+
+      border-radius:
+        var(--radius);
+
       padding: 2.5rem;
+
       margin-bottom: 2.5rem;
 
       box-shadow:
-        0 15px 35px rgba(0,0,0,0.03);
+        0 15px 35px
+        rgba(0,0,0,0.03);
 
       transition:
         border-color 0.3s ease,
-        box-shadow 0.3s ease,
-        transform 0.3s ease;
+        box-shadow 0.3s ease;
     }
 
     .thieb-card:hover {
-      border-color: rgba(0, 0, 0, 0.3);
+
+      border-color:
+        rgba(0,0,0,0.3);
 
       box-shadow:
-        0 20px 40px rgba(0,0,0,0.06);
+        0 20px 40px
+        rgba(0,0,0,0.06);
     }
 
     /* =========================
@@ -643,23 +769,38 @@
     ========================== */
 
     .thieb-video-container {
+
       width: 100%;
+
       height: 420px;
+
       background: #f4f4f4;
+
       border-radius: 18px;
+
       overflow: hidden;
+
       margin-bottom: 2.5rem;
-      border: 1px solid var(--card-border-color);
+
+      border:
+        1px solid
+        var(--card-border-color);
+
       position: relative;
     }
 
     .thieb-video-container video {
+
       width: 100%;
       height: 100%;
+
       object-fit: cover;
 
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
+      -webkit-backface-visibility:
+        hidden;
+
+      backface-visibility:
+        hidden;
     }
 
     /* =========================
@@ -667,37 +808,59 @@
     ========================== */
 
     .about-thieb-grid {
+
       display: grid;
-      grid-template-columns: 320px 1fr;
+
+      grid-template-columns:
+        320px 1fr;
+
       gap: 3rem;
+
       align-items: center;
     }
 
     .about-img-box {
+
       width: 100%;
+
       height: 400px;
+
       border-radius: 16px;
+
       overflow: hidden;
-      border: 1px solid var(--card-border-color);
+
+      border:
+        1px solid
+        var(--card-border-color);
+
       background: #f4f4f4;
     }
 
     .about-img-box img {
+
       width: 100%;
       height: 100%;
+
       object-fit: cover;
     }
 
     .profile-title {
+
       font-size: 1.8rem;
+
       font-weight: 800;
+
       margin-bottom: 1rem;
+
       color: #111;
     }
 
     .profile-text {
+
       color: #555;
+
       margin-bottom: 1rem;
+
       font-size: 1.05rem;
     }
 
@@ -706,20 +869,33 @@
     ========================== */
 
     .tags-container {
+
       display: flex;
+
       flex-wrap: wrap;
+
       gap: 0.6rem;
+
       margin-top: 1.5rem;
     }
 
     .tag {
+
       background: #f0f0f0;
+
       color: #333;
-      padding: 0.4rem 1rem;
+
+      padding:
+        0.4rem 1rem;
+
       font-size: 0.75rem;
+
       font-weight: 600;
+
       border-radius: 6px;
-      text-transform: uppercase;
+
+      text-transform:
+        uppercase;
     }
 
     /* =========================
@@ -727,83 +903,126 @@
     ========================== */
 
     .timeline-stack {
+
       display: flex;
+
       flex-direction: column;
+
       gap: 1.5rem;
     }
 
     .timeline-row {
+
       background: #fafafa;
-      border: 1px solid var(--card-border-color);
+
+      border:
+        1px solid
+        var(--card-border-color);
+
       padding: 1.8rem;
+
       border-radius: 16px;
 
       transition:
         border-color 0.2s,
-        background 0.2s,
-        transform 0.3s ease;
+        background 0.2s;
     }
 
     .timeline-row:hover {
-      border-color: rgba(0,0,0,0.25);
+
+      border-color:
+        rgba(0,0,0,0.25);
+
       background: #f5f5f5;
-      transform: translateY(-2px);
     }
 
     .timeline-header-flex {
+
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
+
+      justify-content:
+        space-between;
+
+      align-items:
+        flex-start;
+
       margin-bottom: 0.5rem;
+
       flex-wrap: wrap;
+
       gap: 0.5rem;
     }
 
     .timeline-title-wrap {
+
       display: flex;
+
       align-items: center;
+
       gap: 12px;
     }
 
     .timeline-logo {
+
       width: 32px;
       height: 32px;
+
       object-fit: contain;
     }
 
     .timeline-title {
+
       font-size: 1.15rem;
+
       font-weight: 700;
+
       color: #111;
     }
 
     .timeline-badge {
+
       background: #111;
+
       color: #fff;
+
       font-size: 0.75rem;
+
       font-weight: 600;
-      padding: 0.3rem 0.8rem;
+
+      padding:
+        0.3rem 0.8rem;
+
       border-radius: 6px;
+
       white-space: nowrap;
     }
 
     .timeline-subtitle {
+
       font-size: 0.95rem;
-      color: var(--text-muted);
+
+      color:
+        var(--text-muted);
+
       margin-bottom: 0.8rem;
     }
 
     .timeline-desc {
+
       font-size: 0.9rem;
+
       color: #444;
     }
 
     .timeline-desc ul {
+
       margin-top: 0.5rem;
+
       padding-left: 1.2rem;
     }
 
     .timeline-desc li {
+
       margin-bottom: 0.3rem;
     }
 
@@ -812,26 +1031,43 @@
     ========================== */
 
     .experience-photo-grid {
+
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
       gap: 1rem;
+
       margin-top: 1.5rem;
     }
 
     .experience-photo-item {
+
       position: relative;
+
       height: 260px;
+
       border-radius: 14px;
+
       overflow: hidden;
-      border: 1px solid var(--card-border-color);
+
+      border:
+        1px solid
+        var(--card-border-color);
+
       background: #eaeaea;
     }
 
     .experience-photo-item img {
+
       width: 100%;
       height: 100%;
+
       object-fit: cover;
-      object-position: center center;
+
+      object-position:
+        center center;
 
       transition:
         transform 0.6s
@@ -844,48 +1080,69 @@
     }
 
     .experience-photo-item:hover img {
-      transform: scale(1.08);
+
+      transform:
+        scale(1.08);
     }
 
     .focus-left img {
-      object-position: 30% center;
+      object-position:
+        30% center;
     }
 
     .focus-right img {
-      object-position: 70% center;
+      object-position:
+        70% center;
     }
 
     .focus-top img {
-      object-position: center 30%;
+      object-position:
+        center 30%;
     }
 
     .focus-bottom img {
-      object-position: center 70%;
+      object-position:
+        center 70%;
     }
 
     /* =========================
-       OLD INTERNSHIP PHOTOS
+       INTERNSHIP PHOTOS
     ========================== */
 
     .internship-photo-grid {
+
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
       gap: 1rem;
+
       margin-top: 1.2rem;
     }
 
     .internship-photo-item {
+
       position: relative;
+
       height: 200px;
+
       border-radius: 12px;
+
       overflow: hidden;
-      border: 1px solid var(--card-border-color);
+
+      border:
+        1px solid
+        var(--card-border-color);
+
       background: #eaeaea;
     }
 
     .internship-photo-item img {
+
       width: 100%;
       height: 100%;
+
       object-fit: cover;
 
       transition:
@@ -893,11 +1150,15 @@
     }
 
     .internship-photo-item:hover img {
-      transform: scale(1.06);
+
+      transform:
+        scale(1.06);
     }
 
     .crop-top img {
-      object-position: 45% center !important;
+
+      object-position:
+        45% center !important;
     }
 
     /* =========================
@@ -905,10 +1166,15 @@
     ========================== */
 
     .exp-category-title {
+
       font-size: 1.15rem;
+
       font-weight: 800;
+
       margin-top: 2rem;
+
       margin-bottom: 1rem;
+
       color: #111;
     }
 
@@ -917,14 +1183,20 @@
     }
 
     .experience-role {
+
       font-size: 1.1rem;
+
       font-weight: 700;
+
       color: #111;
     }
 
     .sub-role {
+
       font-weight: 700;
+
       margin-top: 0.5rem;
+
       color: #111;
     }
 
@@ -933,33 +1205,56 @@
     ========================== */
 
     .skills-layout {
+
       display: grid;
-      grid-template-columns: 2fr 1fr;
+
+      grid-template-columns:
+        2fr 1fr;
+
       gap: 3rem;
+
       align-items: start;
     }
 
     .skill-group-title {
+
       font-size: 1rem;
+
       font-weight: 700;
+
       margin-bottom: 0.8rem;
+
       color: #111;
     }
 
     .skills-flex {
+
       display: flex;
+
       flex-wrap: wrap;
+
       gap: 0.8rem;
+
       margin-bottom: 2rem;
     }
 
     .skill-chip {
+
       background: #f2f2f2;
-      border: 1px solid var(--card-border-color);
-      padding: 0.6rem 1.2rem;
+
+      border:
+        1px solid
+        var(--card-border-color);
+
+      padding:
+        0.6rem 1.2rem;
+
       border-radius: 30px;
+
       font-size: 0.85rem;
+
       font-weight: 500;
+
       color: #111;
 
       transition:
@@ -967,31 +1262,48 @@
     }
 
     .skill-chip:hover {
+
       background: #111;
+
       color: #fff;
     }
 
     .interest-box-inner {
+
       background: #fafafa;
-      border: 1px solid var(--card-border-color);
+
+      border:
+        1px solid
+        var(--card-border-color);
+
       padding: 2rem;
+
       border-radius: 16px;
     }
 
     .interest-box-inner h3 {
+
       font-size: 1.1rem;
+
       font-weight: 800;
+
       margin-bottom: 1rem;
+
       color: #111;
     }
 
     .interest-box-inner ul {
+
       padding-left: 1.2rem;
+
       color: var(--text-muted);
+
       font-size: 0.9rem;
 
       display: flex;
+
       flex-direction: column;
+
       gap: 0.5rem;
     }
 
@@ -1000,12 +1312,16 @@
     ========================== */
 
     section#contact {
+
       background-color: #0d0d0d;
+
       border-bottom: none;
     }
 
     .contact-container-new {
+
       max-width: 1000px;
+
       margin: 0 auto;
 
       background:
@@ -1015,37 +1331,59 @@
           #111111 100%
         );
 
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border:
+        1px solid
+        rgba(255,255,255,0.1);
+
       border-radius: 32px;
-      padding: 4rem 3rem;
+
+      padding:
+        4rem 3rem;
 
       box-shadow:
-        0 25px 60px rgba(0,0,0,0.5);
+        0 25px 60px
+        rgba(0,0,0,0.5);
 
       display: grid;
-      grid-template-columns: 340px 1fr;
+
+      grid-template-columns:
+        340px 1fr;
+
       gap: 3.5rem;
+
       align-items: center;
+
       position: relative;
+
       overflow: hidden;
     }
 
     .contact-profile-card {
+
       position: relative;
+
       width: 100%;
+
       height: 380px;
+
       border-radius: 22px;
+
       overflow: hidden;
 
       box-shadow:
-        0 15px 35px rgba(0,0,0,0.4);
+        0 15px 35px
+        rgba(0,0,0,0.4);
 
-      border: 2px solid rgba(255, 255, 255, 0.15);
+      border:
+        2px solid
+        rgba(255,255,255,0.15);
     }
 
     .contact-profile-card img {
+
       width: 100%;
       height: 100%;
+
       object-fit: cover;
 
       transition:
@@ -1059,11 +1397,15 @@
     }
 
     .contact-profile-card:hover img {
-      transform: scale(1.05);
+
+      transform:
+        scale(1.05);
     }
 
     .contact-profile-overlay {
+
       position: absolute;
+
       inset: 0;
 
       background:
@@ -1074,77 +1416,131 @@
         );
 
       display: flex;
+
       flex-direction: column;
+
       justify-content: flex-end;
+
       padding: 1.5rem;
+
       color: #ffffff;
     }
 
     .contact-profile-name {
+
       font-size: 1.25rem;
+
       font-weight: 800;
+
       letter-spacing: -0.5px;
+
       color: #fff;
     }
 
     .contact-profile-sub {
-      font-family: 'Caveat', cursive;
+
+      font-family:
+        'Caveat', cursive;
+
       font-size: 1.2rem;
+
       color: #e0e0e0;
+
       opacity: 0.9;
     }
 
     .contact-info-side {
+
       display: flex;
+
       flex-direction: column;
+
       justify-content: center;
     }
 
     .contact-title-new {
-      font-size: clamp(2rem, 3.5vw, 2.8rem);
+
+      font-size:
+        clamp(
+          2rem,
+          3.5vw,
+          2.8rem
+        );
+
       font-weight: 900;
+
       color: #ffffff;
+
       line-height: 1.15;
+
       letter-spacing: -1px;
+
       margin-bottom: 1rem;
     }
 
     .contact-desc-new {
+
       color: #aaaaaa;
+
       font-size: 0.95rem;
+
       margin-bottom: 2rem;
     }
 
     .contact-badges-new {
+
       display: flex;
+
       flex-direction: column;
+
       gap: 0.9rem;
     }
 
     .contact-badge-item-new {
+
       display: flex;
+
       align-items: center;
+
       gap: 1rem;
+
       background: #1e1e1e;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 0.9rem 1.4rem;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+      padding:
+        0.9rem 1.4rem;
+
       border-radius: 16px;
+
       text-decoration: none;
+
       color: #ffffff;
+
       font-weight: 600;
+
       font-size: 0.95rem;
 
       box-shadow:
-        0 4px 15px rgba(0,0,0,0.2);
+        0 4px 15px
+        rgba(0,0,0,0.2);
 
       transition:
         all 0.25s ease;
     }
 
     .contact-badge-item-new:hover {
-      transform: translateX(6px);
-      border-color: #ffffff;
+
+      transform:
+        translateX(6px);
+
+      border-color:
+        #ffffff;
+
       background: #ffffff;
+
       color: #111111;
     }
 
@@ -1153,8 +1549,11 @@
     }
 
     .contact-badge-item-new i {
+
       font-size: 1.3rem;
+
       width: 24px;
+
       text-align: center;
 
       transition:
@@ -1178,12 +1577,20 @@
     ========================== */
 
     footer {
+
       text-align: center;
+
       padding: 3rem;
+
       color: #888888;
+
       font-size: 0.85rem;
+
       background: #0d0d0d;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+      border-top:
+        1px solid
+        rgba(255,255,255,0.08);
     }
 
     /* =========================
@@ -1195,23 +1602,32 @@
       .about-thieb-grid,
       .skills-layout,
       .contact-container-new {
+
         grid-template-columns: 1fr;
+
         gap: 2rem;
       }
 
       .experience-photo-grid {
-        grid-template-columns: repeat(3, 1fr);
+
+        grid-template-columns:
+          repeat(3, 1fr);
       }
 
       .internship-photo-grid {
-        grid-template-columns: repeat(2, 1fr);
+
+        grid-template-columns:
+          repeat(2, 1fr);
       }
 
       .contact-container-new {
-        padding: 2rem 1.5rem;
+
+        padding:
+          2rem 1.5rem;
       }
 
       .contact-profile-card {
+
         height: 280px;
       }
 
@@ -1220,86 +1636,113 @@
       }
 
       .hero-name {
-        font-size: clamp(
-          2.7rem,
-          10vw,
-          5rem
-        );
+
+        font-size:
+          clamp(
+            2.7rem,
+            10vw,
+            5rem
+          );
       }
+
     }
 
     @media (max-width: 600px) {
 
       section {
-        padding: 4rem 5%;
+
+        padding:
+          4rem 5%;
       }
 
       .thieb-card {
+
         padding: 1.4rem;
+
         border-radius: 18px;
       }
 
       .thieb-video-container {
+
         height: 260px;
+
         margin-bottom: 1.5rem;
       }
 
       .about-img-box {
+
         height: 360px;
       }
 
       .experience-photo-grid {
-        grid-template-columns: repeat(3, 1fr);
+
+        grid-template-columns:
+          repeat(3, 1fr);
+
         gap: 0.45rem;
       }
 
       .experience-photo-item {
+
         height: 150px;
+
         border-radius: 10px;
       }
 
       .internship-photo-grid {
+
         grid-template-columns: 1fr;
       }
 
       .internship-photo-item {
+
         height: 230px;
       }
 
       .hero {
+
         min-height: 600px;
       }
 
       .hero-greeting {
+
         font-size: 2.3rem;
       }
 
       .hero-name {
+
         font-size: 2.8rem;
+
         letter-spacing: -1px;
       }
 
       .hero-text-content {
+
         bottom: 2.5rem;
       }
 
       .contact-container-new {
+
         border-radius: 24px;
       }
 
       .contact-profile-card {
+
         height: 320px;
       }
 
       .timeline-row {
+
         padding: 1.3rem;
       }
 
       .timeline-title {
+
         font-size: 1rem;
       }
 
       .timeline-badge {
+
         font-size: 0.7rem;
       }
 
@@ -1318,9 +1761,15 @@
       *,
       *::before,
       *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+
+        animation-duration:
+          0.01ms !important;
+
+        animation-iteration-count:
+          1 !important;
+
+        transition-duration:
+          0.01ms !important;
       }
 
     }
@@ -2042,8 +2491,6 @@
           </div>
 
 
-          <!-- JSC PHOTOS -->
-
           <div class="experience-photo-grid">
 
             <div class="experience-photo-item">
@@ -2060,7 +2507,7 @@
 
               <img
                 src="jsc-2.jpeg"
-                alt="Reysha Zahra Zahra Haptari JSC organization activity"
+                alt="Reysha Zahra Haptari JSC organization activity"
                 loading="lazy"
               >
 
@@ -2148,8 +2595,6 @@
           </div>
 
 
-          <!-- HIMA PHOTOS -->
-
           <div class="experience-photo-grid">
 
             <div class="experience-photo-item">
@@ -2227,8 +2672,6 @@
 
           </div>
 
-
-          <!-- BEM PHOTOS -->
 
           <div class="experience-photo-grid">
 
@@ -2743,8 +3186,7 @@
 
 
       /*
-        Hero langsung aktif saat pertama
-        kali halaman selesai dimuat.
+        Hero pertama kali dibuka.
       */
 
       const hero =
@@ -2752,12 +3194,14 @@
 
       if (hero) {
 
-        hero.classList.add('hero-active');
-        hero.classList.add('is-visible');
+        setTimeout(() => {
+
+          hero.classList.add('hero-active');
+          hero.classList.add('is-visible');
+
+        }, 100);
 
       }
-
-      updateActiveNavigation();
 
     });
 
@@ -2767,19 +3211,15 @@
     ========================== */
 
     const observerOptions = {
+
       root: null,
 
       /*
-        Section dianggap masuk ketika
-        sekitar 15% sudah terlihat.
+        Hero dianggap masuk ketika
+        minimal 15% terlihat.
       */
-      threshold: 0.15,
 
-      /*
-        Sedikit margin supaya animasi
-        terasa lebih natural.
-      */
-      rootMargin: "0px 0px -5% 0px"
+      threshold: 0.15
     };
 
 
@@ -2789,120 +3229,99 @@
 
           entries.forEach(entry => {
 
-            const element =
-              entry.target;
-
-
             /*
-              MASUK VIEWPORT
+              ==================================
+              HERO
+              ==================================
+
+              Kalau Hero masuk viewport:
+              - is-visible
+              - hero-active
+
+              Kalau Hero keluar:
+              - hero-active DIHAPUS
+
+              Jadi ketika kembali lagi,
+              animasinya akan diputar ulang.
             */
 
-            if (entry.isIntersecting) {
+            if (
+              entry.target.id === 'home'
+            ) {
 
-              /*
-                Tambahkan kembali class.
-                Karena class akan dilepas
-                ketika section keluar viewport,
-                animasi bisa dimainkan ulang.
-              */
-
-              element.classList.add(
-                'is-visible'
-              );
-
-
-              /*
-                KHUSUS HERO
-              */
-
-              if (
-                element.classList.contains(
-                  'hero'
-                )
-              ) {
+              if (entry.isIntersecting) {
 
                 /*
-                  Reset animasi Hero
-                  sebelum aktif lagi.
+                  Reset dulu animasi supaya
+                  browser benar-benar memainkan
+                  transition dari awal.
                 */
 
-                element.classList.remove(
+                entry.target.classList.remove(
                   'hero-active'
                 );
 
-
                 /*
-                  Force browser melakukan
-                  reflow supaya transition
-                  dimainkan ulang.
+                  Force browser reflow.
+                  Ini penting supaya animasi
+                  dapat dimainkan ulang.
                 */
 
-                void element.offsetWidth;
+                void entry.target.offsetWidth;
 
+                entry.target.classList.add(
+                  'is-visible'
+                );
+
+                entry.target.classList.add(
+                  'hero-active'
+                );
+
+              } else {
 
                 /*
-                  Aktifkan kembali Hero.
+                  Saat meninggalkan hero,
+                  class active dilepas.
+
+                  Ketika balik lagi,
+                  animasi akan mulai dari
+                  kondisi opacity 0 + zoom.
                 */
 
-                requestAnimationFrame(() => {
-
-                  element.classList.add(
-                    'hero-active'
-                  );
-
-                });
+                entry.target.classList.remove(
+                  'hero-active'
+                );
 
               }
 
+              return;
             }
 
 
             /*
-              KELUAR VIEWPORT
+              ==================================
+              SECTION LAIN
+              ==================================
             */
 
-            else {
+            if (entry.isIntersecting) {
 
-              /*
-                Hapus is-visible agar
-                section bisa fade-in lagi
-                saat discroll kembali.
-              */
-
-              element.classList.remove(
+              entry.target.classList.add(
                 'is-visible'
               );
-
-
-              /*
-                KHUSUS HERO:
-                reset semua animasi Hero.
-              */
-
-              if (
-                element.classList.contains(
-                  'hero'
-                )
-              ) {
-
-                element.classList.remove(
-                  'hero-active'
-                );
-
-              }
 
             }
 
           });
 
         },
+
         observerOptions
       );
 
 
     /*
-      Observe semua section
-      yang memiliki fade-section.
+      Observe semua section.
     */
 
     document
@@ -2922,7 +3341,9 @@
       document.querySelectorAll('section');
 
     const navLinks =
-      document.querySelectorAll('.nav-menu a');
+      document.querySelectorAll(
+        '.nav-menu a'
+      );
 
 
     function updateActiveNavigation() {
@@ -2949,7 +3370,9 @@
 
       navLinks.forEach(link => {
 
-        link.classList.remove('active');
+        link.classList.remove(
+          'active'
+        );
 
         const href =
           link.getAttribute('href');
@@ -2959,7 +3382,9 @@
           href === `#${current}`
         ) {
 
-          link.classList.add('active');
+          link.classList.add(
+            'active'
+          );
 
         }
 
@@ -2977,74 +3402,7 @@
     );
 
 
-    /*
-      Update navigation juga ketika
-      user resize browser.
-    */
-
-    window.addEventListener(
-      'resize',
-      updateActiveNavigation
-    );
-
-
-    /* =========================
-       NAVIGATION CLICK
-       HERO RESET
-    ========================== */
-
-    document
-      .querySelectorAll('a[href="#home"]')
-      .forEach(link => {
-
-        link.addEventListener(
-          'click',
-          () => {
-
-            const hero =
-              document.getElementById('home');
-
-            if (!hero) return;
-
-
-            /*
-              Reset Hero supaya ketika
-              kembali ke atas animasi
-              benar-benar dimainkan lagi.
-            */
-
-            hero.classList.remove(
-              'hero-active'
-            );
-
-            hero.classList.remove(
-              'is-visible'
-            );
-
-
-            /*
-              Reflow.
-            */
-
-            void hero.offsetWidth;
-
-
-            requestAnimationFrame(() => {
-
-              hero.classList.add(
-                'is-visible'
-              );
-
-              hero.classList.add(
-                'hero-active'
-              );
-
-            });
-
-          }
-        );
-
-      });
+    updateActiveNavigation();
 
 
     /* =========================
@@ -3059,7 +3417,8 @@
           'error',
           () => {
 
-            img.style.opacity = '0.4';
+            img.style.opacity =
+              '0.4';
 
           }
         );
@@ -3068,19 +3427,37 @@
 
 
     /* =========================
-       VIDEO ERROR HANDLING
+       HERO NAVIGATION CLICK
+       EXTRA RESET
     ========================== */
 
     document
-      .querySelectorAll('video')
-      .forEach(video => {
+      .querySelectorAll(
+        'a[href="#home"]'
+      )
+      .forEach(link => {
 
-        video.addEventListener(
-          'error',
+        link.addEventListener(
+          'click',
           () => {
 
-            video.style.background =
-              '#f4f4f4';
+            const hero =
+              document.getElementById(
+                'home'
+              );
+
+            if (!hero) return;
+
+            /*
+              Hapus active sebentar.
+              IntersectionObserver akan
+              menjalankan kembali animasi
+              ketika hero terlihat.
+            */
+
+            hero.classList.remove(
+              'hero-active'
+            );
 
           }
         );
