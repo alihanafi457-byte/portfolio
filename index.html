@@ -350,22 +350,30 @@
 
     /* =========================
        SCROLL ANIMATION
+       AKAN MUNCUL ULANG SETIAP
+       KALI SECTION MASUK VIEWPORT
     ========================== */
 
     .fade-section {
       opacity: 0;
-      transform: translateY(55px) scale(0.97);
+      transform:
+        translateY(55px)
+        scale(0.96);
 
       transition:
         opacity 0.9s cubic-bezier(0.165, 0.84, 0.44, 1),
         transform 0.9s cubic-bezier(0.165, 0.84, 0.44, 1);
 
-      will-change: opacity, transform;
+      will-change:
+        opacity,
+        transform;
     }
 
     .fade-section.is-visible {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform:
+        translateY(0)
+        scale(1);
     }
 
     /* =========================
@@ -384,19 +392,26 @@
       overflow: hidden;
       padding: 0 !important;
       border: none;
-
-      /*
-        Hero tidak dibuat selalu visible.
-        Jadi ketika user kembali ke hero,
-        animasi akan dimainkan lagi.
-      */
-      opacity: 0;
-      transform: scale(0.98);
     }
 
-    .hero.hero-active {
-      opacity: 1;
-      transform: scale(1);
+    /*
+      HERO SENDIRI TIDAK MENGANDALKAN
+      .fade-section SAJA.
+
+      Setiap kali hero masuk viewport,
+      .hero-active akan ditambahkan lagi.
+    */
+
+    .hero.fade-section {
+      transform:
+        translateY(35px)
+        scale(0.98);
+    }
+
+    .hero.fade-section.is-visible {
+      transform:
+        translateY(0)
+        scale(1);
     }
 
     .hero-img-wrap {
@@ -439,6 +454,10 @@
         opacity 1.2s ease;
     }
 
+    /*
+      FOTO HERO FADE-IN + ZOOM
+    */
+
     .hero.hero-active .hero-img-wrap img {
       transform:
         scale(1.3)
@@ -468,6 +487,10 @@
         cubic-bezier(0.165, 0.84, 0.44, 1)
         0.35s;
     }
+
+    /*
+      TEXT HERO FADE-IN
+    */
 
     .hero.hero-active .hero-text-content {
       opacity: 1;
@@ -604,7 +627,8 @@
 
       transition:
         border-color 0.3s ease,
-        box-shadow 0.3s ease;
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
     }
 
     .thieb-card:hover {
@@ -717,13 +741,13 @@
       transition:
         border-color 0.2s,
         background 0.2s,
-        transform 0.25s ease;
+        transform 0.3s ease;
     }
 
     .timeline-row:hover {
       border-color: rgba(0,0,0,0.25);
       background: #f5f5f5;
-      transform: translateY(-3px);
+      transform: translateY(-2px);
     }
 
     .timeline-header-flex {
@@ -1775,7 +1799,9 @@
 
       <div class="timeline-stack">
 
-        <!-- PROFESSIONAL INTERNSHIPS -->
+        <!-- =========================
+             PROFESSIONAL INTERNSHIPS
+        ========================== -->
 
         <h3 class="exp-category-title">
           💼 Professional Internships
@@ -1961,7 +1987,9 @@
         </article>
 
 
-        <!-- ORGANIZATION EXPERIENCE -->
+        <!-- =========================
+             ORGANIZATION EXPERIENCE
+        ========================== -->
 
         <h3 class="exp-category-title">
           🏛️ Organization Experience
@@ -2014,6 +2042,8 @@
           </div>
 
 
+          <!-- JSC PHOTOS -->
+
           <div class="experience-photo-grid">
 
             <div class="experience-photo-item">
@@ -2030,7 +2060,7 @@
 
               <img
                 src="jsc-2.jpeg"
-                alt="Reysha Zahra Haptari JSC organization activity"
+                alt="Reysha Zahra Zahra Haptari JSC organization activity"
                 loading="lazy"
               >
 
@@ -2118,6 +2148,8 @@
           </div>
 
 
+          <!-- HIMA PHOTOS -->
+
           <div class="experience-photo-grid">
 
             <div class="experience-photo-item">
@@ -2196,6 +2228,8 @@
           </div>
 
 
+          <!-- BEM PHOTOS -->
+
           <div class="experience-photo-grid">
 
             <div class="experience-photo-item">
@@ -2233,7 +2267,9 @@
         </article>
 
 
-        <!-- ADJUDICATION EXPERIENCE -->
+        <!-- =========================
+             ADJUDICATION EXPERIENCE
+        ========================== -->
 
         <h3 class="exp-category-title">
           ⚖️ Adjudication Experience
@@ -2333,7 +2369,9 @@
         </article>
 
 
-        <!-- COMMITTEE EXPERIENCE -->
+        <!-- =========================
+             COMMITTEE EXPERIENCE
+        ========================== -->
 
         <h3 class="exp-category-title">
           🗓️ Committee & Event Experience
@@ -2705,7 +2743,8 @@
 
 
       /*
-        HERO PERTAMA KALI DIBUKA
+        Hero langsung aktif saat pertama
+        kali halaman selesai dimuat.
       */
 
       const hero =
@@ -2713,14 +2752,12 @@
 
       if (hero) {
 
-        setTimeout(() => {
-
-          hero.classList.add('hero-active');
-          hero.classList.add('is-visible');
-
-        }, 450);
+        hero.classList.add('hero-active');
+        hero.classList.add('is-visible');
 
       }
+
+      updateActiveNavigation();
 
     });
 
@@ -2731,7 +2768,18 @@
 
     const observerOptions = {
       root: null,
-      threshold: 0.15
+
+      /*
+        Section dianggap masuk ketika
+        sekitar 15% sudah terlihat.
+      */
+      threshold: 0.15,
+
+      /*
+        Sedikit margin supaya animasi
+        terasa lebih natural.
+      */
+      rootMargin: "0px 0px -5% 0px"
     };
 
 
@@ -2741,68 +2789,107 @@
 
           entries.forEach(entry => {
 
+            const element =
+              entry.target;
+
+
             /*
-              Kalau section masuk layar:
-              tampilkan animasi.
+              MASUK VIEWPORT
             */
 
             if (entry.isIntersecting) {
 
-              entry.target.classList.add(
+              /*
+                Tambahkan kembali class.
+                Karena class akan dilepas
+                ketika section keluar viewport,
+                animasi bisa dimainkan ulang.
+              */
+
+              element.classList.add(
                 'is-visible'
               );
 
 
               /*
-                HERO:
-                Setiap kali kembali ke Hero,
-                animasi hero dimainkan lagi.
+                KHUSUS HERO
               */
 
               if (
-                entry.target.id === 'home'
+                element.classList.contains(
+                  'hero'
+                )
               ) {
 
-                entry.target.classList.remove(
-                  'hero-active'
-                );
-
                 /*
-                  Force browser membaca ulang
-                  perubahan class agar animasi
-                  bisa dimainkan ulang.
+                  Reset animasi Hero
+                  sebelum aktif lagi.
                 */
 
-                void entry.target.offsetWidth;
-
-                entry.target.classList.add(
+                element.classList.remove(
                   'hero-active'
                 );
+
+
+                /*
+                  Force browser melakukan
+                  reflow supaya transition
+                  dimainkan ulang.
+                */
+
+                void element.offsetWidth;
+
+
+                /*
+                  Aktifkan kembali Hero.
+                */
+
+                requestAnimationFrame(() => {
+
+                  element.classList.add(
+                    'hero-active'
+                  );
+
+                });
 
               }
 
             }
 
-            /*
-              Kalau keluar viewport:
-              khusus Hero kita reset.
 
-              Jadi saat user pergi ke Contact
-              lalu kembali ke Hero,
-              Hero akan fade-in lagi.
+            /*
+              KELUAR VIEWPORT
             */
 
-            else if (
-              entry.target.id === 'home'
-            ) {
+            else {
 
-              entry.target.classList.remove(
-                'hero-active'
-              );
+              /*
+                Hapus is-visible agar
+                section bisa fade-in lagi
+                saat discroll kembali.
+              */
 
-              entry.target.classList.remove(
+              element.classList.remove(
                 'is-visible'
               );
+
+
+              /*
+                KHUSUS HERO:
+                reset semua animasi Hero.
+              */
+
+              if (
+                element.classList.contains(
+                  'hero'
+                )
+              ) {
+
+                element.classList.remove(
+                  'hero-active'
+                );
+
+              }
 
             }
 
@@ -2815,6 +2902,7 @@
 
     /*
       Observe semua section
+      yang memiliki fade-section.
     */
 
     document
@@ -2889,7 +2977,74 @@
     );
 
 
-    updateActiveNavigation();
+    /*
+      Update navigation juga ketika
+      user resize browser.
+    */
+
+    window.addEventListener(
+      'resize',
+      updateActiveNavigation
+    );
+
+
+    /* =========================
+       NAVIGATION CLICK
+       HERO RESET
+    ========================== */
+
+    document
+      .querySelectorAll('a[href="#home"]')
+      .forEach(link => {
+
+        link.addEventListener(
+          'click',
+          () => {
+
+            const hero =
+              document.getElementById('home');
+
+            if (!hero) return;
+
+
+            /*
+              Reset Hero supaya ketika
+              kembali ke atas animasi
+              benar-benar dimainkan lagi.
+            */
+
+            hero.classList.remove(
+              'hero-active'
+            );
+
+            hero.classList.remove(
+              'is-visible'
+            );
+
+
+            /*
+              Reflow.
+            */
+
+            void hero.offsetWidth;
+
+
+            requestAnimationFrame(() => {
+
+              hero.classList.add(
+                'is-visible'
+              );
+
+              hero.classList.add(
+                'hero-active'
+              );
+
+            });
+
+          }
+        );
+
+      });
 
 
     /* =========================
@@ -2913,62 +3068,22 @@
 
 
     /* =========================
-       NAV LINK HERO ANIMATION
+       VIDEO ERROR HANDLING
     ========================== */
 
     document
-      .querySelectorAll('a[href="#home"]')
-      .forEach(link => {
+      .querySelectorAll('video')
+      .forEach(video => {
 
-        link.addEventListener('click', () => {
+        video.addEventListener(
+          'error',
+          () => {
 
-          const hero =
-            document.getElementById('home');
+            video.style.background =
+              '#f4f4f4';
 
-          if (!hero) return;
-
-
-          /*
-            Reset animasi Hero ketika
-            tombol Home / logo diklik.
-          */
-
-          hero.classList.remove(
-            'hero-active'
-          );
-
-          hero.classList.remove(
-            'is-visible'
-          );
-
-
-          /*
-            Force reflow
-            supaya transition dimainkan
-            dari awal.
-          */
-
-          void hero.offsetWidth;
-
-
-          /*
-            Setelah browser melakukan reflow,
-            aktifkan kembali.
-          */
-
-          requestAnimationFrame(() => {
-
-            hero.classList.add(
-              'is-visible'
-            );
-
-            hero.classList.add(
-              'hero-active'
-            );
-
-          });
-
-        });
+          }
+        );
 
       });
 
