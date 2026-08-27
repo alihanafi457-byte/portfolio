@@ -12,7 +12,7 @@
 
   <meta
     name="description"
-    content="Portfolio resmi Reysha Zahra Haptari, Law graduate from Universitas Andalas specializing in Criminal Law, legal research, legal advocacy, litigation support, regulatory compliance, and legislative analysis."
+    content="Official portfolio of Reysha Zahra Haptari, Law graduate from Universitas Andalas specializing in Criminal Law, legal research, legal advocacy, litigation support, regulatory compliance, and legislative analysis."
   >
 
   <meta
@@ -27,7 +27,10 @@
     content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
   >
 
-  <meta name="googlebot" content="index, follow">
+  <meta
+    name="googlebot"
+    content="index, follow"
+  >
 
   <link
     rel="canonical"
@@ -352,9 +355,11 @@
     .fade-section {
       opacity: 0;
       transform: scale(0.82) translateY(50px);
+
       transition:
         opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1),
         transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+
       will-change: opacity, transform;
     }
 
@@ -409,7 +414,11 @@
       width: auto;
       max-width: none;
       object-fit: contain;
-      transform: scale(1.6);
+
+      transform:
+        scale(1.45)
+        translateY(25px);
+
       opacity: 0;
 
       transition:
@@ -418,7 +427,10 @@
     }
 
     .hero.hero-active .hero-img-wrap img {
-      transform: scale(1.3);
+      transform:
+        scale(1.3)
+        translateY(0);
+
       opacity: 1;
     }
 
@@ -426,9 +438,11 @@
       position: absolute;
       bottom: 3.5rem;
       left: 50%;
+
       transform:
         translateX(-50%)
-        translateY(20px);
+        translateY(35px);
+
       z-index: 3;
       text-align: center;
       width: 100%;
@@ -436,12 +450,15 @@
       opacity: 0;
 
       transition:
-        opacity 1s ease 0.4s,
-        transform 1s ease 0.4s;
+        opacity 1.1s ease 0.35s,
+        transform 1.1s
+        cubic-bezier(0.165, 0.84, 0.44, 1)
+        0.35s;
     }
 
     .hero.hero-active .hero-text-content {
       opacity: 1;
+
       transform:
         translateX(-50%)
         translateY(0);
@@ -465,6 +482,7 @@
       color: #111;
       line-height: 1;
       margin-bottom: 1.2rem;
+
       text-shadow:
         0 10px 30px rgba(255,255,255,0.8);
     }
@@ -487,11 +505,14 @@
       display: inline-flex;
       justify-content: center;
       align-items: center;
+
       width: 44px;
       height: 44px;
+
       background: rgba(255, 255, 255, 0.9);
       border: 1px solid rgba(0, 0, 0, 0.15);
       border-radius: 50%;
+
       color: #111;
       font-size: 1.2rem;
       text-decoration: none;
@@ -538,9 +559,11 @@
       font-weight: 800;
       margin-bottom: 2.5rem;
       letter-spacing: -1px;
+
       display: flex;
       align-items: center;
       gap: 0.8rem;
+
       color: var(--text-main);
     }
 
@@ -597,9 +620,6 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-
-      image-rendering:
-        -webkit-optimize-contrast;
 
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
@@ -750,6 +770,75 @@
 
     /* =========================
        EXPERIENCE PHOTOS
+    ========================== */
+
+    .experience-photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .experience-photo-item {
+      position: relative;
+      height: 260px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--card-border-color);
+      background: #eaeaea;
+    }
+
+    .experience-photo-item img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      /*
+        FOTO DIBUAT LEBIH FOKUS
+        KE ORANG / SUBJEK.
+      */
+
+      object-position: center center;
+
+      transition:
+        transform 0.6s
+        cubic-bezier(
+          0.165,
+          0.84,
+          0.44,
+          1
+        );
+    }
+
+    .experience-photo-item:hover img {
+      transform: scale(1.08);
+    }
+
+    /*
+      Kalau orang di foto berada
+      agak ke kiri/kanan/atas,
+      class di bawah bisa digunakan.
+    */
+
+    .focus-left img {
+      object-position: 30% center;
+    }
+
+    .focus-right img {
+      object-position: 70% center;
+    }
+
+    .focus-top img {
+      object-position: center 30%;
+    }
+
+    .focus-bottom img {
+      object-position: center 70%;
+    }
+
+    /* =========================
+       OLD INTERNSHIP PHOTOS
     ========================== */
 
     .internship-photo-grid {
@@ -934,7 +1023,8 @@
       object-fit: cover;
 
       transition:
-        transform 0.6s cubic-bezier(
+        transform 0.6s
+        cubic-bezier(
           0.165,
           0.84,
           0.44,
@@ -1083,6 +1173,10 @@
         gap: 2rem;
       }
 
+      .experience-photo-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
       .internship-photo-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -1126,6 +1220,22 @@
 
       .about-img-box {
         height: 360px;
+      }
+
+      /*
+        HP:
+        tetap 3 foto tetapi lebih kecil
+        agar ketiganya tetap terlihat.
+      */
+
+      .experience-photo-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.45rem;
+      }
+
+      .experience-photo-item {
+        height: 150px;
+        border-radius: 10px;
       }
 
       .internship-photo-grid {
@@ -1912,38 +2022,32 @@
           </div>
 
 
-          <!-- JSC 3 PHOTOS -->
+          <!-- JSC PHOTOS -->
 
-          <div class="internship-photo-grid">
+          <div class="experience-photo-grid">
 
-            <div class="internship-photo-item">
-
+            <div class="experience-photo-item">
               <img
                 src="jsc-1.jpeg"
                 alt="Reysha Zahra Haptari with Justicia Sport Club JSC"
                 loading="lazy"
               >
-
             </div>
 
-            <div class="internship-photo-item">
-
+            <div class="experience-photo-item">
               <img
                 src="jsc-2.jpeg"
-                alt="Reysha Zahra Haptari JSC sports development activity"
+                alt="Reysha Zahra Zahra Haptari JSC organization activity"
                 loading="lazy"
               >
-
             </div>
 
-            <div class="internship-photo-item">
-
+            <div class="experience-photo-item">
               <img
                 src="jsc-3.jpeg"
                 alt="Reysha Zahra Haptari Justicia Sport Club activity"
                 loading="lazy"
               >
-
             </div>
 
           </div>
@@ -2018,38 +2122,32 @@
           </div>
 
 
-          <!-- HIMA 3 PHOTOS -->
+          <!-- HIMA PHOTOS -->
 
-          <div class="internship-photo-grid">
+          <div class="experience-photo-grid">
 
-            <div class="internship-photo-item">
-
+            <div class="experience-photo-item">
               <img
                 src="hima-1.jpeg"
-                alt="Reysha Zahra Haptari HIMA Pidana advocacy activity"
+                alt="Reysha Zahra Haptari HIMA PIDANA advocacy activity"
                 loading="lazy"
               >
-
             </div>
 
-            <div class="internship-photo-item">
-
+            <div class="experience-photo-item">
               <img
                 src="hima-2.jpeg"
                 alt="Reysha Zahra Haptari Criminal Law Student Association"
                 loading="lazy"
               >
-
             </div>
 
-            <div class="internship-photo-item">
-
+            <div class="experience-photo-item">
               <img
                 src="hima-3.jpeg"
-                alt="Reysha Zahra Haptari HIMA Pidana publication activity"
+                alt="Reysha Zahra Haptari HIMA PIDANA publication activity"
                 loading="lazy"
               >
-
             </div>
 
           </div>
@@ -2098,38 +2196,32 @@
           </div>
 
 
-          <!-- BEM 3 PHOTOS -->
+          <!-- BEM PHOTOS -->
 
-          <div class="internship-photo-grid">
+          <div class="experience-photo-grid">
 
-            <div class="internship-photo-item">
-
+            <div class="experience-photo-item">
               <img
                 src="bem-1.jpeg"
-                alt="Reysha Zahra Haptari Student Executive Board BEM"
+                alt="Reysha Zahra Haptari BEM Faculty of Law Universitas Andalas"
                 loading="lazy"
               >
-
             </div>
 
-            <div class="internship-photo-item">
-
+            <div class="experience-photo-item">
               <img
                 src="bem-2.jpeg"
-                alt="Reysha Zahra Haptari BEM Faculty of Law Andalas University"
+                alt="Reysha Zahra Haptari Student Executive Board activity"
                 loading="lazy"
               >
-
             </div>
 
-            <div class="internship-photo-item">
-
+            <div class="experience-photo-item">
               <img
                 src="bem-3.jpeg"
-                alt="Reysha Zahra Haptari BEM organizational activity"
+                alt="Reysha Zahra Haptari BEM organization activity"
                 loading="lazy"
               >
-
             </div>
 
           </div>
