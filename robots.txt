@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://alihanafi457-byte.github.io/portfolio/sitemap.xml
