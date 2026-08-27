@@ -79,7 +79,7 @@
   >
 
   <!-- =========================
-       TWITTER / X CARD
+       TWITTER / X
   ========================== -->
 
   <meta
@@ -346,7 +346,7 @@
     }
 
     /* =========================
-       GENERAL SCROLL ANIMATION
+       SCROLL ANIMATION
     ========================== */
 
     .fade-section {
@@ -409,14 +409,12 @@
       width: auto;
       max-width: none;
       object-fit: contain;
-
-      /* Fade-in setiap kali hero aktif */
-      transform: scale(1.18);
+      transform: scale(1.6);
       opacity: 0;
 
       transition:
-        transform 1.5s cubic-bezier(0.165, 0.84, 0.44, 1),
-        opacity 1.1s ease;
+        transform 1.6s cubic-bezier(0.165, 0.84, 0.44, 1),
+        opacity 1.2s ease;
     }
 
     .hero.hero-active .hero-img-wrap img {
@@ -430,7 +428,7 @@
       left: 50%;
       transform:
         translateX(-50%)
-        translateY(35px);
+        translateY(20px);
       z-index: 3;
       text-align: center;
       width: 100%;
@@ -438,8 +436,8 @@
       opacity: 0;
 
       transition:
-        opacity 1s ease 0.25s,
-        transform 1s ease 0.25s;
+        opacity 1s ease 0.4s,
+        transform 1s ease 0.4s;
     }
 
     .hero.hero-active .hero-text-content {
@@ -607,21 +605,6 @@
       backface-visibility: hidden;
     }
 
-    .video-placeholder-notice {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #666;
-      font-size: 0.85rem;
-      background: #f9f9f9;
-      gap: 0.5rem;
-      text-align: center;
-      padding: 1rem;
-    }
-
     /* =========================
        ABOUT
     ========================== */
@@ -766,7 +749,7 @@
     }
 
     /* =========================
-       INTERNSHIP / EXPERIENCE PHOTOS
+       EXPERIENCE PHOTOS
     ========================== */
 
     .internship-photo-grid {
@@ -800,38 +783,6 @@
 
     .crop-top img {
       object-position: 45% center !important;
-    }
-
-    /* =========================
-       JSC PHOTO GALLERY
-    ========================== */
-
-    .jsc-photo-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-top: 1.4rem;
-    }
-
-    .jsc-photo-item {
-      position: relative;
-      height: 230px;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid var(--card-border-color);
-      background: #eaeaea;
-    }
-
-    .jsc-photo-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition:
-        transform 0.5s ease;
-    }
-
-    .jsc-photo-item:hover img {
-      transform: scale(1.06);
     }
 
     /* =========================
@@ -1136,10 +1087,6 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .jsc-photo-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
       .contact-container-new {
         padding: 2rem 1.5rem;
       }
@@ -1186,14 +1133,6 @@
       }
 
       .internship-photo-item {
-        height: 230px;
-      }
-
-      .jsc-photo-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .jsc-photo-item {
         height: 230px;
       }
 
@@ -1458,7 +1397,6 @@
 
       </div>
 
-
       <div class="about-thieb-grid">
 
         <div class="about-img-box">
@@ -1472,7 +1410,6 @@
           >
 
         </div>
-
 
         <div>
 
@@ -1571,7 +1508,6 @@
         </video>
 
       </div>
-
 
       <div class="timeline-stack">
 
@@ -1733,12 +1669,16 @@
 
       <div class="timeline-stack">
 
-        <!-- PROFESSIONAL INTERNSHIPS -->
+        <!-- =========================
+             PROFESSIONAL INTERNSHIPS
+        ========================== -->
 
         <h3 class="exp-category-title">
           💼 Professional Internships
         </h3>
 
+
+        <!-- MAHKAMAH AGUNG -->
 
         <article class="timeline-row">
 
@@ -1830,6 +1770,8 @@
         </article>
 
 
+        <!-- POLDA SUMATERA BARAT -->
+
         <article class="timeline-row">
 
           <div class="timeline-header-flex">
@@ -1915,16 +1857,16 @@
         </article>
 
 
-        <!-- ORGANIZATION EXPERIENCE -->
+        <!-- =========================
+             ORGANIZATION EXPERIENCE
+        ========================== -->
 
         <h3 class="exp-category-title">
           🏛️ Organization Experience
         </h3>
 
 
-        <!-- =========================
-             JSC
-        ========================== -->
+        <!-- JSC -->
 
         <article class="timeline-row">
 
@@ -1970,40 +1912,35 @@
           </div>
 
 
-          <!-- =========================
-               JSC PHOTO GALLERY
-          ========================== -->
+          <!-- JSC 3 PHOTOS -->
 
-          <div
-            class="jsc-photo-grid"
-            aria-label="Justicia Sport Club documentation"
-          >
+          <div class="internship-photo-grid">
 
-            <div class="jsc-photo-item">
+            <div class="internship-photo-item">
 
               <img
                 src="jsc-1.jpeg"
-                alt="Reysha Zahra Haptari at Justicia Sport Club"
+                alt="Reysha Zahra Haptari with Justicia Sport Club JSC"
                 loading="lazy"
               >
 
             </div>
 
-            <div class="jsc-photo-item">
+            <div class="internship-photo-item">
 
               <img
                 src="jsc-2.jpeg"
-                alt="Reysha Zahra Haptari Justicia Sport Club activity"
+                alt="Reysha Zahra Haptari JSC sports development activity"
                 loading="lazy"
               >
 
             </div>
 
-            <div class="jsc-photo-item">
+            <div class="internship-photo-item">
 
               <img
                 src="jsc-3.jpeg"
-                alt="Justicia Sport Club activity documentation"
+                alt="Reysha Zahra Haptari Justicia Sport Club activity"
                 loading="lazy"
               >
 
@@ -2013,6 +1950,8 @@
 
         </article>
 
+
+        <!-- HIMA PIDANA -->
 
         <article class="timeline-row">
 
@@ -2078,8 +2017,47 @@
 
           </div>
 
+
+          <!-- HIMA 3 PHOTOS -->
+
+          <div class="internship-photo-grid">
+
+            <div class="internship-photo-item">
+
+              <img
+                src="hima-1.jpeg"
+                alt="Reysha Zahra Haptari HIMA Pidana advocacy activity"
+                loading="lazy"
+              >
+
+            </div>
+
+            <div class="internship-photo-item">
+
+              <img
+                src="hima-2.jpeg"
+                alt="Reysha Zahra Haptari Criminal Law Student Association"
+                loading="lazy"
+              >
+
+            </div>
+
+            <div class="internship-photo-item">
+
+              <img
+                src="hima-3.jpeg"
+                alt="Reysha Zahra Haptari HIMA Pidana publication activity"
+                loading="lazy"
+              >
+
+            </div>
+
+          </div>
+
         </article>
 
+
+        <!-- BEM -->
 
         <article class="timeline-row">
 
@@ -2119,10 +2097,49 @@
 
           </div>
 
+
+          <!-- BEM 3 PHOTOS -->
+
+          <div class="internship-photo-grid">
+
+            <div class="internship-photo-item">
+
+              <img
+                src="bem-1.jpeg"
+                alt="Reysha Zahra Haptari Student Executive Board BEM"
+                loading="lazy"
+              >
+
+            </div>
+
+            <div class="internship-photo-item">
+
+              <img
+                src="bem-2.jpeg"
+                alt="Reysha Zahra Haptari BEM Faculty of Law Andalas University"
+                loading="lazy"
+              >
+
+            </div>
+
+            <div class="internship-photo-item">
+
+              <img
+                src="bem-3.jpeg"
+                alt="Reysha Zahra Haptari BEM organizational activity"
+                loading="lazy"
+              >
+
+            </div>
+
+          </div>
+
         </article>
 
 
-        <!-- ADJUDICATION EXPERIENCE -->
+        <!-- =========================
+             ADJUDICATION EXPERIENCE
+        ========================== -->
 
         <h3 class="exp-category-title">
           ⚖️ Adjudication Experience
@@ -2222,7 +2239,9 @@
         </article>
 
 
-        <!-- COMMITTEE EXPERIENCE -->
+        <!-- =========================
+             COMMITTEE EXPERIENCE
+        ========================== -->
 
         <h3 class="exp-category-title">
           🗓️ Committee & Event Experience
@@ -2592,6 +2611,17 @@
 
       }, 400);
 
+
+      const hero =
+        document.getElementById('home');
+
+      if (hero) {
+
+        hero.classList.add('hero-active');
+        hero.classList.add('is-visible');
+
+      }
+
     });
 
 
@@ -2617,57 +2647,13 @@
                 'is-visible'
               );
 
-              /*
-               * HERO AKTIF:
-               * Setiap kali Hero masuk viewport,
-               * animasinya dijalankan kembali.
-               */
-
               if (
                 entry.target.classList.contains(
                   'hero'
                 )
               ) {
 
-                entry.target.classList.remove(
-                  'hero-active'
-                );
-
-                /*
-                 * requestAnimationFrame membuat browser
-                 * membaca perubahan state sebelum class
-                 * hero-active ditambahkan kembali.
-                 */
-
-                requestAnimationFrame(() => {
-
-                  requestAnimationFrame(() => {
-
-                    entry.target.classList.add(
-                      'hero-active'
-                    );
-
-                  });
-
-                });
-
-              }
-
-            } else {
-
-              /*
-               * Saat Hero keluar viewport,
-               * reset animasi supaya ketika kembali
-               * muncul animasinya berjalan lagi.
-               */
-
-              if (
-                entry.target.classList.contains(
-                  'hero'
-                )
-              ) {
-
-                entry.target.classList.remove(
+                entry.target.classList.add(
                   'hero-active'
                 );
 
